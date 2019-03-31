@@ -14,6 +14,11 @@ JamSesh is a music app where you can create music sessions from your playlists. 
 
 ### App Evaluation
 - **Category:** Social Networking / Music
+- **Mobile:** This app would be developed for mobile, but it could potentially work as effectively on computers.
+- **Story:** This app would allow people to listen to music as well as connect and socialize with other people who have similar music interests through music sessions. The user can create music session or join other music session and chat with fellow users within that session.
+- **Market:** Anyone who loves music can enjoy this app. Ability to follow other users allow a user to discover new songs and interact with other users by joining their session.
+- **Habit:** Users can listen to music anytime they want. The feature “Music Sessions” could also encourage users to use this app more often as it allows them to chat with their friends and listen to the same music at the same time.
+- **Scope:** At the moment, JamSesh is simply for listening to music and chatting with the people the user is following. Perhaps, it could eventually allow users to view popular music sessions based on location. 
 
 ## Product Spec
 ### 1. User Stories (Required and Optional)
@@ -57,11 +62,10 @@ JamSesh is a music app where you can create music sessions from your playlists. 
    * Allows user to be able to choose a playlist to be played in the music session.
 * Search Screen
    * User can search for other users
-   * User can follow/unfollow another user
    * User can search a song
-* Sessions List Screen
+* Sessions List Screen (Stream)
    * User can view a list of music sessions
-* Create Music Session Screen
+* Create Music Session Screen (Creation)
    * User can create a music session
 * Detail
    * User can view the lyrics of a song
@@ -74,9 +78,9 @@ JamSesh is a music app where you can create music sessions from your playlists. 
 
 **Tab Navigation** (Tab to Screen)
 
-* Profile & Library
-* Search User & Song
 * Sessions List
+* Search User & Song
+* Profile & Library
 * Settings
 
 **Flow Navigation** (Screen to Screen)
