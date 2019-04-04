@@ -94,7 +94,7 @@ JamSesh is a music app where you can create music sessions from your playlists. 
 <img src='https://i.imgur.com/XaK2pXV.jpg' title='Wireframes' width='' alt='Wireframes' />
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src='https://i.imgur.com/FAzl722.jpg' title='Digital Wireframes' width='' alt='Digital Wireframes' />
+<img src='https://i.imgur.com/gYcJZJg.jpg' title='Digital Wireframes' width='' alt='Digital Wireframes' />
 
 ### [BONUS] Interactive Prototype
 <img src='https://i.imgur.com/DwuyFO0.gif' title='Prototype' width='' alt='Prototype' />
