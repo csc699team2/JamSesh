@@ -176,18 +176,18 @@ print("Successfully retrieved \(sessions.count) sessions.")
 ```
 
 - Create Music Session Screen
-      - (Create/POST) Create a new music session object
+      - (Create/POST) Create a new music session object <br>
 - Search Screen
-      - (Read/Get) Search to get song/session object
+      - (Read/Get) Search to get song/session object <br>
 - Profile Screen
-      - (Read/GET) Query logged in user object
-      - (Update/PUT) Update user profile image
-      - (Read/GET) Get Query in music session object
+      - (Read/GET) Query logged in user object <br>
+      - (Update/PUT) Update user profile image <br>
+      - (Read/GET) Get Query in music session object <br>
 - Music Session Screen
-      - (Read/GET) Query chosen music session object
-      - (Read/GET) Get Playlist in music session object
-      - (Create/POST) Create a new message object
-      - (Read/Get) Get message object
+      - (Read/GET) Query chosen music session object <br>
+      - (Read/GET) Get Playlist in music session object <br>
+      - (Create/POST) Create a new message object <br>
+      - (Read/Get) Get message object <br>
 - Settings Screen
-      - (Read/GET) Query logged in user object
-      - (Update/PUT) Update user object
+      - (Read/GET) Query logged in user object <br>
+      - (Update/PUT) Update user object <br>
