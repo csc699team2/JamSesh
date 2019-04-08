@@ -7,6 +7,7 @@ Unit 8: Group Milestone - README Example
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
+1. [Schema](#Schema)
 
 ## Overview
 ### Description
@@ -98,4 +99,95 @@ JamSesh is a music app where you can create music sessions from your playlists. 
 
 ### [BONUS] Interactive Prototype
 <img src='https://i.imgur.com/DwuyFO0.gif' title='Prototype' width='' alt='Prototype' />
-# JamSesh
+
+## Schema 
+### Models
+
+#### User
+
+| Property      | Type     | Description |
+| ------------- | -------- | ------------|
+| objectId      | String   | unique id for the user (default field) |
+| username      | String   | username for the user |
+| password      | String   | password for the user |
+| image         | File     | image for the user |
+| playlists     | Array of pointers to playlists  | all the playlists the user created |
+| followers     | Array of pointers to users | other users that follow the user |
+| following     | Array of pointers to users  | other users that the user follows |
+| followersCount     | Number | number of other users that follow the user |
+| followingCount     | Number  | number of other users that the user follows |
+
+
+
+#### MusicSession
+
+| Property      | Type     | Description |
+| ------------- | -------- | ------------|
+| objectId      | String   | unique id for the user's music session (default field) |
+| author        | Pointer to user | user that created the music session |
+| users         | Array of pointers to users    | other users that joined the music sessions
+| playlist      | Pointer to playlist    | the playslist that contains the songs used a session |
+| messages      | Pointer to messages   | conversations in the music session |
+| createdAt     | DateTime | date when Music Session is created (default field) |
+
+#### Messages
+
+| Property      | Type     | Description |
+| ------------- | -------- | ------------|
+| objectId      | String   | unique id for the user's message (default field) |
+| musicSession  | pointer to music session | the session where the message was created in |
+| message       | String   | message a user created within a music session |
+| author          | Pointer to user | user that wrote the message in the music session |
+
+#### Playlists
+| Property      | Type     | Description |
+| ------------- | -------- | ------------|
+| objectId      | String   | unique id for the user's album (default field) |
+| author        | Pointer to user   | user that created the playlist |
+| songs         | Array of pointers to songs  | list of songs in the album  |
+| playlistName     | String   | name of the playlist |
+
+#### Songs
+| Property      | Type     | Description |
+| ------------- | -------- | ------------|
+| objectId      | String   | unique id for a song (default field) |
+| song          | File     | song file       |
+| songName      | String   | name of the song |
+| timeLength    | Number   | time length of the song |
+
+
+
+### Networking
+#### List of network requests by screen
+- Sessions List Screen
+- (Read/GET) Query all music sessions
+```swift
+let query = PFQuery(className:"MusicSession")
+query.includeKey("author")
+query.order(byDescending: "createdAt")
+query.findObjectsInBackground { (sessions: [PFObject]?, error: Error?) in
+if let error = error { 
+print(error.localizedDescription)
+} else if let sessions = sessions {
+print("Successfully retrieved \(sessions.count) sessions.")
+// TODO: Do something with sessions...
+}
+}
+```
+
+- Create Music Session Screen
+      - (Create/POST) Create a new music session object
+- Search Screen
+      - (Read/Get) Search to get song/session object
+- Profile Screen
+      - (Read/GET) Query logged in user object
+      - (Update/PUT) Update user profile image
+      - (Read/GET) Get Query in music session object
+- Music Session Screen
+      - (Read/GET) Query chosen music session object
+      - (Read/GET) Get Playlist in music session object
+      - (Create/POST) Create a new message object
+      - (Read/Get) Get message object
+- Settings Screen
+      - (Read/GET) Query logged in user object
+      - (Update/PUT) Update user object
