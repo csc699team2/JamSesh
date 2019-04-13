@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2436DDED225FF86A000C56DF /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2436DDEC225FF86A000C56DF /* PlaylistCell.swift */; };
 		2475EF190F3D0215BC78D71C /* Pods_JamSeshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F605E4943A1B39AE4435484 /* Pods_JamSeshUITests.framework */; };
 		59047DC24AD8C332615A944D /* Pods_JamSesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC2447D1BA944B53A14A35A /* Pods_JamSesh.framework */; };
 		81D79FF0225ECB7400CD9DFA /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D79FEF225ECB7400CD9DFA /* LogInViewController.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		09078FF19DE35C8DE2AEFD53 /* Pods-JamSesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSesh.release.xcconfig"; path = "Target Support Files/Pods-JamSesh/Pods-JamSesh.release.xcconfig"; sourceTree = "<group>"; };
 		19EDD744111102E32BC8B809 /* Pods-JamSeshTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSeshTests.release.xcconfig"; path = "Target Support Files/Pods-JamSeshTests/Pods-JamSeshTests.release.xcconfig"; sourceTree = "<group>"; };
+		2436DDEC225FF86A000C56DF /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		2F605E4943A1B39AE4435484 /* Pods_JamSeshUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSeshUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D1A31A43F6951C901E666EA /* Pods-JamSeshUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSeshUITests.debug.xcconfig"; path = "Target Support Files/Pods-JamSeshUITests/Pods-JamSeshUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		69B522DB96BA71998657B52E /* Pods-JamSeshUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSeshUITests.release.xcconfig"; path = "Target Support Files/Pods-JamSeshUITests/Pods-JamSeshUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				81D79FF9225ECBC800CD9DFA /* SettingsViewController.swift */,
 				81D79FFB225ECBE200CD9DFA /* DetailsViewController.swift */,
 				81D79FFD225ECBF100CD9DFA /* CreateViewController.swift */,
+				2436DDEC225FF86A000C56DF /* PlaylistCell.swift */,
 			);
 			path = JamSesh;
 			sourceTree = "<group>";
@@ -186,7 +189,6 @@
 				3D1A31A43F6951C901E666EA /* Pods-JamSeshUITests.debug.xcconfig */,
 				69B522DB96BA71998657B52E /* Pods-JamSeshUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -429,6 +431,7 @@
 				81D79FF4225ECBA300CD9DFA /* SessionsViewController.swift in Sources */,
 				81D79FFC225ECBE200CD9DFA /* DetailsViewController.swift in Sources */,
 				81ED05D0225C3D3A00A106A6 /* ViewController.swift in Sources */,
+				2436DDED225FF86A000C56DF /* PlaylistCell.swift in Sources */,
 				81ED05CE225C3D3A00A106A6 /* AppDelegate.swift in Sources */,
 				81D79FF8225ECBBC00CD9DFA /* ProfileViewController.swift in Sources */,
 				81D79FF2225ECB8200CD9DFA /* SignUpViewController.swift in Sources */,

@@ -7,15 +7,84 @@
 //
 
 import UIKit
+import Parse
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var followersCountLabel: UILabel!
+    @IBOutlet weak var followingCountLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var userPlaylists = [PFObject]()
+    let currUser = PFUser.current()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        profileImage.layer.cornerRadius = profileImage.frame.size.width/2
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        //loadUserInfo()
+        loadPlaylists()
+        
+        //sets the layout of the collection view
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 15
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 15)
+        let width = (view.frame.size.width - layout.minimumInteritemSpacing*3) / 2
+        layout.itemSize = CGSize(width: width, height: width)
     }
     
+    func loadUserInfo() {
+        let followers = currUser!["followersCount"] as! String
+        let following = currUser!["followingCount"] as! String
+        
+        usernameLabel.text = currUser?.username
+        followersCountLabel.text = "\(followers) followers"
+        followingCountLabel.text = "\(following) following"
+    }
+    
+    func loadPlaylists() {
+        let query = PFQuery(className:"Playlists")
+        query.includeKey("author")
+        query.limit = 10
+        query.addDescendingOrder("createdAt")
+        userPlaylists.removeAll()
+        query.findObjectsInBackground { (playlists, error) in
+            if playlists != nil {
+                for playlist in playlists! {
+                    //let author = playlist["author"] as! PFUser
+                    //if (author.objectId! == self.currUser!.objectId) {
+                        self.userPlaylists.append(playlist)
+                    //}
+                }
+                print("Retrieved user playlists")
+                self.collectionView.reloadData()
+            }
+            else {
+                print("Error: \(String(describing: error))")
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return userPlaylists.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaylistCell", for: indexPath) as! PlaylistCell
+        let playlist = userPlaylists[indexPath.row]
+        cell.playlistLabel.text = playlist["playlistName"] as? String
+    
+        return cell
+    }
 
     /*
     // MARK: - Navigation
