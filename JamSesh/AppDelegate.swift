@@ -24,6 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         )
         
+        // stay log in across restarts UNCOMMENT THIS IF LOGOUT BUTTON IS CREATED
+//        if PFUser.current() != nil {
+//            let main = UIStoryboard(name: "Main", bundle: nil)
+//            let sessionController = main.instantiateViewController(withIdentifier: "SessionController")
+//
+//            window?.rootViewController = sessionController
+//        }
+        
         return true
     }
 

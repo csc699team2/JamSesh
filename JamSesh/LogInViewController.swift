@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class LogInViewController: UIViewController {
 
@@ -20,6 +21,27 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func onLogin(_ sender: Any) {
+        let username = usernameField.text!
+        let password = passwordField.text!
+        
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+            if user != nil {
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            } else {
+                print("Error: \(error!.localizedDescription)")
+                self.displayMyAlertMessage(title: error!.localizedDescription, message: "Please try again")
+            }
+        }
+    }
+    
+    // Display message for confirmation
+    func displayMyAlertMessage(title:String, message: String) {
+        
+        let myAlert = UIAlertController(title:title, message:message, preferredStyle: UIAlertController.Style.alert);
+        let okAction = UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil);
+        
+        myAlert.addAction(okAction);
+        self.present(myAlert, animated:true, completion:nil);
     }
     
     /*
