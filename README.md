@@ -26,27 +26,28 @@ JamSesh is a music app where you can create music sessions from your playlists. 
 
 **Required Must-have Stories**
 
-* User sees app icon in home screen and styled launch screen.
-* User can sign up 
-* User can log in
-* User stays logged in across restarts
-* User can view/edit their profile
-* User can follow/unfollow another user
-* User can search a song
-* User can play a song
-* User can create a playlist
-* User can create a private/public music session
-* User can join a private/public music session (Users need to be invited to private)
-* User can chat with other users in a music session
+- [x] User sees app icon in home screen and styled launch screen.
+- [x] User can sign up 
+- [x] User can log in
+- [x] User stays logged in across restarts
+- [x] User can view their profile
+- [ ] User can edit their profile
+- [ ] User can follow/unfollow another user
+- [ ] User can search a song
+- [ ] User can play a song
+- [ ] User can create a playlist
+- [ ] User can create a private/public music session
+- [ ] User can join a private/public music session (Users need to be invited to private)
+- [ ] User can chat with other users in a music session
 
 
 **Optional Nice-to-have Stories**
 
-* User can view the lyrics of a song
-* User can customize their app user interface
-* User can use automated voice controls (Houndify)
-* User can be notified when the people they follow creates a music session
-* User can be notified if they have been invited to another user’s music session
+- [ ] User can view the lyrics of a song
+- [ ] User can customize their app user interface
+- [ ] User can use automated voice controls (Houndify)
+- [ ] User can be notified when the people they follow creates a music session
+- [ ] User can be notified if they have been invited to another user’s music session
 
 
 ### 2. Screen Archetypes
