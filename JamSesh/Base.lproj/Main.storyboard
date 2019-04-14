@@ -60,7 +60,7 @@
         <!--Log In View Controller-->
         <scene sceneID="x8K-9f-NFj">
             <objects>
-                <viewController id="WDv-Ru-zcg" customClass="LogInViewController" customModule="JamSesh" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInViewController" id="WDv-Ru-zcg" customClass="LogInViewController" customModule="JamSesh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yrb-9f-YWy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -305,21 +305,83 @@
             </objects>
             <point key="canvasLocation" x="1293.5999999999999" y="2372.5637181409297"/>
         </scene>
-        <!--SETTINGS-->
+        <!--Settings-->
         <scene sceneID="aUF-Pn-tJN">
             <objects>
                 <viewController id="rgH-9w-aUx" customClass="SettingsViewController" customModule="JamSesh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xcr-x4-gQq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUJ-lb-Upf">
+                                <rect key="frame" x="38" y="102" width="299" height="38"/>
+                                <color key="backgroundColor" red="0.83532240390000001" green="0.83425192609999999" blue="0.85295050760000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="9DL-NW-2ZF"/>
+                                </constraints>
+                                <state key="normal" title="ACCOUNT                                                &gt;">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKs-Ne-oYa">
+                                <rect key="frame" x="38" y="170" width="299" height="38"/>
+                                <color key="backgroundColor" red="0.83532240390000001" green="0.83425192609999999" blue="0.85295050760000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="Ey2-zO-yUi"/>
+                                </constraints>
+                                <state key="normal" title="NOTIFICATIONS                                       &gt;">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOy-Ln-e1f">
+                                <rect key="frame" x="38" y="238" width="299" height="38"/>
+                                <color key="backgroundColor" red="0.83532240390000001" green="0.83425192609999999" blue="0.85295050760000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="Tre-LU-1Im"/>
+                                </constraints>
+                                <state key="normal" title="CHAT                                                         &gt;">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEC-sU-onZ">
+                                <rect key="frame" x="100" y="314" width="175" height="40"/>
+                                <color key="backgroundColor" red="0.83532240390000001" green="0.83425192609999999" blue="0.85295050760000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="0Zd-5b-Bn3"/>
+                                </constraints>
+                                <state key="normal" title="LOG OUT">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLogout:" destination="rgH-9w-aUx" eventType="touchUpInside" id="S6f-AB-myh"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aOy-Ln-e1f" firstAttribute="top" secondItem="ZKs-Ne-oYa" secondAttribute="bottom" constant="30" id="3Pe-kS-a6R"/>
+                            <constraint firstItem="wMZ-9U-V4N" firstAttribute="trailing" secondItem="OUJ-lb-Upf" secondAttribute="trailing" constant="38" id="3pM-Un-dyR"/>
+                            <constraint firstItem="gEC-sU-onZ" firstAttribute="leading" secondItem="wMZ-9U-V4N" secondAttribute="leading" constant="100" id="5Lk-Wr-ihU"/>
+                            <constraint firstItem="ZKs-Ne-oYa" firstAttribute="leading" secondItem="wMZ-9U-V4N" secondAttribute="leading" constant="38" id="8NN-bg-ovN"/>
+                            <constraint firstItem="gEC-sU-onZ" firstAttribute="top" secondItem="aOy-Ln-e1f" secondAttribute="bottom" constant="38" id="VzQ-fk-fuY"/>
+                            <constraint firstItem="aOy-Ln-e1f" firstAttribute="leading" secondItem="wMZ-9U-V4N" secondAttribute="leading" constant="38" id="XnM-8G-pPr"/>
+                            <constraint firstItem="wMZ-9U-V4N" firstAttribute="trailing" secondItem="gEC-sU-onZ" secondAttribute="trailing" constant="100" id="doq-Cv-zaW"/>
+                            <constraint firstItem="wMZ-9U-V4N" firstAttribute="trailing" secondItem="ZKs-Ne-oYa" secondAttribute="trailing" constant="38" id="lzs-VH-iC6"/>
+                            <constraint firstItem="ZKs-Ne-oYa" firstAttribute="top" secondItem="OUJ-lb-Upf" secondAttribute="bottom" constant="30" id="m2C-6v-Kfj"/>
+                            <constraint firstItem="OUJ-lb-Upf" firstAttribute="leading" secondItem="wMZ-9U-V4N" secondAttribute="leading" constant="38" id="vBb-ps-CTT"/>
+                            <constraint firstItem="OUJ-lb-Upf" firstAttribute="top" secondItem="wMZ-9U-V4N" secondAttribute="top" constant="38" id="vam-TT-dgf"/>
+                            <constraint firstItem="wMZ-9U-V4N" firstAttribute="trailing" secondItem="aOy-Ln-e1f" secondAttribute="trailing" constant="38" id="xGz-2U-nsK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wMZ-9U-V4N"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="SETTINGS" image="settings_24px_outlined-1" selectedImage="settings_24px_outlined-1" id="ifv-7l-7KJ"/>
+                    <navigationItem key="navigationItem" title="Settings" id="GwX-Ek-BSm"/>
+                    <connections>
+                        <outlet property="logoutButton" destination="gEC-sU-onZ" id="tQo-BR-tFi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U42-Si-xGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2199" y="1657"/>
+            <point key="canvasLocation" x="2197.5999999999999" y="2372.5637181409297"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="wU4-iL-sa1">
@@ -334,7 +396,7 @@
                         <segue destination="ywP-1K-0Jc" kind="relationship" relationship="viewControllers" id="3FK-na-RQT"/>
                         <segue destination="RsE-Fb-tc4" kind="relationship" relationship="viewControllers" id="tAn-Vo-LmS"/>
                         <segue destination="k1q-Jj-rMN" kind="relationship" relationship="viewControllers" id="dTZ-U4-ZFI"/>
-                        <segue destination="rgH-9w-aUx" kind="relationship" relationship="viewControllers" id="AFP-Yj-rEN"/>
+                        <segue destination="afy-XL-X9v" kind="relationship" relationship="viewControllers" id="AFP-Yj-rEN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xga-CJ-lRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -483,6 +545,26 @@
             </objects>
             <point key="canvasLocation" x="1293.5999999999999" y="1656.521739130435"/>
         </scene>
+        <!--SETTINGS-->
+        <scene sceneID="2g4-kT-k4U">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="afy-XL-X9v" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SETTINGS" image="settings_24px_outlined-1" selectedImage="settings_24px_outlined-1" id="ifv-7l-7KJ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mmL-BI-Ol5">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.5286188342" green="0.68658299389999999" blue="0.68958418109999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rgH-9w-aUx" kind="relationship" relationship="rootViewController" id="aLO-qe-sd1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I3P-KZ-H5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2197.5999999999999" y="1656.521739130435"/>
+        </scene>
     </scenes>
     <resources>
         <image name="headset" width="4675" height="4675"/>
@@ -493,6 +575,7 @@
         <image name="settings_24px_outlined-1" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="4J4-Ox-NSg"/>
         <segue reference="aHY-Sa-O7c"/>
     </inferredMetricsTieBreakers>
 </document>
