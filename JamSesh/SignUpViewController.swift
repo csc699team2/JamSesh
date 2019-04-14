@@ -81,6 +81,11 @@ class SignUpViewController: UIViewController {
         self.present(myAlert, animated:true, completion:nil);
     }
     
+    @IBAction func endEditing(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

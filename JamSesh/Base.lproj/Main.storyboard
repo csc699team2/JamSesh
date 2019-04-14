@@ -133,7 +133,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="skS-7H-jMN"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ViS-CU-mvQ" appends="YES" id="ZCF-Ed-x6U"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="7r2-Qg-F1K" id="qrV-ZH-0ke"/>
@@ -142,6 +146,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ip9-Rx-ust" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ViS-CU-mvQ">
+                    <connections>
+                        <action selector="endEditing:" destination="WDv-Ru-zcg" id="vJ4-Ec-Uzb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="848.79999999999995" y="134.48275862068968"/>
         </scene>
@@ -431,7 +440,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="Dud-WA-wJW"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6r8-iM-wTw" appends="YES" id="eZT-QS-DKd"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="C7t-80-vAI" id="tOY-hI-hvR"/>
@@ -442,8 +455,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KpT-u6-OnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6r8-iM-wTw">
+                    <connections>
+                        <action selector="endEditing:" destination="Xys-T6-5y2" id="7dQ-EH-lXj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1582" y="134"/>
+            <point key="canvasLocation" x="1596" y="133"/>
         </scene>
         <!--PROFILE-->
         <scene sceneID="6GP-aL-S4f">
@@ -475,6 +493,6 @@
         <image name="settings_24px_outlined-1" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pMM-xK-MEv"/>
+        <segue reference="aHY-Sa-O7c"/>
     </inferredMetricsTieBreakers>
 </document>
