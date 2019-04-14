@@ -8,9 +8,10 @@
 
 import UIKit
 import Parse
+import AlamofireImage
 
-class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
+class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
@@ -22,7 +23,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         profileImage.layer.cornerRadius = profileImage.frame.size.width/2
         
@@ -49,6 +50,54 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         usernameLabel.text = currUser?.username
         followersCountLabel.text = "\(String(followers)) followers"
         followingCountLabel.text = "\(String(following)) following"
+        
+        //loads the profile image of user
+        let imageFile = currUser!["image"] as? PFFileObject ?? nil
+        if imageFile != nil {
+            let urlString = imageFile!.url!
+            let url = URL(string: urlString)!
+            profileImage.af_setImage(withURL: url)
+        }
+    }
+    
+    @IBAction func changeProfileImage(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.sourceType = .camera
+        }
+        else {
+            picker.sourceType = .photoLibrary
+        }
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as! UIImage
+        
+        let size = CGSize(width: 300, height: 300)
+        let scaledImage = image.af_imageAspectScaled(toFill: size)
+        
+        profileImage.image = scaledImage
+        
+        let imageData = profileImage.image!.pngData()
+        let file = PFFileObject(data: imageData!)
+        
+        currUser!["image"] = file
+        
+        currUser!.saveInBackground { (success, error) in
+            if success {
+                print("saved!")
+            }
+            else {
+                print("error!")
+            }
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func loadPlaylists() {
@@ -82,18 +131,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaylistCell", for: indexPath) as! PlaylistCell
         let playlist = userPlaylists[indexPath.row]
         cell.playlistLabel.text = playlist["playlistName"] as? String
-    
+        
         return cell
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

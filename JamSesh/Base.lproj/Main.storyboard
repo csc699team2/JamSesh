@@ -230,13 +230,17 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perm_identity_24px_outlined-2" translatesAutoresizingMaskIntoConstraints="NO" id="SBO-9F-daw">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perm_identity_24px_outlined-2" translatesAutoresizingMaskIntoConstraints="NO" id="SBO-9F-daw">
                                 <rect key="frame" x="112.5" y="80" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="RmR-wP-JqG"/>
                                     <constraint firstAttribute="width" constant="150" id="W88-cP-2Zg"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="cJn-fk-47y" appends="YES" id="CUf-cH-I35"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ck-jK-Ieb">
                                 <rect key="frame" x="8" y="238" width="359" height="21"/>
@@ -302,6 +306,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWC-EW-xWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cJn-fk-47y">
+                    <connections>
+                        <action selector="changeProfileImage:" destination="JDr-9L-yNb" id="UJs-cq-oIl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1293.5999999999999" y="2372.5637181409297"/>
         </scene>
@@ -575,6 +584,6 @@
         <image name="settings_24px_outlined-1" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yZq-xg-IA1"/>
+        <segue reference="aHY-Sa-O7c"/>
     </inferredMetricsTieBreakers>
 </document>

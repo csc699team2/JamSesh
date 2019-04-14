@@ -25,14 +25,15 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func onSignUp(_ sender: Any) {
-//        let username = usernameField.text!
-//        let email = emailField.text!
-//        let password = passwordField.text!
-//        let repeatPassword = password2Field.text!
-        
         let user = PFUser();
         user.username = usernameField.text!
         user.email = emailField.text!
+        
+        // Gives deafult profile image to user
+        /*let image = UIImage(named: "perm_identity_24px_outlined-2")
+        let imageData = image!.pngData()
+        let file = PFFileObject(data: imageData!)
+        user["image"] = file*/
         
         // Check if passwords match
         if(passwordField.text == password2Field.text){
