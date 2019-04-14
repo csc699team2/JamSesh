@@ -30,10 +30,10 @@ class SignUpViewController: UIViewController {
         user.email = emailField.text!
         
         // Gives deafult profile image to user
-        /*let image = UIImage(named: "perm_identity_24px_outlined-2")
+        let image = UIImage(named: "perm_identity_24px_outlined-2")
         let imageData = image!.pngData()
         let file = PFFileObject(data: imageData!)
-        user["image"] = file*/
+        user["image"] = file
         
         // Check if passwords match
         if(passwordField.text == password2Field.text){

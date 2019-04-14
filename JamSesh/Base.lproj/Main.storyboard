@@ -230,7 +230,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perm_identity_24px_outlined-2" translatesAutoresizingMaskIntoConstraints="NO" id="SBO-9F-daw">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBO-9F-daw">
                                 <rect key="frame" x="132" y="80" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -579,11 +579,10 @@
         <image name="headset" width="4675" height="4675"/>
         <image name="headset_24px_outlined-1" width="23" height="23"/>
         <image name="perm_identity_24px_outlined-1" width="21" height="21"/>
-        <image name="perm_identity_24px_outlined-2" width="100" height="100"/>
         <image name="search_24px_outlined-3" width="23" height="23"/>
         <image name="settings_24px_outlined-1" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yZq-xg-IA1"/>
+        <segue reference="pMM-xK-MEv"/>
     </inferredMetricsTieBreakers>
 </document>
