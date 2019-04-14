@@ -575,7 +575,6 @@
         <image name="settings_24px_outlined-1" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4J4-Ox-NSg"/>
-        <segue reference="aHY-Sa-O7c"/>
+        <segue reference="yZq-xg-IA1"/>
     </inferredMetricsTieBreakers>
 </document>
