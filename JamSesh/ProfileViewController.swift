@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        //loadUserInfo()
+        loadUserInfo()
         loadPlaylists()
         
         //sets the layout of the collection view
@@ -43,12 +43,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func loadUserInfo() {
-        let followers = currUser!["followersCount"] as! String
-        let following = currUser!["followingCount"] as! String
+        let followers = currUser!["followersCount"] as? Int ?? 0
+        let following = currUser!["followingCount"] as? Int ?? 0
         
         usernameLabel.text = currUser?.username
-        followersCountLabel.text = "\(followers) followers"
-        followingCountLabel.text = "\(following) following"
+        followersCountLabel.text = "\(String(followers)) followers"
+        followingCountLabel.text = "\(String(following)) following"
     }
     
     func loadPlaylists() {
@@ -60,10 +60,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         query.findObjectsInBackground { (playlists, error) in
             if playlists != nil {
                 for playlist in playlists! {
-                    //let author = playlist["author"] as! PFUser
-                    //if (author.objectId! == self.currUser!.objectId) {
+                    let author = playlist["author"] as! PFUser
+                    if (author.objectId! == self.currUser!.objectId) {
                         self.userPlaylists.append(playlist)
-                    //}
+                    }
                 }
                 print("Retrieved user playlists")
                 self.collectionView.reloadData()
