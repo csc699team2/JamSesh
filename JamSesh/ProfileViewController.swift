@@ -123,6 +123,37 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
+    @IBAction func createPlaylist(_ sender: Any) {
+        let alert = UIAlertController(title: "Enter name of playlist", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Playlist"
+        })
+        
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { action in
+            
+            if let name = alert.textFields?.first?.text {
+                print("Name of playlist: \(name)")
+                
+                let playlist = PFObject(className: "Playlists")
+                playlist["playlistName"] = name
+                playlist["author"] = self.currUser
+                
+                playlist.saveInBackground(block: { (success, error) in
+                    if success {
+                        self.loadPlaylists()
+                        print("saved!")
+                    }
+                    else {
+                        print("error!")
+                    }
+                })
+            }
+        }))
+        self.present(alert, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return userPlaylists.count
     }
