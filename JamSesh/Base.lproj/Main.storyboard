@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -667,7 +667,18 @@ and other music lovers.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bes-6e-0o4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="Ng8-MQ-N6J"/>
+                    <navigationItem key="navigationItem" title="Profile" id="Ng8-MQ-N6J">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Bnv-5U-Zw3">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5Tc-SN-D8a">
+                                <rect key="frame" x="322" y="11" width="72" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="add_box_24px_outlined"/>
+                                <connections>
+                                    <action selector="createPlaylist:" destination="JDr-9L-yNb" eventType="touchUpInside" id="J3M-Ow-t9x"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="xa4-R5-SLQ" id="FW5-26-rT9"/>
                         <outlet property="followersCountLabel" destination="DVb-1b-J1A" id="83d-wS-sBa"/>
@@ -939,7 +950,6 @@ and other music lovers.</string>
         <!--PROFILE-->
         <scene sceneID="6GP-aL-S4f">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fBS-10-YL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k1q-Jj-rMN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="PROFILE" image="perm_identity_24px_outlined-1" selectedImage="perm_identity_24px_outlined-1" id="V1b-Q6-wED"/>
                     <toolbarItems/>
@@ -953,6 +963,7 @@ and other music lovers.</string>
                         <segue destination="JDr-9L-yNb" kind="relationship" relationship="rootViewController" id="yXN-Fj-0Dy"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fBS-10-YL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1293" y="1657"/>
         </scene>
@@ -1018,8 +1029,9 @@ and other music lovers.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="add_box_24px_outlined" width="18" height="18"/>
         <image name="favorite_border_24px_outlined-1" width="26" height="24"/>
-        <image name="headset" width="1122" height="1122"/>
+        <image name="headset" width="4675" height="4675"/>
         <image name="headset_24px_outlined-1" width="23" height="23"/>
         <image name="perm_identity_24px_outlined-1" width="21" height="21"/>
         <image name="play_circle_filled_white_24px_outlined-1" width="26" height="26"/>
