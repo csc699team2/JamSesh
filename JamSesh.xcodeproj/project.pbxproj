@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2436DDED225FF86A000C56DF /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2436DDEC225FF86A000C56DF /* PlaylistCell.swift */; };
 		2475EF190F3D0215BC78D71C /* Pods_JamSeshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F605E4943A1B39AE4435484 /* Pods_JamSeshUITests.framework */; };
+		24FD4931226AD69100E042AB /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4930226AD69100E042AB /* SearchCell.swift */; };
+		24FD4933226B03B800E042AB /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4932226B03B800E042AB /* OtherProfileViewController.swift */; };
+		24FD4935226B047F00E042AB /* OtherPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4934226B047F00E042AB /* OtherPlaylistCell.swift */; };
 		59047DC24AD8C332615A944D /* Pods_JamSesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC2447D1BA944B53A14A35A /* Pods_JamSesh.framework */; };
 		81D79FF0225ECB7400CD9DFA /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D79FEF225ECB7400CD9DFA /* LogInViewController.swift */; };
 		81D79FF2225ECB8200CD9DFA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D79FF1225ECB8200CD9DFA /* SignUpViewController.swift */; };
@@ -49,6 +52,9 @@
 		09078FF19DE35C8DE2AEFD53 /* Pods-JamSesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSesh.release.xcconfig"; path = "Target Support Files/Pods-JamSesh/Pods-JamSesh.release.xcconfig"; sourceTree = "<group>"; };
 		19EDD744111102E32BC8B809 /* Pods-JamSeshTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSeshTests.release.xcconfig"; path = "Target Support Files/Pods-JamSeshTests/Pods-JamSeshTests.release.xcconfig"; sourceTree = "<group>"; };
 		2436DDEC225FF86A000C56DF /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
+		24FD4930226AD69100E042AB /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		24FD4932226B03B800E042AB /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
+		24FD4934226B047F00E042AB /* OtherPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPlaylistCell.swift; sourceTree = "<group>"; };
 		2F605E4943A1B39AE4435484 /* Pods_JamSeshUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSeshUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D1A31A43F6951C901E666EA /* Pods-JamSeshUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSeshUITests.debug.xcconfig"; path = "Target Support Files/Pods-JamSeshUITests/Pods-JamSeshUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		69B522DB96BA71998657B52E /* Pods-JamSeshUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSeshUITests.release.xcconfig"; path = "Target Support Files/Pods-JamSeshUITests/Pods-JamSeshUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +113,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24FD492C226AD4FA00E042AB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				81ED05CF225C3D3A00A106A6 /* ViewController.swift */,
+				81D79FEF225ECB7400CD9DFA /* LogInViewController.swift */,
+				81D79FF1225ECB8200CD9DFA /* SignUpViewController.swift */,
+				81D79FF3225ECBA300CD9DFA /* SessionsViewController.swift */,
+				81D79FF5225ECBAE00CD9DFA /* SearchViewController.swift */,
+				81D79FF7225ECBBC00CD9DFA /* ProfileViewController.swift */,
+				81D79FF9225ECBC800CD9DFA /* SettingsViewController.swift */,
+				81D79FFB225ECBE200CD9DFA /* DetailsViewController.swift */,
+				81D79FFD225ECBF100CD9DFA /* CreateViewController.swift */,
+				24FD4932226B03B800E042AB /* OtherProfileViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		24FD492D226AD51700E042AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2436DDEC225FF86A000C56DF /* PlaylistCell.swift */,
+				24FD4930226AD69100E042AB /* SearchCell.swift */,
+				24FD4934226B047F00E042AB /* OtherPlaylistCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		81ED05C1225C3D3A00A106A6 = {
 			isa = PBXGroup;
 			children = (
@@ -132,21 +165,13 @@
 		81ED05CC225C3D3A00A106A6 /* JamSesh */ = {
 			isa = PBXGroup;
 			children = (
+				24FD492D226AD51700E042AB /* Views */,
+				24FD492C226AD4FA00E042AB /* ViewControllers */,
 				81ED05CD225C3D3A00A106A6 /* AppDelegate.swift */,
-				81ED05CF225C3D3A00A106A6 /* ViewController.swift */,
 				81ED05D1225C3D3A00A106A6 /* Main.storyboard */,
 				81ED05D4225C3D3C00A106A6 /* Assets.xcassets */,
 				81ED05D6225C3D3C00A106A6 /* LaunchScreen.storyboard */,
 				81ED05D9225C3D3C00A106A6 /* Info.plist */,
-				81D79FEF225ECB7400CD9DFA /* LogInViewController.swift */,
-				81D79FF1225ECB8200CD9DFA /* SignUpViewController.swift */,
-				81D79FF3225ECBA300CD9DFA /* SessionsViewController.swift */,
-				81D79FF5225ECBAE00CD9DFA /* SearchViewController.swift */,
-				81D79FF7225ECBBC00CD9DFA /* ProfileViewController.swift */,
-				81D79FF9225ECBC800CD9DFA /* SettingsViewController.swift */,
-				81D79FFB225ECBE200CD9DFA /* DetailsViewController.swift */,
-				81D79FFD225ECBF100CD9DFA /* CreateViewController.swift */,
-				2436DDEC225FF86A000C56DF /* PlaylistCell.swift */,
 			);
 			path = JamSesh;
 			sourceTree = "<group>";
@@ -427,6 +452,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D79FFE225ECBF100CD9DFA /* CreateViewController.swift in Sources */,
+				24FD4931226AD69100E042AB /* SearchCell.swift in Sources */,
+				24FD4935226B047F00E042AB /* OtherPlaylistCell.swift in Sources */,
+				24FD4933226B03B800E042AB /* OtherProfileViewController.swift in Sources */,
 				81D79FF6225ECBAE00CD9DFA /* SearchViewController.swift in Sources */,
 				81D79FF4225ECBA300CD9DFA /* SessionsViewController.swift in Sources */,
 				81D79FFC225ECBE200CD9DFA /* DetailsViewController.swift in Sources */,

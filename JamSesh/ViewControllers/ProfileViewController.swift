@@ -103,7 +103,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func loadPlaylists() {
         let query = PFQuery(className:"Playlists")
         query.includeKey("author")
-        query.limit = 10
         query.addDescendingOrder("createdAt")
         userPlaylists.removeAll()
         query.findObjectsInBackground { (playlists, error) in
