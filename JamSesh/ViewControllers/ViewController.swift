@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Parse
 
 class ViewController: UIViewController {
+    
+    var user: PFUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
