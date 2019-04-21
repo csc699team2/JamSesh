@@ -844,43 +844,6 @@ and other music lovers.</string>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-<<<<<<< HEAD
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perm_identity_24px_outlined-2" translatesAutoresizingMaskIntoConstraints="NO" id="SBO-9F-daw">
-                                <rect key="frame" x="132" y="80" width="150" height="150"/>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="RmR-wP-JqG"/>
-                                    <constraint firstAttribute="width" constant="150" id="W88-cP-2Zg"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="cJn-fk-47y" appends="YES" id="CUf-cH-I35"/>
-                                </connections>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ck-jK-Ieb">
-                                <rect key="frame" x="8" y="238" width="398" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N followers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVb-1b-J1A">
-                                <rect key="frame" x="82" y="267" width="96.666666666666686" height="22.666666666666686"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="DVb-1b-J1A" secondAttribute="height" multiplier="77:18" id="AO3-FX-gd7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYLISTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7W3-R3-yNI">
-                                <rect key="frame" x="8" y="321.66666666666669" width="398" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N following" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pj3-Ip-P30">
-                                <rect key="frame" x="235.66666666666666" y="267" width="96.333333333333343" height="22.666666666666686"/>
-=======
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E48-xM-zfb">
                                 <rect key="frame" x="0.0" y="64" width="414" height="288"/>
                                 <subviews>
@@ -922,7 +885,6 @@ and other music lovers.</string>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
->>>>>>> dev
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="5Ck-jK-Ieb" secondAttribute="trailing" constant="8" id="6L2-ML-lw4"/>
                                     <constraint firstItem="5Ck-jK-Ieb" firstAttribute="top" secondItem="SBO-9F-daw" secondAttribute="bottom" constant="8" id="80i-jV-CvB"/>
@@ -1364,12 +1326,8 @@ and other music lovers.</string>
         <image name="headset" width="4675" height="4675"/>
         <image name="headset_24px_outlined-1" width="23" height="23"/>
         <image name="perm_identity_24px_outlined-1" width="21" height="21"/>
-<<<<<<< HEAD
-        <image name="perm_identity_24px_outlined-2" width="100" height="100"/>
-=======
         <image name="play_circle_filled_white_24px_outlined-1" width="26" height="26"/>
         <image name="search_24px_outlined-1" width="105" height="99"/>
->>>>>>> dev
         <image name="search_24px_outlined-3" width="23" height="23"/>
         <image name="settings_24px_outlined-1" width="25" height="25"/>
     </resources>
