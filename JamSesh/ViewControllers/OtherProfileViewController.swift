@@ -17,9 +17,15 @@ class OtherProfileViewController: UIViewController, UICollectionViewDelegate, UI
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var followButton: UIButton!
+    
+    let currUser = PFUser.current()
+    var followed = false
     
     var user: PFUser?
     var userPlaylists = [PFObject]()
+    var userFollowers = [PFUser]()
+    var userFollowings = [PFUser]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +36,6 @@ class OtherProfileViewController: UIViewController, UICollectionViewDelegate, UI
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        loadUserInfo()
         loadPlaylists()
         
         //sets the layout of the collection view
@@ -43,13 +48,47 @@ class OtherProfileViewController: UIViewController, UICollectionViewDelegate, UI
         layout.itemSize = CGSize(width: width, height: width)
     }
     
-    func loadUserInfo() {
-        let followers = user!["followersCount"] as? Int ?? 0
-        let following = user!["followingCount"] as? Int ?? 0
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         
+        loadUserInfo()
+    }
+    
+    func loadUserInfo() {
         usernameLabel.text = user?.username
-        followersCountLabel.text = "\(String(followers)) followers"
-        followingCountLabel.text = "\(String(following)) following"
+        
+        userFollowers.removeAll()
+        userFollowings.removeAll()
+        
+        let follow = PFQuery(className: "Follow")
+        follow.includeKeys(["follower", "following"])
+        follow.findObjectsInBackground { (followLists, error) in
+            if followLists != nil {
+                for item in followLists! {
+                    let follower = item["follower"] as! PFUser
+                    let following = item["following"] as! PFUser
+                    if follower.objectId == self.user?.objectId {
+                        self.userFollowings.append(following)
+                    }
+                    else if following.objectId == self.user?.objectId {
+                        self.userFollowers.append(follower)
+                    }
+                }
+                print("Followers: \(String(self.userFollowers.count))")
+                print("Following: \(String(self.userFollowings.count))")
+            }
+        }
+        
+        followersCountLabel.text = "\(String(userFollowers.count)) followers"
+        followingCountLabel.text = "\(String(userFollowings.count)) following"
+        
+        for follower in userFollowers {
+            if follower.objectId == currUser?.objectId {
+                followed = true
+                followButton.setTitle("Unfollow", for: .normal)
+                break
+            }
+        }
         
         //loads the profile image of user
         let imageFile = user!["image"] as? PFFileObject ?? nil
@@ -81,6 +120,28 @@ class OtherProfileViewController: UIViewController, UICollectionViewDelegate, UI
             }
         }
     }
+    
+    @IBAction func onFollowButton(_ sender: Any) {
+        if !followed{
+            let follow = PFObject(className: "Follow")
+            
+            follow["follower"] = currUser
+            follow["following"] = user
+            
+            follow.saveInBackground { (success, error) in
+                if success {
+                    self.followed = true
+                    self.followButton.setTitle("Unfollow", for: .normal)
+                    print("followed!")
+                }
+                else {
+                    print("error!")
+                }
+            }
+        }
+        loadUserInfo()
+    }
+    
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return userPlaylists.count

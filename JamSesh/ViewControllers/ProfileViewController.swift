@@ -18,8 +18,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var userPlaylists = [PFObject]()
     let currUser = PFUser.current()
+    var userPlaylists = [PFObject]()
+    var userFollowers = [PFUser]()
+    var userFollowings = [PFUser]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        loadUserInfo()
         loadPlaylists()
         
         //sets the layout of the collection view
@@ -43,13 +44,34 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         layout.itemSize = CGSize(width: width, height: width)
     }
     
-    func loadUserInfo() {
-        let followers = currUser!["followersCount"] as? Int ?? 0
-        let following = currUser!["followingCount"] as? Int ?? 0
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         
+        loadUserInfo()
+    }
+    
+    func loadUserInfo() {
         usernameLabel.text = currUser?.username
-        followersCountLabel.text = "\(String(followers)) followers"
-        followingCountLabel.text = "\(String(following)) following"
+        
+        let follow = PFQuery(className: "Follow")
+        follow.findObjectsInBackground { (followLists, error) in
+            if followLists != nil {
+                for user in followLists! {
+                    let follower = user["follower"] as! PFUser
+                    let following = user["following"] as! PFUser
+                    if follower.objectId == self.currUser?.objectId {
+                        self.userFollowings.append(following)
+                    }
+                    else if following.objectId == self.currUser?.objectId {
+                        self.userFollowers.append(follower)
+                    }
+                }
+                print("Followers: \(String(self.userFollowers.count))")
+                print("Following: \(String(self.userFollowings.count))")
+            }
+        }
+        followersCountLabel.text = "\(String(userFollowers.count)) followers"
+        followingCountLabel.text = "\(String(userFollowings.count)) following"
         
         //loads the profile image of user
         let imageFile = currUser!["image"] as? PFFileObject ?? nil

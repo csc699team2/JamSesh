@@ -489,11 +489,15 @@ and other music lovers.</string>
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Follow"/>
+                                <connections>
+                                    <action selector="onFollowButton:" destination="2VI-zi-e2D" eventType="touchUpInside" id="OnU-q1-sR8"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="1cd-lw-l1b" id="0s1-ea-jA1"/>
+                        <outlet property="followButton" destination="TA7-2w-PWk" id="5j3-gp-1jT"/>
                         <outlet property="followersCountLabel" destination="cSx-KT-J4F" id="ngK-uC-Ld9"/>
                         <outlet property="followingCountLabel" destination="HAd-af-Xky" id="YbC-Oh-WIQ"/>
                         <outlet property="profileImage" destination="mcn-PH-UBq" id="a1y-HA-GbC"/>
