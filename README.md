@@ -52,7 +52,7 @@ JamSesh is a music app where you can create music sessions from your playlists. 
 
 **Build Progress**
 
-Unit 10 build progress gif
+Unit 11 build progress gif
 
 ![](JamSeshUnit11.gif)
 
