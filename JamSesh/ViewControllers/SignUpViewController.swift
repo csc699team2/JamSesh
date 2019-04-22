@@ -64,6 +64,18 @@ class SignUpViewController: UIViewController {
             
         }
         
+        let userInfo = PFObject(className: "UserInfo")
+        userInfo["user"] = user
+        
+        userInfo.saveInBackground { (success, error) in
+            if success {
+                print("saved user info!")
+            }
+            else {
+                print("error!")
+            }
+        }
+        
         // Check for empty fields
         if (usernameField.text!.isEmpty || emailField.text!.isEmpty || passwordField.text!.isEmpty) {
             self.displayMyAlertMessage(title:"All fields are required",message: "Please try again")

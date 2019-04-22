@@ -18,10 +18,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let currUser = PFUser.current()
+    let currUser = PFUser.current()!
+    var currUserInfo: PFObject?
     var userPlaylists = [PFObject]()
-    var userFollowers = [PFUser]()
-    var userFollowings = [PFUser]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,30 +50,39 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func loadUserInfo() {
-        usernameLabel.text = currUser?.username
+        /*let followers = currUser["followersCount"] as? Int ?? 0
+         let following = currUser["followingCount"] as? Int ?? 0
+         
+         usernameLabel.text = currUser.username
+         followersCountLabel.text = "\(String(followers)) followers"
+         followingCountLabel.text = "\(String(following)) following"
+         */
         
-        let follow = PFQuery(className: "Follow")
-        follow.findObjectsInBackground { (followLists, error) in
-            if followLists != nil {
-                for user in followLists! {
-                    let follower = user["follower"] as! PFUser
-                    let following = user["following"] as! PFUser
-                    if follower.objectId == self.currUser?.objectId {
-                        self.userFollowings.append(following)
-                    }
-                    else if following.objectId == self.currUser?.objectId {
-                        self.userFollowers.append(follower)
+        usernameLabel.text = currUser.username
+        
+        let query = PFQuery(className: "UserInfo")
+        query.includeKey("user")
+        query.findObjectsInBackground { (usersInfo, error) in
+            if usersInfo != nil {
+                for userInfo in usersInfo! {
+                    let user = userInfo["user"] as! PFUser
+                    if user.objectId == self.currUser.objectId {
+                        self.currUserInfo = userInfo
+                        print("user info found")
+                        break
                     }
                 }
-                print("Followers: \(String(self.userFollowers.count))")
-                print("Following: \(String(self.userFollowings.count))")
             }
         }
-        followersCountLabel.text = "\(String(userFollowers.count)) followers"
-        followingCountLabel.text = "\(String(userFollowings.count)) following"
+        
+        let followersCount = currUserInfo!["followersCount"] as? Int ?? 0
+        let followingCount = currUserInfo!["followingCount"] as? Int ?? 0
+        
+        followersCountLabel.text = "\(String(followersCount)) followers"
+        followingCountLabel.text = "\(String(followingCount)) following"
         
         //loads the profile image of user
-        let imageFile = currUser!["image"] as? PFFileObject ?? nil
+        let imageFile = currUser["image"] as? PFFileObject ?? nil
         if imageFile != nil {
             let urlString = imageFile!.url!
             let url = URL(string: urlString)!
@@ -108,9 +116,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let imageData = profileImage.image!.pngData()
         let file = PFFileObject(data: imageData!)
         
-        currUser!["image"] = file
+        currUser["image"] = file
         
-        currUser!.saveInBackground { (success, error) in
+        currUser.saveInBackground { (success, error) in
             if success {
                 print("saved!")
             }
@@ -131,7 +139,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             if playlists != nil {
                 for playlist in playlists! {
                     let author = playlist["author"] as! PFUser
-                    if (author.objectId! == self.currUser!.objectId) {
+                    if (author.objectId! == self.currUser.objectId) {
                         self.userPlaylists.append(playlist)
                     }
                 }
