@@ -50,14 +50,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func loadUserInfo() {
-        /*let followers = currUser["followersCount"] as? Int ?? 0
-         let following = currUser["followingCount"] as? Int ?? 0
-         
-         usernameLabel.text = currUser.username
-         followersCountLabel.text = "\(String(followers)) followers"
-         followingCountLabel.text = "\(String(following)) following"
-         */
-        
         usernameLabel.text = currUser.username
         
         let query = PFQuery(className: "UserInfo")
@@ -68,18 +60,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                     let user = userInfo["user"] as! PFUser
                     if user.objectId == self.currUser.objectId {
                         self.currUserInfo = userInfo
-                        print("user info found")
+                        let followersCount = userInfo["followersCount"] as? Int ?? 0
+                        let followingCount = userInfo["followingCount"] as? Int ?? 0
+                        
+                        self.followersCountLabel.text = "\(String(followersCount)) followers"
+                        self.followingCountLabel.text = "\(String(followingCount)) following"
                         break
                     }
                 }
             }
         }
-        
-        let followersCount = currUserInfo!["followersCount"] as? Int ?? 0
-        let followingCount = currUserInfo!["followingCount"] as? Int ?? 0
-        
-        followersCountLabel.text = "\(String(followersCount)) followers"
-        followingCountLabel.text = "\(String(followingCount)) following"
         
         //loads the profile image of user
         let imageFile = currUser["image"] as? PFFileObject ?? nil

@@ -33,22 +33,26 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         loadUsers()
         filteredUsers = users
         
-        //loadSessions()
-        //filteredSessions = sessions
+        loadSessions()
+        filteredSessions = sessions
     }
     
     func loadUsers() {
         let query = PFUser.query()
         query!.findObjectsInBackground { (users, error) in
             if users != nil {
-                self.users = users!
+                for user in users! {
+                    if user.objectId != PFUser.current()?.objectId {
+                        self.users.append(user)
+                    }
+                }
                 self.tableView.reloadData()
             }
         }
     }
     
     func loadSessions() {
-        let query = PFQuery(className: "Playlists")
+        let query = PFQuery(className: "MusicSession")
         query.findObjectsInBackground { (sessions, error) in
             if sessions != nil {
                 self.sessions = sessions!
@@ -86,8 +90,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             }
         }
         else {
-            /*let session = filteredSessions[indexPath.row]
-            cell.resultLabel.text = session["sessionName"] as? String*/
+            let session = filteredSessions[indexPath.row]
+            cell.resultLabel.text = session["sessionName"] as? String
         }
         return cell
     }
@@ -100,10 +104,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             })
         }
         else {
-            /*filteredSessions = sessions.filter({ (session) -> Bool in
+            filteredSessions = sessions.filter({ (session) -> Bool in
                 let sessionName = session["sessionName"] as! String
                 return sessionName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-            })*/
+            })
         }
         tableView.reloadData()
     }

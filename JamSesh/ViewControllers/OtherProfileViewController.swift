@@ -23,6 +23,8 @@ class OtherProfileViewController: UIViewController, UICollectionViewDelegate, UI
     var followed = false
     
     var user: PFUser?
+    var userInfo: PFObject?
+    var currUserInfo: PFObject?
     var userPlaylists = [PFObject]()
     var userFollowers = [PFUser]()
     var userFollowings = [PFUser]()
@@ -60,35 +62,42 @@ class OtherProfileViewController: UIViewController, UICollectionViewDelegate, UI
         userFollowers.removeAll()
         userFollowings.removeAll()
         
-        let follow = PFQuery(className: "Follow")
-        follow.includeKeys(["follower", "following"])
-        follow.findObjectsInBackground { (followLists, error) in
-            if followLists != nil {
-                for item in followLists! {
-                    let follower = item["follower"] as! PFUser
-                    let following = item["following"] as! PFUser
-                    if follower.objectId == self.user?.objectId {
-                        self.userFollowings.append(following)
+        let query = PFQuery(className: "UserInfo")
+        query.includeKey("user")
+        query.findObjectsInBackground { (usersInfo, error) in
+            if usersInfo != nil {
+                for userInfo in usersInfo! {
+                    let user = userInfo["user"] as! PFUser
+                    if user.objectId == self.user!.objectId {
+                        self.userInfo = userInfo
+                        if userInfo["followers"] != nil {
+                            self.userFollowers = userInfo["followers"] as! [PFUser]
+                        }
+                        if userInfo["following"] != nil {
+                            self.userFollowings = userInfo["following"] as! [PFUser]
+                        }
+                        let followersCount = userInfo["followersCount"] as? Int ?? 0
+                        let followingCount = userInfo["followingCount"] as? Int ?? 0
+                        
+                        for follower in self.userFollowers {
+                            if follower.objectId == self.currUser?.objectId {
+                                self.followed = true
+                                self.followButton.setTitle("Unfollow", for: .normal)
+                                break
+                            }
+                        }
+                        
+                        self.followersCountLabel.text = "\(String(followersCount)) followers"
+                        self.followingCountLabel.text = "\(String(followingCount)) following"
                     }
-                    else if following.objectId == self.user?.objectId {
-                        self.userFollowers.append(follower)
+                    else if user.objectId == PFUser.current()?.objectId {
+                        self.currUserInfo = userInfo
                     }
                 }
-                print("Followers: \(String(self.userFollowers.count))")
-                print("Following: \(String(self.userFollowings.count))")
             }
         }
         
-        followersCountLabel.text = "\(String(userFollowers.count)) followers"
-        followingCountLabel.text = "\(String(userFollowings.count)) following"
         
-        for follower in userFollowers {
-            if follower.objectId == currUser?.objectId {
-                followed = true
-                followButton.setTitle("Unfollow", for: .normal)
-                break
-            }
-        }
         
         //loads the profile image of user
         let imageFile = user!["image"] as? PFFileObject ?? nil
@@ -122,17 +131,63 @@ class OtherProfileViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     @IBAction func onFollowButton(_ sender: Any) {
+        let userFollowersCount = userInfo?["followersCount"] as? Int ?? 0
+        let currUserFollowingCount = currUserInfo?["followingCount"] as? Int ?? 0
+        
         if !followed{
-            let follow = PFObject(className: "Follow")
+            userInfo?.add(PFUser.current()!, forKey: "followers")
+            userInfo?["followersCount"] = userFollowersCount + 1
             
-            follow["follower"] = currUser
-            follow["following"] = user
             
-            follow.saveInBackground { (success, error) in
+            currUserInfo?.add(user!, forKey: "following")
+            currUserInfo?["followingCount"] = currUserFollowingCount + 1
+            
+            userInfo?.saveInBackground { (success, error) in
                 if success {
                     self.followed = true
                     self.followButton.setTitle("Unfollow", for: .normal)
                     print("followed!")
+                }
+                else {
+                    print("error!")
+                }
+            }
+            
+            currUserInfo?.saveInBackground { (success, error) in
+                if success {
+                    self.followed = true
+                    self.followButton.setTitle("Unfollow", for: .normal)
+                    print("followed!")
+                }
+                else {
+                    print("error!")
+                }
+            }
+        }
+        else {
+            userInfo?.remove(PFUser.current()!, forKey: "followers")
+            userInfo?["followersCount"] = userFollowersCount - 1
+            
+            
+            currUserInfo?.remove(user!, forKey: "following")
+            currUserInfo?["followingCount"] = currUserFollowingCount - 1
+            
+            userInfo?.saveInBackground { (success, error) in
+                if success {
+                    self.followed = false
+                    self.followButton.setTitle("Follow", for: .normal)
+                    print("ufollowed!")
+                }
+                else {
+                    print("error!")
+                }
+            }
+            
+            currUserInfo?.saveInBackground { (success, error) in
+                if success {
+                    self.followed = false
+                    self.followButton.setTitle("Follow", for: .normal)
+                    print("unfollowed!")
                 }
                 else {
                     print("error!")
