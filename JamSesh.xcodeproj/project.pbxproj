@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		242CFAA62274287D0076AA74 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242CFAA52274287D0076AA74 /* SongCell.swift */; };
+		242CFAA822742C310076AA74 /* AddSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242CFAA722742C310076AA74 /* AddSongsViewController.swift */; };
+		242CFAAA22742E930076AA74 /* SongSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242CFAA922742E930076AA74 /* SongSearchCell.swift */; };
+		242CFAAD2274581D0076AA74 /* sucker.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 242CFAAC2274581D0076AA74 /* sucker.mp3 */; };
+		242CFAAF22745E6C0076AA74 /* thank-u-next.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 242CFAAE22745E6C0076AA74 /* thank-u-next.mp3 */; };
+		242CFAB122745EB60076AA74 /* 7Rings.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 242CFAB022745EB60076AA74 /* 7Rings.mp3 */; };
 		2436DDED225FF86A000C56DF /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2436DDEC225FF86A000C56DF /* PlaylistCell.swift */; };
+		245882E622729C90007BEADE /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245882E522729C90007BEADE /* PlaylistViewController.swift */; };
 		2475EF190F3D0215BC78D71C /* Pods_JamSeshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F605E4943A1B39AE4435484 /* Pods_JamSeshUITests.framework */; };
 		24FD4931226AD69100E042AB /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4930226AD69100E042AB /* SearchCell.swift */; };
 		24FD4933226B03B800E042AB /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4932226B03B800E042AB /* OtherProfileViewController.swift */; };
@@ -51,7 +58,14 @@
 /* Begin PBXFileReference section */
 		09078FF19DE35C8DE2AEFD53 /* Pods-JamSesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSesh.release.xcconfig"; path = "Target Support Files/Pods-JamSesh/Pods-JamSesh.release.xcconfig"; sourceTree = "<group>"; };
 		19EDD744111102E32BC8B809 /* Pods-JamSeshTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSeshTests.release.xcconfig"; path = "Target Support Files/Pods-JamSeshTests/Pods-JamSeshTests.release.xcconfig"; sourceTree = "<group>"; };
+		242CFAA52274287D0076AA74 /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
+		242CFAA722742C310076AA74 /* AddSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongsViewController.swift; sourceTree = "<group>"; };
+		242CFAA922742E930076AA74 /* SongSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSearchCell.swift; sourceTree = "<group>"; };
+		242CFAAC2274581D0076AA74 /* sucker.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sucker.mp3; sourceTree = "<group>"; };
+		242CFAAE22745E6C0076AA74 /* thank-u-next.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "thank-u-next.mp3"; sourceTree = "<group>"; };
+		242CFAB022745EB60076AA74 /* 7Rings.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 7Rings.mp3; sourceTree = "<group>"; };
 		2436DDEC225FF86A000C56DF /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
+		245882E522729C90007BEADE /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		24FD4930226AD69100E042AB /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		24FD4932226B03B800E042AB /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
 		24FD4934226B047F00E042AB /* OtherPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPlaylistCell.swift; sourceTree = "<group>"; };
@@ -113,6 +127,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		242CFAAB227457F10076AA74 /* songs */ = {
+			isa = PBXGroup;
+			children = (
+				242CFAAE22745E6C0076AA74 /* thank-u-next.mp3 */,
+				242CFAB022745EB60076AA74 /* 7Rings.mp3 */,
+				242CFAAC2274581D0076AA74 /* sucker.mp3 */,
+			);
+			path = songs;
+			sourceTree = "<group>";
+		};
 		24FD492C226AD4FA00E042AB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +150,8 @@
 				81D79FFB225ECBE200CD9DFA /* DetailsViewController.swift */,
 				81D79FFD225ECBF100CD9DFA /* CreateViewController.swift */,
 				24FD4932226B03B800E042AB /* OtherProfileViewController.swift */,
+				245882E522729C90007BEADE /* PlaylistViewController.swift */,
+				242CFAA722742C310076AA74 /* AddSongsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -136,6 +162,8 @@
 				2436DDEC225FF86A000C56DF /* PlaylistCell.swift */,
 				24FD4930226AD69100E042AB /* SearchCell.swift */,
 				24FD4934226B047F00E042AB /* OtherPlaylistCell.swift */,
+				242CFAA52274287D0076AA74 /* SongCell.swift */,
+				242CFAA922742E930076AA74 /* SongSearchCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,6 +193,7 @@
 		81ED05CC225C3D3A00A106A6 /* JamSesh */ = {
 			isa = PBXGroup;
 			children = (
+				242CFAAB227457F10076AA74 /* songs */,
 				24FD492D226AD51700E042AB /* Views */,
 				24FD492C226AD4FA00E042AB /* ViewControllers */,
 				81ED05CD225C3D3A00A106A6 /* AppDelegate.swift */,
@@ -325,7 +354,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				242CFAAF22745E6C0076AA74 /* thank-u-next.mp3 in Resources */,
 				81ED05D8225C3D3C00A106A6 /* LaunchScreen.storyboard in Resources */,
+				242CFAB122745EB60076AA74 /* 7Rings.mp3 in Resources */,
+				242CFAAD2274581D0076AA74 /* sucker.mp3 in Resources */,
 				81ED05D5225C3D3C00A106A6 /* Assets.xcassets in Resources */,
 				81ED05D3225C3D3A00A106A6 /* Main.storyboard in Resources */,
 			);
@@ -451,10 +483,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				242CFAA62274287D0076AA74 /* SongCell.swift in Sources */,
 				81D79FFE225ECBF100CD9DFA /* CreateViewController.swift in Sources */,
 				24FD4931226AD69100E042AB /* SearchCell.swift in Sources */,
 				24FD4935226B047F00E042AB /* OtherPlaylistCell.swift in Sources */,
+				242CFAAA22742E930076AA74 /* SongSearchCell.swift in Sources */,
 				24FD4933226B03B800E042AB /* OtherProfileViewController.swift in Sources */,
+				242CFAA822742C310076AA74 /* AddSongsViewController.swift in Sources */,
 				81D79FF6225ECBAE00CD9DFA /* SearchViewController.swift in Sources */,
 				81D79FF4225ECBA300CD9DFA /* SessionsViewController.swift in Sources */,
 				81D79FFC225ECBE200CD9DFA /* DetailsViewController.swift in Sources */,
@@ -462,6 +497,7 @@
 				2436DDED225FF86A000C56DF /* PlaylistCell.swift in Sources */,
 				81ED05CE225C3D3A00A106A6 /* AppDelegate.swift in Sources */,
 				81D79FF8225ECBBC00CD9DFA /* ProfileViewController.swift in Sources */,
+				245882E622729C90007BEADE /* PlaylistViewController.swift in Sources */,
 				81D79FF2225ECB8200CD9DFA /* SignUpViewController.swift in Sources */,
 				81D79FF0225ECB7400CD9DFA /* LogInViewController.swift in Sources */,
 				81D79FFA225ECBC800CD9DFA /* SettingsViewController.swift in Sources */,

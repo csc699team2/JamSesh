@@ -122,7 +122,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func loadPlaylists() {
         let query = PFQuery(className:"Playlists")
-        query.includeKey("author")
+        query.includeKeys(["author", "songs"])
         query.addDescendingOrder("createdAt")
         userPlaylists.removeAll()
         query.findObjectsInBackground { (playlists, error) in
@@ -185,14 +185,22 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         return cell
     }
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
+        //Find the user
+        let cell = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: cell)!
+        let playlist = userPlaylists[indexPath.row]
+        
+        // Get the new view controller using segue.destination.
+        let playlistViewController = segue.destination as! PlaylistViewController
+        
+        // Pass the selected object to the new view controller.
+        playlistViewController.playlist = playlist
      }
-     */
+    
     
 }
