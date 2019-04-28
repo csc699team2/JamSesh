@@ -64,12 +64,14 @@ class AddSongsViewController: UIViewController, UISearchBarDelegate, UITableView
         cell.playlist = playlist
         cell.song = song
         
-        let playlistSongs = playlist?["songs"] as! [PFObject]
-        for playlistSong in playlistSongs {
-            if playlistSong.objectId == song.objectId {
-                cell.inPlaylist = true
-                cell.addSongButton.setImage(UIImage(named: "check"), for: UIControl.State.normal)
-                break
+        let playlistSongs = playlist?["songs"] as? [PFObject] ?? []
+        if !playlistSongs.isEmpty {
+            for playlistSong in playlistSongs {
+                if playlistSong.objectId == song.objectId {
+                    cell.inPlaylist = true
+                    cell.addSongButton.setImage(UIImage(named: "check"), for: UIControl.State.normal)
+                    break
+                }
             }
         }
         
