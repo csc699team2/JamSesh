@@ -913,9 +913,8 @@ and other music lovers.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TITLE:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuE-zy-jic">
-                                <rect key="frame" x="29" y="92" width="49" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuE-zy-jic">
+                                <rect key="frame" x="29.333333333333332" y="92" width="48.666666666666671" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -933,7 +932,7 @@ and other music lovers.</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7uY-ob-JIZ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7uY-ob-JIZ">
                                 <rect key="frame" x="153" y="92" width="241" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -945,7 +944,7 @@ and other music lovers.</string>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3KG-TF-gNp">
                                 <rect key="frame" x="29" y="562" width="357" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.55107867720000003" green="0.73398131129999999" blue="0.73500567670000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="CREATE SESSION"/>
                                 <connections>
@@ -1025,10 +1024,13 @@ and other music lovers.</string>
                             <constraint firstItem="jTL-Hu-pII" firstAttribute="leading" secondItem="FIL-Er-cHk" secondAttribute="leading" id="12o-SD-s1d"/>
                             <constraint firstItem="jTL-Hu-pII" firstAttribute="top" secondItem="v8M-dD-3bg" secondAttribute="top" id="3Ii-jR-cO7"/>
                             <constraint firstItem="jTL-Hu-pII" firstAttribute="trailing" secondItem="7uY-ob-JIZ" secondAttribute="trailing" id="4qB-oU-zkq"/>
+                            <constraint firstItem="7uY-ob-JIZ" firstAttribute="top" secondItem="wuE-zy-jic" secondAttribute="top" id="8ck-JW-nkf"/>
+                            <constraint firstItem="7uY-ob-JIZ" firstAttribute="top" secondItem="YvL-r6-Zfu" secondAttribute="top" constant="28" id="Nj1-nf-Agm"/>
                             <constraint firstItem="jTL-Hu-pII" firstAttribute="top" secondItem="gI1-lR-uMf" secondAttribute="top" constant="204" id="UFf-E4-AuI"/>
                             <constraint firstItem="jTL-Hu-pII" firstAttribute="top" secondItem="FIL-Er-cHk" secondAttribute="bottom" constant="34" id="Vcz-t0-SOm"/>
                             <constraint firstItem="jTL-Hu-pII" firstAttribute="leading" secondItem="gI1-lR-uMf" secondAttribute="leading" constant="153" id="YcI-fX-ShM"/>
                             <constraint firstItem="jTL-Hu-pII" firstAttribute="leading" secondItem="v8M-dD-3bg" secondAttribute="trailing" constant="45" id="YhC-WY-sac"/>
+                            <constraint firstItem="7uY-ob-JIZ" firstAttribute="leading" secondItem="wuE-zy-jic" secondAttribute="trailing" constant="75" id="adh-Tf-yCV"/>
                             <constraint firstItem="YvL-r6-Zfu" firstAttribute="trailing" secondItem="jTL-Hu-pII" secondAttribute="trailing" constant="20" id="bER-KS-LqP"/>
                             <constraint firstItem="jTL-Hu-pII" firstAttribute="leading" secondItem="7uY-ob-JIZ" secondAttribute="leading" id="bKu-Uj-hTk"/>
                         </constraints>
