@@ -36,6 +36,7 @@
 		81ED05E3225C3D3C00A106A6 /* JamSeshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ED05E2225C3D3C00A106A6 /* JamSeshTests.swift */; };
 		81ED05EE225C3D3C00A106A6 /* JamSeshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ED05ED225C3D3C00A106A6 /* JamSeshUITests.swift */; };
 		AD57B5A4056F4BEBAD517FB2 /* Pods_JamSeshTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B297739D69E04DE0533C3549 /* Pods_JamSeshTests.framework */; };
+		E921607F227593A3004A8ACD /* MusicSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921607E227593A3004A8ACD /* MusicSessionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		B297739D69E04DE0533C3549 /* Pods_JamSeshTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSeshTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D099649D168C551CBDC9707B /* Pods-JamSesh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSesh.debug.xcconfig"; path = "Target Support Files/Pods-JamSesh/Pods-JamSesh.debug.xcconfig"; sourceTree = "<group>"; };
 		E2853060594ACF1FBA72AC8C /* Pods-JamSeshTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSeshTests.debug.xcconfig"; path = "Target Support Files/Pods-JamSeshTests/Pods-JamSeshTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E921607E227593A3004A8ACD /* MusicSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSessionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				24FD4934226B047F00E042AB /* OtherPlaylistCell.swift */,
 				242CFAA52274287D0076AA74 /* SongCell.swift */,
 				242CFAA922742E930076AA74 /* SongSearchCell.swift */,
+				E921607E227593A3004A8ACD /* MusicSessionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				81D79FF2225ECB8200CD9DFA /* SignUpViewController.swift in Sources */,
 				81D79FF0225ECB7400CD9DFA /* LogInViewController.swift in Sources */,
 				81D79FFA225ECBC800CD9DFA /* SettingsViewController.swift in Sources */,
+				E921607F227593A3004A8ACD /* MusicSessionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
