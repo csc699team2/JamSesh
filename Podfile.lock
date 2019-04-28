@@ -6,15 +6,22 @@ PODS:
   - MessageInputBar (0.4.1):
     - MessageInputBar/Core (= 0.4.1)
   - MessageInputBar/Core (0.4.1)
+  - MessageKit (2.0.0):
+    - MessageInputBar/Core
   - Parse (1.17.2):
     - Parse/Core (= 1.17.2)
   - Parse/Core (1.17.2):
     - Bolts/Tasks (~> 1.9)
+  - Scaledrone (0.3.0):
+    - Starscream (~> 2.1.0)
+  - Starscream (2.1.1)
 
 DEPENDENCIES:
   - AlamofireImage
   - MessageInputBar
+  - MessageKit
   - Parse
+  - Scaledrone (= 0.3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -22,15 +29,21 @@ SPEC REPOS:
     - AlamofireImage
     - Bolts
     - MessageInputBar
+    - MessageKit
     - Parse
+    - Scaledrone
+    - Starscream
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
+  MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
+  Scaledrone: 25e5e70107222ed50046fc0ed9569915bdb85262
+  Starscream: 142bd8ef24592d985daee9fa48c936070b85b15f
 
-PODFILE CHECKSUM: 74c83e41b83adf9c3ce071b1031c51413a53de47
+PODFILE CHECKSUM: bc1249670e520562f129feb19a6f7c36ca98c2d6
 
 COCOAPODS: 1.6.1

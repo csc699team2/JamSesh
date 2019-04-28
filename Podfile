@@ -9,6 +9,8 @@ target 'JamSesh' do
   pod 'Parse'
   pod 'AlamofireImage'
   pod 'MessageInputBar'
+  pod 'MessageKit'
+  pod 'Scaledrone', '0.3.0'
 
   target 'JamSeshTests' do
     inherit! :search_paths
