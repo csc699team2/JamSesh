@@ -186,7 +186,7 @@ and other music lovers.</string>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_24px_outlined-1" translatesAutoresizingMaskIntoConstraints="NO" id="fl8-cW-vuX">
-                                        <rect key="frame" x="154.66666666666666" y="108.66666666666666" width="104.99999999999997" height="99"/>
+                                        <rect key="frame" x="199" y="191.66666666666669" width="16" height="16"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -245,11 +245,11 @@ and other music lovers.</string>
                                 <rect key="frame" x="0.0" y="610" width="414" height="77"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKY-ym-ooF">
-                                        <rect key="frame" x="28" y="26" width="26" height="26"/>
+                                        <rect key="frame" x="28" y="26" width="16" height="26"/>
                                         <state key="normal" image="favorite_border_24px_outlined-1"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYX-l8-mtJ">
-                                        <rect key="frame" x="360" y="26" width="26" height="26"/>
+                                        <rect key="frame" x="370" y="26" width="16" height="26"/>
                                         <state key="normal" image="play_circle_filled_white_24px_outlined-1"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4e-Rf-Flh">
@@ -313,6 +313,9 @@ and other music lovers.</string>
                                 <segment title="Account"/>
                                 <segment title="Music Session"/>
                             </segments>
+                            <connections>
+                                <action selector="indexChanged:" destination="RsE-Fb-tc4" eventType="valueChanged" id="bcL-sV-ysH"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
@@ -323,7 +326,7 @@ and other music lovers.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBx-bT-S5S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="479.71014492753625" y="2371.467391304348"/>
+            <point key="canvasLocation" x="286" y="2349"/>
         </scene>
         <!--Other Profile View Controller-->
         <scene sceneID="3gQ-FW-1xH">
@@ -429,11 +432,11 @@ and other music lovers.</string>
                                 <rect key="frame" x="0.0" y="610" width="414" height="77"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkW-aL-Fu1">
-                                        <rect key="frame" x="28" y="26" width="26" height="26"/>
+                                        <rect key="frame" x="28" y="26" width="16" height="26"/>
                                         <state key="normal" image="favorite_border_24px_outlined-1"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3EG-5P-qi6">
-                                        <rect key="frame" x="360" y="26" width="26" height="26"/>
+                                        <rect key="frame" x="370" y="26" width="16" height="26"/>
                                         <state key="normal" image="play_circle_filled_white_24px_outlined-1"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Song Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxg-Wd-1Wt">
@@ -1155,11 +1158,11 @@ and other music lovers.</string>
                                 <rect key="frame" x="0.0" y="610" width="414" height="77"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIW-av-JKs">
-                                        <rect key="frame" x="28" y="26" width="26" height="26"/>
+                                        <rect key="frame" x="28" y="26" width="16" height="26"/>
                                         <state key="normal" image="favorite_border_24px_outlined-1"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stD-gO-o49">
-                                        <rect key="frame" x="360" y="26" width="26" height="26"/>
+                                        <rect key="frame" x="370" y="26" width="16" height="26"/>
                                         <state key="normal" image="play_circle_filled_white_24px_outlined-1"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Song Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZI-bW-aB4">
