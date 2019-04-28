@@ -34,7 +34,7 @@ JamSesh is a music app where you can create music sessions from your playlists. 
 - [x] User can view their profile
 - [ ] User can edit their account information
 - [ ] User can follow/unfollow another user
-- [x] User can search a user
+- [x] User can search a song or user
 - [ ] User can play a song
 - [x] User can create a playlist
 - [ ] User can create a private/public music session
@@ -52,9 +52,9 @@ JamSesh is a music app where you can create music sessions from your playlists. 
 
 **Build Progress**
 
-Unit 10 build progress gif
+Unit 11 build progress gif
 
-![](JamSeshUnit10.gif)
+![](JamSeshUnit11.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
