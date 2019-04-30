@@ -8,11 +8,15 @@
 
 import UIKit
 import Parse
+import AVFoundation
 
 class LogInViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
+    static var audioPlayer = AVAudioPlayer()
+    static var audioIsPlaying = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,10 @@ class LogInViewController: UIViewController {
                 self.displayMyAlertMessage(title: error!.localizedDescription, message: "Please try again")
             }
         }
+        
+        UserDefaults.standard.set(false, forKey: "Play")
+        UserDefaults.standard.set(" ", forKey: "Artist")
+        UserDefaults.standard.set(" ", forKey: "SongTitle")
     }
     
     // Display message for confirmation

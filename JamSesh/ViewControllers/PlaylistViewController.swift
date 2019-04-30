@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-import AVFoundation
 
 class PlaylistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,8 +16,6 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     
     var playlist: PFObject?
     var songs: [PFObject]?
-    static var audioPlayer = AVAudioPlayer()
-    static var audioIsPlaying = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +43,37 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell") as! SongCell
         let song = songs![indexPath.row]
         cell.song = song
-        cell.songTitleLabel.text = song["songTitle"] as? String
+        
+        let songTitle = song["songTitle"] as? String
+        cell.songTitleLabel.text = songTitle
+        
+        if songTitle == UserDefaults.standard.string(forKey: "SongTitle") {
+            if UserDefaults.standard.bool(forKey: "Play") == true {
+                cell.playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
+            }
+            else {
+                cell.playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
+            }
+        }
         
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            playlist?.remove(songs![indexPath.row], forKey: "songs")
+            playlist?.saveInBackground(block: { (success, error) in
+                if success {
+                    self.songs = self.playlist!["songs"] as? [PFObject] ?? []
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    print("The song was successfully deleted from playlist")
+                }
+                else {
+                    print("Error encountered in deleting song from playlist")
+                }
+            })
+        }
+    }
     
     // MARK: - Navigation
 

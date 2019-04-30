@@ -56,24 +56,36 @@ class SignUpViewController: UIViewController {
                 self.present(myAlert, animated:true, completion:nil);
                 
                 
+                // User logs in to save user in userinfo
+                PFUser.logInWithUsername(inBackground: self.usernameField.text!, password: self.passwordField.text!) { (user, error) in
+                    if user != nil {
+                        let userInfo = PFObject(className: "UserInfo")
+                        userInfo["user"] = user
+                        
+                        userInfo.saveInBackground { (success, error) in
+                            if success {
+                                print("saved user info!")
+                                //self.performSegue(withIdentifier: "autoLoginSegue", sender: nil)
+                            }
+                            else {
+                                print("error: \(error)")
+                            }
+                        }
+                    } else {
+                        print("Error: \(error!.localizedDescription)")
+                        self.displayMyAlertMessage(title: error!.localizedDescription, message: "Please try again")
+                    }
+                }
+                PFUser.logOut()
+                
                 // Go back to login
-                self.performSegue(withIdentifier: "backToLoginSegue", sender: nil)
+                //self.performSegue(withIdentifier: "backToLoginSegue", sender: nil)
+                
+                
             } else {
                 print("Error: \(error?.localizedDescription)")
             }
             
-        }
-        
-        let userInfo = PFObject(className: "UserInfo")
-        userInfo["user"] = user
-        
-        userInfo.saveInBackground { (success, error) in
-            if success {
-                print("saved user info!")
-            }
-            else {
-                print("error!")
-            }
         }
         
         // Check for empty fields

@@ -13,33 +13,28 @@ import AVFoundation
 class SongCell: UITableViewCell {
     
     @IBOutlet weak var songTitleLabel: UILabel!
+    @IBOutlet weak var playButton: UIButton!
     
-    var audioPlayer = PlaylistViewController.audioPlayer
     var song: PFObject?
     
     @IBAction func play(_ sender: Any) {
         let songFilename = song?["fileName"] as? String
+        let songTitle = song?["songTitle"] as? String
+        let artist = song?["Artist"] as? String
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: songFilename!, ofType: "mp3")!))
-            audioPlayer.prepareToPlay()
-            
-            let audioSession = AVAudioSession.sharedInstance()
-            do {
-                try audioSession.setCategory(AVAudioSession.Category.playback)
-            }
-        }
-        catch {
-            print(error)
-        }
+        SoundPlayer.sharedInstance.setSong(fileName: songFilename!)
+        SoundPlayer.sharedInstance.playSound()
         
-        if !PlaylistViewController.audioIsPlaying {
-            audioPlayer.play()
-            PlaylistViewController.audioIsPlaying = true
+
+        if SoundPlayer.sharedInstance.isPlaying {
+            playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
+            UserDefaults.standard.set(true, forKey: "Play")
+            UserDefaults.standard.set(artist, forKey: "Artist")
+            UserDefaults.standard.set(songTitle, forKey: "SongTitle")
         }
         else {
-            audioPlayer.pause()
-            PlaylistViewController.audioIsPlaying = false
+            playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
+            UserDefaults.standard.set(false, forKey: "Play")
         }
     }
     

@@ -13,6 +13,7 @@
 		242CFAAD2274581D0076AA74 /* sucker.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 242CFAAC2274581D0076AA74 /* sucker.mp3 */; };
 		242CFAAF22745E6C0076AA74 /* thank-u-next.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 242CFAAE22745E6C0076AA74 /* thank-u-next.mp3 */; };
 		242CFAB122745EB60076AA74 /* 7Rings.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 242CFAB022745EB60076AA74 /* 7Rings.mp3 */; };
+		242CFAB32277DD8F0076AA74 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242CFAB22277DD8F0076AA74 /* SoundPlayer.swift */; };
 		2436DDED225FF86A000C56DF /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2436DDEC225FF86A000C56DF /* PlaylistCell.swift */; };
 		245882E622729C90007BEADE /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245882E522729C90007BEADE /* PlaylistViewController.swift */; };
 		2475EF190F3D0215BC78D71C /* Pods_JamSeshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F605E4943A1B39AE4435484 /* Pods_JamSeshUITests.framework */; };
@@ -65,6 +66,7 @@
 		242CFAAC2274581D0076AA74 /* sucker.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sucker.mp3; sourceTree = "<group>"; };
 		242CFAAE22745E6C0076AA74 /* thank-u-next.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "thank-u-next.mp3"; sourceTree = "<group>"; };
 		242CFAB022745EB60076AA74 /* 7Rings.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 7Rings.mp3; sourceTree = "<group>"; };
+		242CFAB22277DD8F0076AA74 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		2436DDEC225FF86A000C56DF /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		245882E522729C90007BEADE /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		24FD4930226AD69100E042AB /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				81ED05D4225C3D3C00A106A6 /* Assets.xcassets */,
 				81ED05D6225C3D3C00A106A6 /* LaunchScreen.storyboard */,
 				81ED05D9225C3D3C00A106A6 /* Info.plist */,
+				242CFAB22277DD8F0076AA74 /* SoundPlayer.swift */,
 			);
 			path = JamSesh;
 			sourceTree = "<group>";
@@ -321,6 +324,11 @@
 				TargetAttributes = {
 					81ED05C9225C3D3A00A106A6 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					81ED05DD225C3D3C00A106A6 = {
 						CreatedOnToolsVersion = 10.1;
@@ -502,6 +510,7 @@
 				81D79FF6225ECBAE00CD9DFA /* SearchViewController.swift in Sources */,
 				81D79FF4225ECBA300CD9DFA /* SessionsViewController.swift in Sources */,
 				81D79FFC225ECBE200CD9DFA /* DetailsViewController.swift in Sources */,
+				242CFAB32277DD8F0076AA74 /* SoundPlayer.swift in Sources */,
 				81ED05D0225C3D3A00A106A6 /* ViewController.swift in Sources */,
 				2436DDED225FF86A000C56DF /* PlaylistCell.swift in Sources */,
 				81ED05CE225C3D3A00A106A6 /* AppDelegate.swift in Sources */,
@@ -687,12 +696,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PP55FS799T;
 				INFOPLIST_FILE = JamSesh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.monalimirel.JamSesh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moralesmicaella.JamSesh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -705,12 +715,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PP55FS799T;
 				INFOPLIST_FILE = JamSesh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.monalimirel.JamSesh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moralesmicaella.JamSesh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

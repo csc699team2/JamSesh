@@ -72,6 +72,9 @@ class AddSongsViewController: UIViewController, UISearchBarDelegate, UITableView
                     cell.addSongButton.setImage(UIImage(named: "check"), for: UIControl.State.normal)
                     break
                 }
+                else {
+                    cell.addSongButton.setImage(UIImage(named: "add"), for: UIControl.State.normal)
+                }
             }
         }
         
