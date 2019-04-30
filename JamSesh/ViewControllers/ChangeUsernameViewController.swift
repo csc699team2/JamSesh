@@ -1,5 +1,5 @@
 //
-//  ChangePasswordViewController.swift
+//  ChangeUsernameViewController.swift
 //  JamSesh
 //
 //  Created by Christopher Rosana on 4/29/19.
@@ -9,10 +9,11 @@
 import UIKit
 import Parse
 
-class ChangePasswordViewController: UIViewController {
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var newPassword: UITextField!
-    @IBOutlet weak var retypeNewPassword: UITextField!
+class ChangeUsernameViewController: UIViewController {
+    
+    @IBOutlet weak var currentUsernameField: UITextField!
+    @IBOutlet weak var newUsernameField: UITextField!
+    @IBOutlet weak var retypeNewUsernameField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,25 +21,25 @@ class ChangePasswordViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+
     @IBAction func onChange(_ sender: Any) {
         
         let user = PFUser.current()!
         
         // Check for empty fields
-        if (newPassword.text!.isEmpty || retypeNewPassword.text!.isEmpty || emailField.text!.isEmpty) {
+        if (newUsernameField.text!.isEmpty || retypeNewUsernameField.text!.isEmpty || currentUsernameField.text!.isEmpty) {
             self.displayMyAlertMessage(title:"All fields are required",message: "Please try again")
         }
-
-        // Check if email match
-        if(emailField.text == user.email) {
-            // Check if new password match
-            if (newPassword.text == retypeNewPassword.text) {
-                user["password"] = newPassword.text
+        
+        // Check if match
+        if(currentUsernameField.text == user.username) {
+            // Check if match
+            if (newUsernameField.text == retypeNewUsernameField.text) {
+                user["username"] = newUsernameField.text
                 user.saveInBackground()
                 
                 // Display message successful
-                let myAlert = UIAlertController(title: "Password Change Successful", message: "Thank you!", preferredStyle: UIAlertController.Style.alert)
+                let myAlert = UIAlertController(title: "Username Change Successful", message: "Thank you!", preferredStyle: UIAlertController.Style.alert)
                 
                 let okAction = UIAlertAction(title:"Ok", style:UIAlertAction.Style.default){ action in
                     self.dismiss(animated: true, completion:nil);
@@ -56,12 +57,12 @@ class ChangePasswordViewController: UIViewController {
                 let delegate = UIApplication.shared.delegate as! AppDelegate
                 
                 delegate.window?.rootViewController = loginViewController
-                
+          
             } else {
-                self.displayMyAlertMessage(title:"Password Do Not Match", message: "Please try again")
+                self.displayMyAlertMessage(title:"Username Do Not Match", message: "Please try again")
             }
         } else {
-            self.displayMyAlertMessage(title:"E-mail Not Match", message: "This e-mail does not match on this account.")
+            self.displayMyAlertMessage(title:"Username Not Match", message: "This username does not match on this account.")
         }
         
     }
@@ -75,8 +76,6 @@ class ChangePasswordViewController: UIViewController {
         myAlert.addAction(okAction);
         self.present(myAlert, animated:true, completion:nil);
     }
-    
-
     /*
     // MARK: - Navigation
 

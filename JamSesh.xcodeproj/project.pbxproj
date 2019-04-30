@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1396652E2277DA0E00F65116 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396652D2277DA0E00F65116 /* ChangePasswordViewController.swift */; };
+		139665302278253E00F65116 /* ChangeUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396652F2278253E00F65116 /* ChangeUsernameViewController.swift */; };
 		242CFAA62274287D0076AA74 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242CFAA52274287D0076AA74 /* SongCell.swift */; };
 		242CFAA822742C310076AA74 /* AddSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242CFAA722742C310076AA74 /* AddSongsViewController.swift */; };
 		242CFAAA22742E930076AA74 /* SongSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242CFAA922742E930076AA74 /* SongSearchCell.swift */; };
@@ -58,6 +60,8 @@
 
 /* Begin PBXFileReference section */
 		09078FF19DE35C8DE2AEFD53 /* Pods-JamSesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSesh.release.xcconfig"; path = "Target Support Files/Pods-JamSesh/Pods-JamSesh.release.xcconfig"; sourceTree = "<group>"; };
+		1396652D2277DA0E00F65116 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		1396652F2278253E00F65116 /* ChangeUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameViewController.swift; sourceTree = "<group>"; };
 		19EDD744111102E32BC8B809 /* Pods-JamSeshTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSeshTests.release.xcconfig"; path = "Target Support Files/Pods-JamSeshTests/Pods-JamSeshTests.release.xcconfig"; sourceTree = "<group>"; };
 		242CFAA52274287D0076AA74 /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		242CFAA722742C310076AA74 /* AddSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongsViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				24FD4932226B03B800E042AB /* OtherProfileViewController.swift */,
 				245882E522729C90007BEADE /* PlaylistViewController.swift */,
 				242CFAA722742C310076AA74 /* AddSongsViewController.swift */,
+				1396652D2277DA0E00F65116 /* ChangePasswordViewController.swift */,
+				1396652F2278253E00F65116 /* ChangeUsernameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -499,12 +505,14 @@
 				242CFAAA22742E930076AA74 /* SongSearchCell.swift in Sources */,
 				24FD4933226B03B800E042AB /* OtherProfileViewController.swift in Sources */,
 				242CFAA822742C310076AA74 /* AddSongsViewController.swift in Sources */,
+				139665302278253E00F65116 /* ChangeUsernameViewController.swift in Sources */,
 				81D79FF6225ECBAE00CD9DFA /* SearchViewController.swift in Sources */,
 				81D79FF4225ECBA300CD9DFA /* SessionsViewController.swift in Sources */,
 				81D79FFC225ECBE200CD9DFA /* DetailsViewController.swift in Sources */,
 				81ED05D0225C3D3A00A106A6 /* ViewController.swift in Sources */,
 				2436DDED225FF86A000C56DF /* PlaylistCell.swift in Sources */,
 				81ED05CE225C3D3A00A106A6 /* AppDelegate.swift in Sources */,
+				1396652E2277DA0E00F65116 /* ChangePasswordViewController.swift in Sources */,
 				81D79FF8225ECBBC00CD9DFA /* ProfileViewController.swift in Sources */,
 				245882E622729C90007BEADE /* PlaylistViewController.swift in Sources */,
 				81D79FF2225ECB8200CD9DFA /* SignUpViewController.swift in Sources */,
