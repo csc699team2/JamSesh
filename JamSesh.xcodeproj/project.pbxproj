@@ -33,7 +33,6 @@
 		245E55962278C8CF00DD16D8 /* why.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E558D2278C8CF00DD16D8 /* why.mp3 */; };
 		245E55972278C8CF00DD16D8 /* Imagine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E558E2278C8CF00DD16D8 /* Imagine.mp3 */; };
 		245E55982278C8CF00DD16D8 /* you-are-the-reason.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E558F2278C8CF00DD16D8 /* you-are-the-reason.mp3 */; };
-		245E559A2278C93C00DD16D8 /* better.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E55992278C93C00DD16D8 /* better.mp3 */; };
 		2475EF190F3D0215BC78D71C /* Pods_JamSeshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F605E4943A1B39AE4435484 /* Pods_JamSeshUITests.framework */; };
 		24FD4931226AD69100E042AB /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4930226AD69100E042AB /* SearchCell.swift */; };
 		24FD4933226B03B800E042AB /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4932226B03B800E042AB /* OtherProfileViewController.swift */; };
@@ -108,7 +107,6 @@
 		245E558D2278C8CF00DD16D8 /* why.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = why.mp3; sourceTree = "<group>"; };
 		245E558E2278C8CF00DD16D8 /* Imagine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Imagine.mp3; sourceTree = "<group>"; };
 		245E558F2278C8CF00DD16D8 /* you-are-the-reason.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "you-are-the-reason.mp3"; sourceTree = "<group>"; };
-		245E55992278C93C00DD16D8 /* better.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = better.mp3; path = ../../../../Downloads/better.mp3; sourceTree = "<group>"; };
 		24FD4930226AD69100E042AB /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		24FD4932226B03B800E042AB /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
 		24FD4934226B047F00E042AB /* OtherPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPlaylistCell.swift; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 				245E5575227822F900DD16D8 /* Be-alright.mp3 */,
 				245E5578227822FA00DD16D8 /* feels.mp3 */,
 				245E55832278C3BA00DD16D8 /* almost-is-never-enough.mp3 */,
-				245E55992278C93C00DD16D8 /* better.mp3 */,
 				245E5574227822F900DD16D8 /* Get-you.mp3 */,
 				245E55812278B28E00DD16D8 /* lost-in-japan.mp3 */,
 				245E558A2278C8CE00DD16D8 /* back-to-life.mp3 */,
@@ -452,7 +449,6 @@
 				245E55922278C8CF00DD16D8 /* Kiss-and-MakeUp.mp3 in Resources */,
 				245E55912278C8CF00DD16D8 /* breathin.mp3 in Resources */,
 				245E55962278C8CF00DD16D8 /* why.mp3 in Resources */,
-				245E559A2278C93C00DD16D8 /* better.mp3 in Resources */,
 				245E557F227822FA00DD16D8 /* feels.mp3 in Resources */,
 				242CFAB122745EB60076AA74 /* 7Rings.mp3 in Resources */,
 				242CFAAD2274581D0076AA74 /* sucker.mp3 in Resources */,
