@@ -90,6 +90,9 @@ class SessionsViewController: UIViewController, UICollectionViewDelegate, UIColl
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "sessionToDetailSegue", sender: nil)
+    }
     /*
      // MARK: - Navigation
      
