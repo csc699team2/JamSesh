@@ -13,24 +13,24 @@ import AVFoundation
 class SongCell: UITableViewCell {
     
     @IBOutlet weak var songTitleLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     
     var song: PFObject?
     
     @IBAction func play(_ sender: Any) {
         let songFilename = song?["fileName"] as? String
-        let songTitle = song?["songTitle"] as? String
-        let artist = song?["Artist"] as? String
         
         SoundPlayer.sharedInstance.setSong(fileName: songFilename!)
-        SoundPlayer.sharedInstance.playSound()
+        SoundPlayer.sharedInstance.playSong()
         
 
-        if SoundPlayer.sharedInstance.isPlaying {
+        if SoundPlayer.sharedInstance.isAudioPlaying {
             playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
             UserDefaults.standard.set(true, forKey: "Play")
-            UserDefaults.standard.set(artist, forKey: "Artist")
-            UserDefaults.standard.set(songTitle, forKey: "SongTitle")
+            UserDefaults.standard.set(artistLabel.text, forKey: "Artist")
+            UserDefaults.standard.set(songTitleLabel.text, forKey: "SongTitle")
+            UserDefaults.standard.set(songFilename, forKey: "Filename")
         }
         else {
             playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)

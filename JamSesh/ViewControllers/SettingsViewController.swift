@@ -54,9 +54,9 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func onPlayButton(_ sender: Any) {
-        SoundPlayer.sharedInstance.playSound()
+        SoundPlayer.sharedInstance.playSong()
         
-        if SoundPlayer.sharedInstance.isPlaying {
+        if SoundPlayer.sharedInstance.isAudioPlaying {
             playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
             UserDefaults.standard.set(true, forKey: "Play")
         }

@@ -12,6 +12,7 @@ import Parse
 class SongSearchCell: UITableViewCell {
     
     @IBOutlet weak var songTitleLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var addSongButton: UIButton!
     
     var playlist: PFObject?

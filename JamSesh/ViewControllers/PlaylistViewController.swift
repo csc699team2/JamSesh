@@ -13,6 +13,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var playlistNameLabel: UILabel!
+    @IBOutlet weak var playAllButton: UIButton!
     
     var playlist: PFObject?
     var songs: [PFObject]?
@@ -33,6 +34,39 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         
         songs = playlist!["songs"] as? [PFObject] ?? []
         tableView.reloadData()
+        
+        if SoundPlayer.sharedInstance.isQueuePlaying {
+            playAllButton.setImage(UIImage(named: "pause-1"), for: UIControl.State.normal)
+        }
+        else {
+            playAllButton.setImage(UIImage(named: "play-1"), for: UIControl.State.normal)
+        }
+    }
+    
+    @IBAction func onPlayAllButton(_ sender: Any) {
+        if songs != nil {
+            for song in songs! {
+                let filename = song["fileName"] as? String
+                SoundPlayer.sharedInstance.addSong(fileName: filename!)
+            }
+            SoundPlayer.sharedInstance.playAllSongs()
+            if SoundPlayer.sharedInstance.isQueuePlaying {
+                playAllButton.setImage(UIImage(named: "pause-1"), for: UIControl.State.normal)
+            }
+            else {
+                playAllButton.setImage(UIImage(named: "play-1"), for: UIControl.State.normal)
+            }
+        }
+    }
+    
+    @IBAction func forwardButton(_ sender: UIButton) {
+        SoundPlayer.sharedInstance.nextSong()
+        /*var index =  audioItems.index(of: audioPlayer.currentItem!) ?? 0
+        if index < (audioItems.count - 1) {
+            index = index + 1
+        }
+        play(at: index)*/
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,7 +79,9 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         cell.song = song
         
         let songTitle = song["songTitle"] as? String
+        let artist = song["Artist"] as? String
         cell.songTitleLabel.text = songTitle
+        cell.artistLabel.text = artist
         
         if songTitle == UserDefaults.standard.string(forKey: "SongTitle") {
             if UserDefaults.standard.bool(forKey: "Play") == true {

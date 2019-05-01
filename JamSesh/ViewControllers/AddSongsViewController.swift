@@ -59,7 +59,9 @@ class AddSongsViewController: UIViewController, UISearchBarDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongSearchCell") as! SongSearchCell
         let song = filteredSongs[indexPath.row]
         let songTitle = song["songTitle"] as! String
+        let artist = song["Artist"] as! String
         cell.songTitleLabel.text = songTitle
+        cell.artistLabel.text = artist
         
         cell.playlist = playlist
         cell.song = song

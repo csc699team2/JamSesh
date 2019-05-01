@@ -16,6 +16,24 @@
 		242CFAB32277DD8F0076AA74 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242CFAB22277DD8F0076AA74 /* SoundPlayer.swift */; };
 		2436DDED225FF86A000C56DF /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2436DDEC225FF86A000C56DF /* PlaylistCell.swift */; };
 		245882E622729C90007BEADE /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245882E522729C90007BEADE /* PlaylistViewController.swift */; };
+		245E557A227822FA00DD16D8 /* Only-Exception.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E5573227822F900DD16D8 /* Only-Exception.mp3 */; };
+		245E557B227822FA00DD16D8 /* Get-you.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E5574227822F900DD16D8 /* Get-you.mp3 */; };
+		245E557C227822FA00DD16D8 /* Be-alright.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E5575227822F900DD16D8 /* Be-alright.mp3 */; };
+		245E557D227822FA00DD16D8 /* sunflower.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E5576227822F900DD16D8 /* sunflower.mp3 */; };
+		245E557E227822FA00DD16D8 /* shelter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E5577227822F900DD16D8 /* shelter.mp3 */; };
+		245E557F227822FA00DD16D8 /* feels.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E5578227822FA00DD16D8 /* feels.mp3 */; };
+		245E5580227822FA00DD16D8 /* Wonderwall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E5579227822FA00DD16D8 /* Wonderwall.mp3 */; };
+		245E55822278B28E00DD16D8 /* lost-in-japan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E55812278B28E00DD16D8 /* lost-in-japan.mp3 */; };
+		245E55842278C3BA00DD16D8 /* almost-is-never-enough.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E55832278C3BA00DD16D8 /* almost-is-never-enough.mp3 */; };
+		245E55902278C8CF00DD16D8 /* love-someone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E55872278C8CD00DD16D8 /* love-someone.mp3 */; };
+		245E55912278C8CF00DD16D8 /* breathin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E55882278C8CD00DD16D8 /* breathin.mp3 */; };
+		245E55922278C8CF00DD16D8 /* Kiss-and-MakeUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E55892278C8CD00DD16D8 /* Kiss-and-MakeUp.mp3 */; };
+		245E55932278C8CF00DD16D8 /* back-to-life.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E558A2278C8CE00DD16D8 /* back-to-life.mp3 */; };
+		245E55942278C8CF00DD16D8 /* Fallin-All-In-You.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E558B2278C8CE00DD16D8 /* Fallin-All-In-You.mp3 */; };
+		245E55962278C8CF00DD16D8 /* why.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E558D2278C8CF00DD16D8 /* why.mp3 */; };
+		245E55972278C8CF00DD16D8 /* Imagine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E558E2278C8CF00DD16D8 /* Imagine.mp3 */; };
+		245E55982278C8CF00DD16D8 /* you-are-the-reason.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E558F2278C8CF00DD16D8 /* you-are-the-reason.mp3 */; };
+		245E559A2278C93C00DD16D8 /* better.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E55992278C93C00DD16D8 /* better.mp3 */; };
 		2475EF190F3D0215BC78D71C /* Pods_JamSeshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F605E4943A1B39AE4435484 /* Pods_JamSeshUITests.framework */; };
 		24FD4931226AD69100E042AB /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4930226AD69100E042AB /* SearchCell.swift */; };
 		24FD4933226B03B800E042AB /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4932226B03B800E042AB /* OtherProfileViewController.swift */; };
@@ -69,6 +87,24 @@
 		242CFAB22277DD8F0076AA74 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		2436DDEC225FF86A000C56DF /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		245882E522729C90007BEADE /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		245E5573227822F900DD16D8 /* Only-Exception.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Only-Exception.mp3"; sourceTree = "<group>"; };
+		245E5574227822F900DD16D8 /* Get-you.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Get-you.mp3"; sourceTree = "<group>"; };
+		245E5575227822F900DD16D8 /* Be-alright.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Be-alright.mp3"; sourceTree = "<group>"; };
+		245E5576227822F900DD16D8 /* sunflower.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sunflower.mp3; sourceTree = "<group>"; };
+		245E5577227822F900DD16D8 /* shelter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shelter.mp3; sourceTree = "<group>"; };
+		245E5578227822FA00DD16D8 /* feels.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = feels.mp3; sourceTree = "<group>"; };
+		245E5579227822FA00DD16D8 /* Wonderwall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Wonderwall.mp3; sourceTree = "<group>"; };
+		245E55812278B28E00DD16D8 /* lost-in-japan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "lost-in-japan.mp3"; sourceTree = "<group>"; };
+		245E55832278C3BA00DD16D8 /* almost-is-never-enough.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "almost-is-never-enough.mp3"; sourceTree = "<group>"; };
+		245E55872278C8CD00DD16D8 /* love-someone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "love-someone.mp3"; sourceTree = "<group>"; };
+		245E55882278C8CD00DD16D8 /* breathin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = breathin.mp3; sourceTree = "<group>"; };
+		245E55892278C8CD00DD16D8 /* Kiss-and-MakeUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Kiss-and-MakeUp.mp3"; sourceTree = "<group>"; };
+		245E558A2278C8CE00DD16D8 /* back-to-life.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "back-to-life.mp3"; sourceTree = "<group>"; };
+		245E558B2278C8CE00DD16D8 /* Fallin-All-In-You.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Fallin-All-In-You.mp3"; sourceTree = "<group>"; };
+		245E558D2278C8CF00DD16D8 /* why.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = why.mp3; sourceTree = "<group>"; };
+		245E558E2278C8CF00DD16D8 /* Imagine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Imagine.mp3; sourceTree = "<group>"; };
+		245E558F2278C8CF00DD16D8 /* you-are-the-reason.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "you-are-the-reason.mp3"; sourceTree = "<group>"; };
+		245E55992278C93C00DD16D8 /* better.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = better.mp3; path = ../../../../Downloads/better.mp3; sourceTree = "<group>"; };
 		24FD4930226AD69100E042AB /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		24FD4932226B03B800E042AB /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
 		24FD4934226B047F00E042AB /* OtherPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPlaylistCell.swift; sourceTree = "<group>"; };
@@ -136,6 +172,24 @@
 			children = (
 				242CFAAE22745E6C0076AA74 /* thank-u-next.mp3 */,
 				242CFAB022745EB60076AA74 /* 7Rings.mp3 */,
+				245E5575227822F900DD16D8 /* Be-alright.mp3 */,
+				245E5578227822FA00DD16D8 /* feels.mp3 */,
+				245E55832278C3BA00DD16D8 /* almost-is-never-enough.mp3 */,
+				245E55992278C93C00DD16D8 /* better.mp3 */,
+				245E5574227822F900DD16D8 /* Get-you.mp3 */,
+				245E55812278B28E00DD16D8 /* lost-in-japan.mp3 */,
+				245E558A2278C8CE00DD16D8 /* back-to-life.mp3 */,
+				245E55882278C8CD00DD16D8 /* breathin.mp3 */,
+				245E558B2278C8CE00DD16D8 /* Fallin-All-In-You.mp3 */,
+				245E558E2278C8CF00DD16D8 /* Imagine.mp3 */,
+				245E55892278C8CD00DD16D8 /* Kiss-and-MakeUp.mp3 */,
+				245E55872278C8CD00DD16D8 /* love-someone.mp3 */,
+				245E558D2278C8CF00DD16D8 /* why.mp3 */,
+				245E558F2278C8CF00DD16D8 /* you-are-the-reason.mp3 */,
+				245E5573227822F900DD16D8 /* Only-Exception.mp3 */,
+				245E5577227822F900DD16D8 /* shelter.mp3 */,
+				245E5576227822F900DD16D8 /* sunflower.mp3 */,
+				245E5579227822FA00DD16D8 /* Wonderwall.mp3 */,
 				242CFAAC2274581D0076AA74 /* sucker.mp3 */,
 			);
 			path = songs;
@@ -365,12 +419,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				245E557E227822FA00DD16D8 /* shelter.mp3 in Resources */,
+				245E557A227822FA00DD16D8 /* Only-Exception.mp3 in Resources */,
+				245E55822278B28E00DD16D8 /* lost-in-japan.mp3 in Resources */,
 				242CFAAF22745E6C0076AA74 /* thank-u-next.mp3 in Resources */,
+				245E55842278C3BA00DD16D8 /* almost-is-never-enough.mp3 in Resources */,
 				81ED05D8225C3D3C00A106A6 /* LaunchScreen.storyboard in Resources */,
+				245E557C227822FA00DD16D8 /* Be-alright.mp3 in Resources */,
+				245E55902278C8CF00DD16D8 /* love-someone.mp3 in Resources */,
+				245E55932278C8CF00DD16D8 /* back-to-life.mp3 in Resources */,
+				245E557B227822FA00DD16D8 /* Get-you.mp3 in Resources */,
+				245E55922278C8CF00DD16D8 /* Kiss-and-MakeUp.mp3 in Resources */,
+				245E55912278C8CF00DD16D8 /* breathin.mp3 in Resources */,
+				245E55962278C8CF00DD16D8 /* why.mp3 in Resources */,
+				245E559A2278C93C00DD16D8 /* better.mp3 in Resources */,
+				245E557F227822FA00DD16D8 /* feels.mp3 in Resources */,
 				242CFAB122745EB60076AA74 /* 7Rings.mp3 in Resources */,
 				242CFAAD2274581D0076AA74 /* sucker.mp3 in Resources */,
+				245E55942278C8CF00DD16D8 /* Fallin-All-In-You.mp3 in Resources */,
+				245E55982278C8CF00DD16D8 /* you-are-the-reason.mp3 in Resources */,
 				81ED05D5225C3D3C00A106A6 /* Assets.xcassets in Resources */,
+				245E55972278C8CF00DD16D8 /* Imagine.mp3 in Resources */,
+				245E557D227822FA00DD16D8 /* sunflower.mp3 in Resources */,
 				81ED05D3225C3D3A00A106A6 /* Main.storyboard in Resources */,
+				245E5580227822FA00DD16D8 /* Wonderwall.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

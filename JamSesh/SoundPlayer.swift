@@ -22,7 +22,9 @@ class SoundPlayer {
     // Properties
     var error:NSError?
     var audioPlayer = AVAudioPlayer()
-    var isPlaying = false
+    var queuePlayer = AVQueuePlayer()
+    var isAudioPlaying = false
+    var isQueuePlaying = false
     
     func setSong(fileName: String) {
         do {
@@ -39,15 +41,39 @@ class SoundPlayer {
         }
     }
     
-    func playSound() {
-        if (!isPlaying) {
+    func addSong(fileName: String) {
+        let playerItem = AVPlayerItem(url: URL.init(fileURLWithPath: Bundle.main.path(forResource: fileName, ofType: "mp3")!))
+        queuePlayer.insert(playerItem, after:nil)
+    }
+    
+    func playSong() {
+        if (!isAudioPlaying) {
             audioPlayer.play()
-            isPlaying = true
+            isAudioPlaying = true
         }
         else {
             audioPlayer.stop()
-            isPlaying = false
+            isAudioPlaying = false
         }
+    }
+    
+    func playAllSongs() {
+        if (!isQueuePlaying) {
+            queuePlayer.play()
+            isQueuePlaying = true
+        }
+        else {
+            queuePlayer.pause()
+            isQueuePlaying = false
+        }
+    }
+    
+    func nextSong() {
+        queuePlayer.advanceToNextItem()
+    }
+    
+    func prevSong() {
+        let playerItems = queuePlayer.items()
     }
     
     
