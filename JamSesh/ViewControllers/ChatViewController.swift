@@ -119,8 +119,8 @@ class ChatViewController: MessagesViewController, MessagesLayoutDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBAction func sessionButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "chatToSessionSegue", sender: nil)
+    @IBAction func detailButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "chatToDetailSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

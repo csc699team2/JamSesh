@@ -20,6 +20,9 @@ class DetailsViewController: UIViewController {
         performSegue(withIdentifier: "detailToSessionSegue", sender: nil)
     }
     
+    @IBAction func detailToChatSegue(_ sender: Any) {
+        performSegue(withIdentifier: "detailToChatSegue", sender: nil)
+    }
     /*
     // MARK: - Navigation
 

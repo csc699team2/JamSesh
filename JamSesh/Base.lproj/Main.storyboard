@@ -748,7 +748,7 @@ and other music lovers.</string>
             </objects>
             <point key="canvasLocation" x="1293" y="3994"/>
         </scene>
-        <!--Sessions-->
+        <!--Music Sessions-->
         <scene sceneID="HQT-29-a8D">
             <objects>
                 <viewController id="ywP-1K-0Jc" customClass="SessionsViewController" customModule="JamSesh" customModuleProvider="target" sceneMemberID="viewController">
@@ -786,7 +786,7 @@ and other music lovers.</string>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <connections>
                                             <outlet property="musicSessionName" destination="rc1-Zi-31J" id="WhW-zx-cba"/>
-                                            <segue destination="Lkr-T2-A1y" kind="presentation" identifier="sessionToDetailSegue" id="JAI-gc-9tQ"/>
+                                            <segue destination="iwC-DT-jnZ" kind="presentation" identifier="sessionToDetailSegue" id="i4v-zy-ieZ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -824,7 +824,7 @@ and other music lovers.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="1Zt-BK-nlE"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sessions" id="xBW-3i-uKL">
+                    <navigationItem key="navigationItem" title="Music Sessions" id="xBW-3i-uKL">
                         <barButtonItem key="rightBarButtonItem" image="add_box_24px_outlined" style="plain" id="bY0-iR-Cjz">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -860,14 +860,14 @@ and other music lovers.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="db8-lF-grX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2619" y="3994"/>
+            <point key="canvasLocation" x="-1304" y="3199"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="cNJ-nj-CEH">
             <objects>
                 <viewController id="hg4-ae-BGh" customClass="DetailsViewController" customModule="JamSesh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JYZ-g3-X2v">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NOW PLAYING:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6I-Zj-22R">
@@ -918,17 +918,22 @@ and other music lovers.</string>
                         <viewLayoutGuide key="safeArea" id="OXK-et-YaJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="iPo-zM-JzQ">
-                        <barButtonItem key="leftBarButtonItem" title="Session" id="hFx-A6-SfP">
+                        <barButtonItem key="leftBarButtonItem" title="Session List" id="hFx-A6-SfP">
                             <connections>
-                                <action selector="detailToSessionSegue:" destination="hg4-ae-BGh" id="TV3-ML-WyY"/>
+                                <action selector="detailToChatSegue:" destination="hg4-ae-BGh" id="IgS-mb-hTN"/>
                                 <segue destination="g0n-hn-EqT" kind="presentation" identifier="detailToSessionSegue" id="fC3-Gm-lQN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Chat" id="AON-Em-r7g">
+                            <connections>
+                                <segue destination="ieE-8F-BDf" kind="presentation" identifier="detailToChatSegue" id="4tk-YZ-Ean"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Dv-bm-vXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2620" y="4812"/>
+            <point key="canvasLocation" x="-1304" y="3994"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="zip-yL-wUd">
@@ -941,10 +946,10 @@ and other music lovers.</string>
                         <viewLayoutGuide key="safeArea" id="M2T-sY-FhC"/>
                     </view>
                     <navigationItem key="navigationItem" id="jmV-JI-zOo">
-                        <barButtonItem key="leftBarButtonItem" title="Session" id="EOC-J0-vzZ">
+                        <barButtonItem key="leftBarButtonItem" title="Music Session" id="EOC-J0-vzZ">
                             <connections>
-                                <action selector="sessionButtonPressed:" destination="FxF-le-g3x" id="G5o-FY-VWZ"/>
-                                <segue destination="g0n-hn-EqT" kind="presentation" identifier="chatToSessionSegue" id="96y-xN-OIj"/>
+                                <action selector="detailButtonPressed:" destination="FxF-le-g3x" id="bYd-7h-5F4"/>
+                                <segue destination="iwC-DT-jnZ" kind="presentation" identifier="chatToDetailSegue" id="Vje-Qo-qVc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="0" id="Au6-XG-tAJ">
@@ -959,7 +964,7 @@ and other music lovers.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="id6-d5-uPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1304" y="4811"/>
+            <point key="canvasLocation" x="-2199" y="4800"/>
         </scene>
         <!--Members Table View Controller-->
         <scene sceneID="cAa-tb-n8F">
@@ -987,7 +992,7 @@ and other music lovers.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Db6-c0-FvU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1304" y="5641"/>
+            <point key="canvasLocation" x="-2200" y="5616"/>
         </scene>
         <!--Create-->
         <scene sceneID="1eP-lY-cZ0">
@@ -1634,25 +1639,6 @@ and other music lovers.</string>
             </objects>
             <point key="canvasLocation" x="-378.26086956521743" y="1656.521739130435"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="faJ-2q-033">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Lkr-T2-A1y" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4h2-SO-OqF">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="iwC-DT-jnZ" kind="relationship" relationship="viewControllers" id="JU9-kb-em2"/>
-                        <segue destination="ieE-8F-BDf" kind="relationship" relationship="viewControllers" id="m4n-a8-k3a"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L2r-H8-S0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1988.4057971014495" y="3198.913043478261"/>
-        </scene>
         <!--Chat-->
         <scene sceneID="h4E-Dd-Ipp">
             <objects>
@@ -1671,7 +1657,7 @@ and other music lovers.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWr-8R-HRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1304" y="3994"/>
+            <point key="canvasLocation" x="-2200" y="3994"/>
         </scene>
     </scenes>
     <resources>
@@ -1689,7 +1675,9 @@ and other music lovers.</string>
         <image name="settings_24px_outlined-1" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="4tk-YZ-Ean"/>
         <segue reference="fC3-Gm-lQN"/>
+        <segue reference="Vje-Qo-qVc"/>
         <segue reference="aHY-Sa-O7c"/>
     </inferredMetricsTieBreakers>
 </document>
