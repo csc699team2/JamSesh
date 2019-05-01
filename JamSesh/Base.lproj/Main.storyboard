@@ -312,6 +312,7 @@ and other music lovers.</string>
                                 <segment title="Account"/>
                                 <segment title="Music Session"/>
                             </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="indexChanged:" destination="RsE-Fb-tc4" eventType="valueChanged" id="bcL-sV-ysH"/>
                             </connections>
