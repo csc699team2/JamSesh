@@ -16,7 +16,10 @@ class DetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func detailToSessionSegue(_ sender: Any) {
+        performSegue(withIdentifier: "detailToSessionSegue", sender: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
