@@ -1577,7 +1577,11 @@ and other music lovers.</string>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="z7L-7D-WQl"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="9LN-oI-jma" appends="YES" id="Vqc-MK-RUt"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="9om-Qi-kFC" id="tcV-m3-n9u"/>
@@ -1586,6 +1590,11 @@ and other music lovers.</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yd-ts-TaW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9LN-oI-jma">
+                    <connections>
+                        <action selector="endTyping:" destination="qYh-gU-iod" id="cW3-Ee-Hgm"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3943" y="2119"/>
         </scene>
@@ -1685,7 +1694,11 @@ and other music lovers.</string>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="UOB-oI-HM3"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="fKp-ub-2kP" appends="YES" id="8gm-gq-LMK"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="currentUsernameField" destination="VX3-lC-EhH" id="nTW-8d-UQg"/>
@@ -1694,6 +1707,11 @@ and other music lovers.</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhe-Zb-ukJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="fKp-ub-2kP">
+                    <connections>
+                        <action selector="endTyping:" destination="ScZ-1K-lxT" id="yjS-Mp-EwE"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3936" y="2776"/>
         </scene>

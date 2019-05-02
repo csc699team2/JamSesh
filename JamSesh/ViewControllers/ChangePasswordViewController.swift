@@ -21,6 +21,10 @@ class ChangePasswordViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func endTyping(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     @IBAction func onChange(_ sender: Any) {
         
         let user = PFUser.current()!
