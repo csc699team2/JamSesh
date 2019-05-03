@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import AlamofireImage
 
-class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -42,7 +42,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         loadPlaylists()
         
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(deletePlaylist(gesture:)))
+        longPressGR.minimumPressDuration = 0.5
+        longPressGR.delaysTouchesBegan = true
+        longPressGR.delegate = self
+        collectionView.addGestureRecognizer(longPressGR)
         
+
         //sets the layout of the collection view
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         
@@ -175,6 +181,40 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             }
         }))
         self.present(alert, animated: true)
+    }
+    
+    @objc func deletePlaylist(gesture : UILongPressGestureRecognizer!) {
+        if gesture.state == .began {
+            
+            let point = gesture.location(in: self.collectionView)
+            let indexPath = self.collectionView.indexPathForItem(at: point)
+            
+            let alert = UIAlertController(title: "Do you want to delete this playlist?", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { action in
+                
+                if let indexPath = indexPath {
+                    //var cell = self.collectionView.cellForItem(at: indexPath)
+                    let playlist = self.userPlaylists[indexPath.row]
+                    playlist.deleteInBackground(block: { (success, error) in
+                        if success {
+                            self.loadPlaylists()
+                            print("Playlist was successfully deleted!")
+                        }
+                        else {
+                            print("Unable to delete playlist!")
+                        }
+                    })
+                    print(indexPath.row)
+                } else {
+                    print("Could not find index path")
+                }
+                //            let index = self.collectionView.indexPath(for: cell!)!
+                //            let playlist = self.userPlaylists[index.row]
+                
+            }))
+            self.present(alert, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
