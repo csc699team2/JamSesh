@@ -24,6 +24,8 @@ class SongSearchCell: UITableViewCell {
             playlist?.add(self.song!, forKey: "songs")
             playlist?.saveInBackground(block: { (success, error) in
                 if success {
+                    let filename = self.song!["fileName"] as! String
+                    SoundPlayer.sharedInstance.addSong(fileName: filename)
                     self.addSongButton.setImage(UIImage(named: "check"), for: UIControl.State.normal)
                     print("A song was added to the playlist!")
                 }

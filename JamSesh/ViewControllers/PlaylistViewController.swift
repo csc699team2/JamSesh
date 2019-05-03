@@ -17,22 +17,26 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     
     var playlist: PFObject?
     var songs: [PFObject]?
-
+    var filenames = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
         
         playlistNameLabel.text = playlist!["playlistName"] as? String
         songs = playlist!["songs"] as? [PFObject] ?? []
+        self.filenames = self.getFilenames()
+        addSongs()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         songs = playlist!["songs"] as? [PFObject] ?? []
+        self.filenames = self.getFilenames()
         tableView.reloadData()
         
         if SoundPlayer.sharedInstance.isQueuePlaying {
@@ -43,12 +47,27 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func getFilenames()-> [String]{
+        var fileNames = [String]()
+        for song in self.songs! {
+            let filename = song["fileName"] as! String
+            fileNames.append(filename)
+        }
+        
+        return fileNames
+        
+    }
+    
+    func addSongs() {
+        if songs != nil {
+            for filename in filenames {
+                SoundPlayer.sharedInstance.addSong(fileName: filename)
+            }
+        }
+    }
+    
     @IBAction func onPlayAllButton(_ sender: Any) {
         if songs != nil {
-            for song in songs! {
-                let filename = song["fileName"] as? String
-                SoundPlayer.sharedInstance.addSong(fileName: filename!)
-            }
             SoundPlayer.sharedInstance.playAllSongs()
             if SoundPlayer.sharedInstance.isQueuePlaying {
                 playAllButton.setImage(UIImage(named: "pause-1"), for: UIControl.State.normal)
@@ -61,13 +80,12 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func forwardButton(_ sender: UIButton) {
         SoundPlayer.sharedInstance.nextSong()
-        /*var index =  audioItems.index(of: audioPlayer.currentItem!) ?? 0
-        if index < (audioItems.count - 1) {
-            index = index + 1
-        }
-        play(at: index)*/
-        
     }
+    
+    @IBAction func previousButton(_ sender: Any) {
+        SoundPlayer.sharedInstance.prevSong()
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return songs!.count
@@ -100,7 +118,15 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
             playlist?.remove(songs![indexPath.row], forKey: "songs")
             playlist?.saveInBackground(block: { (success, error) in
                 if success {
+                    //remove song from queueplayer and filename
+                    let filename = self.filenames[indexPath.row] as! String
+                    SoundPlayer.sharedInstance.removeSong(filename: filename)
+                    self.filenames.remove(at: indexPath.row)
+                    
+                    //reload songs from the playlist
                     self.songs = self.playlist!["songs"] as? [PFObject] ?? []
+                    
+                    //delete row
                     tableView.deleteRows(at: [indexPath], with: .fade)
                     print("The song was successfully deleted from playlist")
                 }
@@ -112,7 +138,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -121,5 +147,5 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         // Pass the selected object to the new view controller.
         addSongsViewController.playlist = playlist
     }
-
+    
 }

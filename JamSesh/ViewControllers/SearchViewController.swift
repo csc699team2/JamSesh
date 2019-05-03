@@ -15,10 +15,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchControl: UISegmentedControl!
     
-    @IBOutlet weak var songView: UIView!
-    @IBOutlet weak var songTitleLabel: UILabel!
-    @IBOutlet weak var artistLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton!
     
     var users = [PFObject]()
     var filteredUsers = [PFObject]()
@@ -39,24 +35,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         loadSessions()
         filteredSessions = sessions
-      
-        if UserDefaults.standard.bool(forKey: "Play") == false {
-            songView.isHidden = true
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        if UserDefaults.standard.bool(forKey: "Play") == true {
-            songTitleLabel.text = UserDefaults.standard.string(forKey: "SongTitle")
-            artistLabel.text = UserDefaults.standard.string(forKey: "Artist")
-            playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
-            songView.isHidden = false
-        }
-        else {
-            playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
-        }
     }
     
     func loadUsers() {
@@ -80,19 +58,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 self.sessions = sessions!
                 self.tableView.reloadData()
             }
-        }
-    }
-    
-    @IBAction func onPlayButton(_ sender: Any) {
-        SoundPlayer.sharedInstance.playSong()
-        
-        if SoundPlayer.sharedInstance.isAudioPlaying {
-            playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
-            UserDefaults.standard.set(true, forKey: "Play")
-        }
-        else {
-            playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
-            UserDefaults.standard.set(false, forKey: "Play")
         }
     }
     
@@ -154,7 +119,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         searchBar.text = ""
         searchBar.resignFirstResponder()
         tableView.isHidden = true
-        songView.isHidden = false
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -162,14 +126,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         searchBar.showsCancelButton = true
         searchControl.isHidden = false
         tableView.isHidden = false
-        songView.isHidden = true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         searchControl.isHidden = false
         tableView.isHidden = false
-        songView.isHidden = true
     }
     
     @IBAction func indexChanged(_ sender: Any) {

@@ -47,12 +47,7 @@ class AddSongsViewController: UIViewController, UISearchBarDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchBarBeginEditing {
-            return filteredSongs.count
-        }
-        else {
-            return 0
-        }
+        return filteredSongs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,10 +79,17 @@ class AddSongsViewController: UIViewController, UISearchBarDelegate, UITableView
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredSongs = songs.filter({ (song) -> Bool in
-            let songTitle = song["songTitle"] as! String
-            return songTitle.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        })
+        if searchText != "" {
+            filteredSongs = songs.filter({ (song) -> Bool in
+                let songTitle = song["songTitle"] as! String
+                return songTitle.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            })
+            print(filteredSongs.count)
+        }
+        else {
+            filteredSongs = songs
+            print(filteredSongs.count)
+        }
         tableView.reloadData()
     }
     

@@ -20,11 +20,12 @@ class SoundPlayer {
     }
     
     // Properties
-    var error:NSError?
     var audioPlayer = AVAudioPlayer()
     var queuePlayer = AVQueuePlayer()
     var isAudioPlaying = false
     var isQueuePlaying = false
+    var playerItems = [String:AVPlayerItem]()
+    var filenames = [String]()
     
     func setSong(fileName: String) {
         do {
@@ -44,10 +45,35 @@ class SoundPlayer {
     func addSong(fileName: String) {
         let playerItem = AVPlayerItem(url: URL.init(fileURLWithPath: Bundle.main.path(forResource: fileName, ofType: "mp3")!))
         queuePlayer.insert(playerItem, after:nil)
+        playerItems[fileName] = playerItem
+        filenames.append(fileName)
+    }
+    
+    func getSongItem(filename: String) -> AVPlayerItem {
+        let playerItem = playerItems[filename] as! AVPlayerItem
+        return playerItem
+    }
+    
+    func removeSong(filename: String) {
+        let playerItem = playerItems[filename] as! AVPlayerItem
+        queuePlayer.remove(playerItem)
+        playerItems.removeValue(forKey: filename)
+        
+        for item in playerItems {
+            if item.value == playerItem {
+                let index = filenames.firstIndex(of: item.key)!
+                filenames.remove(at: index)
+                break
+            }
+        }
     }
     
     func playSong() {
         if (!isAudioPlaying) {
+            if (isQueuePlaying) {
+                queuePlayer.pause()
+                isQueuePlaying = false
+            }
             audioPlayer.play()
             isAudioPlaying = true
         }
@@ -59,6 +85,10 @@ class SoundPlayer {
     
     func playAllSongs() {
         if (!isQueuePlaying) {
+            if (isAudioPlaying) {
+                audioPlayer.stop()
+                isAudioPlaying = false
+            }
             queuePlayer.play()
             isQueuePlaying = true
         }
@@ -73,7 +103,27 @@ class SoundPlayer {
     }
     
     func prevSong() {
-        let playerItems = queuePlayer.items()
+        let currPlayerItem = queuePlayer.currentItem
+        
+        //gets the index of the previous player item
+        var index = 0
+        for playerItem in playerItems {
+            if playerItem.value == currPlayerItem {
+                index = filenames.firstIndex(of: playerItem.key)! - 1
+                print("index: \(index)")
+                break
+            }
+        }
+        
+        //sets the current player time to the previous playerItem
+        if index >= 0 {
+            let filename = filenames[index]
+            print("song: \(filename)")
+            let playerItem = playerItems[filename] as! AVPlayerItem
+            
+            queuePlayer.replaceCurrentItem(with: playerItem)
+            queuePlayer.seek(to: CMTime.zero)
+        }
     }
     
     

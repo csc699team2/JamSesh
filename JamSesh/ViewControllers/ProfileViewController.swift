@@ -18,10 +18,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var songView: UIView!
-    @IBOutlet weak var songTitleLabel: UILabel!
-    @IBOutlet weak var artistLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton!
     
     let currUser = PFUser.current()!
     var currUserInfo: PFObject?
@@ -46,9 +42,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         loadPlaylists()
         
-        if UserDefaults.standard.bool(forKey: "Play") == false {
-            songView.isHidden = true
-        }
         
         //sets the layout of the collection view
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -64,15 +57,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidAppear(true)
         
         loadUserInfo()
-        if UserDefaults.standard.bool(forKey: "Play") == true {
-            songTitleLabel.text = UserDefaults.standard.string(forKey: "SongTitle")
-            artistLabel.text = UserDefaults.standard.string(forKey: "Artist")
-            playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
-            songView.isHidden = false
-        }
-        else {
-            playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
-        }
     }
     
     
@@ -192,20 +176,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }))
         self.present(alert, animated: true)
     }
-    
-    @IBAction func onPlayButton(_ sender: Any) {
-        SoundPlayer.sharedInstance.playSong()
-        
-        if SoundPlayer.sharedInstance.isAudioPlaying {
-            playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
-            UserDefaults.standard.set(true, forKey: "Play")
-        }
-        else {
-            playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
-            UserDefaults.standard.set(false, forKey: "Play")
-        }
-    }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return userPlaylists.count

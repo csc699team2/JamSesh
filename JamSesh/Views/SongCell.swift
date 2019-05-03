@@ -27,14 +27,9 @@ class SongCell: UITableViewCell {
 
         if SoundPlayer.sharedInstance.isAudioPlaying {
             playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
-            UserDefaults.standard.set(true, forKey: "Play")
-            UserDefaults.standard.set(artistLabel.text, forKey: "Artist")
-            UserDefaults.standard.set(songTitleLabel.text, forKey: "SongTitle")
-            UserDefaults.standard.set(songFilename, forKey: "Filename")
         }
         else {
             playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
-            UserDefaults.standard.set(false, forKey: "Play")
         }
     }
     

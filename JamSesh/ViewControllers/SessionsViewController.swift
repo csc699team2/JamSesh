@@ -12,10 +12,6 @@ import Parse
 class SessionsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var sessionCollectionView: UICollectionView!
-    @IBOutlet weak var songTitleLabel: UILabel!
-    @IBOutlet weak var artistLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var songView: UIView!
     
     var musicSessions = [PFObject]()
     
@@ -26,24 +22,12 @@ class SessionsViewController: UIViewController, UICollectionViewDelegate, UIColl
         sessionCollectionView.dataSource = self
         
         // Do any additional setup after loading the view.
-        if UserDefaults.standard.bool(forKey: "Play") == false {
-            songView.isHidden = true
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         loadSessions()
-        if UserDefaults.standard.bool(forKey: "Play") == true {
-            songTitleLabel.text = UserDefaults.standard.string(forKey: "SongTitle")
-            artistLabel.text = UserDefaults.standard.string(forKey: "Artist")
-            playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
-            songView.isHidden = false
-        }
-        else {
-            playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
-        }
     }
     
     func loadSessions() {
@@ -62,19 +46,6 @@ class SessionsViewController: UIViewController, UICollectionViewDelegate, UIColl
             else {
                 print("Error: \(String(describing: error))")
             }
-        }
-    }
-    
-    @IBAction func onPlayButton(_ sender: Any) {
-        SoundPlayer.sharedInstance.playSong()
-        
-        if SoundPlayer.sharedInstance.isAudioPlaying {
-            playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
-            UserDefaults.standard.set(true, forKey: "Play")
-        }
-        else {
-            playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
-            UserDefaults.standard.set(false, forKey: "Play")
         }
     }
     
