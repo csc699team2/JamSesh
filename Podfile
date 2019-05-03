@@ -11,6 +11,10 @@ target 'JamSesh' do
   pod 'MessageInputBar'
   pod 'MessageKit'
   pod 'Scaledrone', '0.3.0'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Firestore'
 
   target 'JamSeshTests' do
     inherit! :search_paths

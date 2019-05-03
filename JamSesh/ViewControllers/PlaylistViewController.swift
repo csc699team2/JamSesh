@@ -120,7 +120,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
                 if success {
                     //remove song from queueplayer and filename
                     let filename = self.filenames[indexPath.row] as! String
-                    SoundPlayer.sharedInstance.removeSong(filename: filename)
+                    SoundPlayer.sharedInstance.removeSong(filename: filename, index: indexPath.row)
                     self.filenames.remove(at: indexPath.row)
                     
                     //reload songs from the playlist

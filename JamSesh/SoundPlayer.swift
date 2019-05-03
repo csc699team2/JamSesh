@@ -54,18 +54,11 @@ class SoundPlayer {
         return playerItem
     }
     
-    func removeSong(filename: String) {
+    func removeSong(filename: String, index: Int) {
         let playerItem = playerItems[filename] as! AVPlayerItem
         queuePlayer.remove(playerItem)
         playerItems.removeValue(forKey: filename)
-        
-        for item in playerItems {
-            if item.value == playerItem {
-                let index = filenames.firstIndex(of: item.key)!
-                filenames.remove(at: index)
-                break
-            }
-        }
+        filenames.remove(at: index)
     }
     
     func playSong() {
