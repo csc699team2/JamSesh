@@ -78,11 +78,11 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    @IBAction func forwardButton(_ sender: UIButton) {
+    @IBAction func onForwardButton(_ sender: UIButton) {
         SoundPlayer.sharedInstance.nextSong()
     }
     
-    @IBAction func previousButton(_ sender: Any) {
+    @IBAction func onPreviousButton(_ sender: Any) {
         SoundPlayer.sharedInstance.prevSong()
     }
     

@@ -19,6 +19,9 @@ class CreateViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var currUser = PFUser.current()!
     var playlists = [PFObject]()
     
+    var selectedPlaylist: PFObject?
+    var createdSession: PFObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +50,7 @@ class CreateViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currPlaylist = playlists[indexPath.row]
         let title = currPlaylist["playlistName"] as? String
+        selectedPlaylist = currPlaylist
         selectPlaylistButton.setTitle(title, for: .normal)
     }
     
@@ -66,13 +70,15 @@ class CreateViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let session = PFObject(className: "MusicSession")
             session["sessionName"] = titleField.text
             session["admin"] = currUser
-            session["playlist"] = selectPlaylistButton.titleLabel!.text
+            session["playlist"] = selectedPlaylist
             session["private"] = privateBool.isOn
             
             session.saveInBackground { (success, error) in
                 if(success)
                 {
+                    self.createdSession = session
                     print("success")
+                    self.performSegue(withIdentifier: "createToDetailSegue", sender: nil)
                 }
                 else
                 {
@@ -116,14 +122,21 @@ class CreateViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "createToDetailSegue" {
+            if let navVC = segue.destination as? UINavigationController {
+                if let detailVC = navVC.viewControllers.first as? DetailsViewController {
+                    detailVC.session = createdSession
+                }
+            }
+        }
+    }
+    
     
 }

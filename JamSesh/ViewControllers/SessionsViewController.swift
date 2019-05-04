@@ -15,6 +15,8 @@ class SessionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     var musicSessions = [PFObject]()
     
+    var selectedSession: PFObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +34,7 @@ class SessionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func loadSessions() {
         let query = PFQuery(className:"MusicSession")
-        query.includeKey("author")
+        query.includeKeys(["admin", "playlist", "playlist.songs"])
         query.addDescendingOrder("createdAt")
         musicSessions.removeAll()
         query.findObjectsInBackground { (sessions, error) in
@@ -62,16 +64,24 @@ class SessionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedSession = musicSessions[indexPath.row]
         performSegue(withIdentifier: "sessionToDetailSegue", sender: nil)
     }
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "sessionToDetailSegue" {
+            if let navVC = segue.destination as? UINavigationController {
+                if let detailVC = navVC.viewControllers.first as? DetailsViewController {
+                    detailVC.session = selectedSession
+                }
+            }
+        }
      }
-     */
+ 
     
 }

@@ -7,13 +7,52 @@
 //
 
 import UIKit
+import Parse
 
 class DetailsViewController: UIViewController {
-
+    
+    @IBOutlet weak var songTitleLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var playButton: UIButton!
+    
+    var session: PFObject?
+    var songs = [PFObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let playlist = session!["playlist"] as? PFObject
+        songs = playlist!["songs"] as! [PFObject]
+
+        addSongs()
+    }
+    
+    func addSongs(){
+        SoundPlayer.sharedInstance.clearPlayer()
+        for song in songs {
+            let filename = song["fileName"] as! String
+            SoundPlayer.sharedInstance.addSong(fileName: filename)
+        }
+        SoundPlayer.sharedInstance.playAllSongs()
+    }
+    
+    @IBAction func pauseButton(_ sender: Any) {
+        SoundPlayer.sharedInstance.playAllSongs()
+        if SoundPlayer.sharedInstance.isQueuePlaying {
+            playButton.setImage(UIImage(named: "pause-1"), for: UIControl.State.normal)
+        }
+        else {
+            playButton.setImage(UIImage(named: "play-1"), for: UIControl.State.normal)
+        }
+    }
+    
+    @IBAction func onForwardButton(_ sender: Any) {
+        SoundPlayer.sharedInstance.nextSong()
+    }
+    
+    @IBAction func onPreviousButton(_ sender: Any) {
+        SoundPlayer.sharedInstance.prevSong()
     }
     
     @IBAction func detailToSessionSegue(_ sender: Any) {
