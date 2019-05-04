@@ -41,8 +41,6 @@ final class ChatViewController: MessagesViewController {
                 return
             }
             
-            print(snapshot)
-            
             snapshot.documentChanges.forEach { change in
                 self.handleDocumentChange(change)
             }
@@ -106,8 +104,6 @@ final class ChatViewController: MessagesViewController {
             break
         }
     }
-
-    
 }
 
 // MARK: - MessagesDisplayDelegate
@@ -146,7 +142,7 @@ extension ChatViewController: MessagesLayoutDelegate {
                     in messagesCollectionView: MessagesCollectionView) -> CGSize {
         
         // 1
-        return .zero
+        return .init(width: 20, height: 20)
     }
     
     func footerViewSize(for message: MessageType, at indexPath: IndexPath,
@@ -163,7 +159,6 @@ extension ChatViewController: MessagesLayoutDelegate {
         return 0
     }
 }
-
 
 // MARK: - MessagesDataSource
 
@@ -205,9 +200,11 @@ extension ChatViewController: MessagesDataSource {
 extension ChatViewController: MessageInputBarDelegate {
     
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
+        
         let message = Message(user: currUser, content: text)
         
         save(message)
+        
         inputBar.inputTextView.text = ""
     }
     

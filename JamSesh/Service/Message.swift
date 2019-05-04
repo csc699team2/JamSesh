@@ -8,7 +8,7 @@
 
 import Firebase
 import MessageKit
-import FirebaseFirestore
+//import FirebaseFirestore
 import Parse
 
 struct Message: MessageType {
@@ -17,8 +17,6 @@ struct Message: MessageType {
     let content: String
     let sentDate: Date
     let sender: Sender
-    
-    let currUser = PFUser.current()!
     
     var kind: MessageKind {
         if let image = image {
@@ -36,14 +34,14 @@ struct Message: MessageType {
     var downloadURL: URL? = nil
     
     init(user: PFUser, content: String) {
-        sender = Sender(id: currUser.objectId!, displayName: currUser.username!)
+        sender = Sender(id: user.objectId!, displayName: user.username!)
         self.content = content
         sentDate = Date()
         id = nil
     }
     
     init(user: PFUser, image: UIImage) {
-        sender = Sender(id: currUser.objectId!, displayName: currUser.username!)
+        sender = Sender(id: user.objectId!, displayName: user.username!)
         self.image = image
         content = ""
         sentDate = Date()
@@ -53,9 +51,12 @@ struct Message: MessageType {
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
         
-        guard let sentDate = data["created"] as? Date else {
+        guard let timestamp = data["created"] as? Timestamp else {
             return nil
         }
+        
+        let sentDate = timestamp.dateValue()
+        
         guard let senderID = data["senderID"] as? String else {
             return nil
         }
