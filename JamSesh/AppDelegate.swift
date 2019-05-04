@@ -8,6 +8,8 @@
 
 import UIKit
 import Parse
+import Firebase
+import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 configuration.server = "https://jamsesh101.herokuapp.com/parse"
             })
         )
+        
+        FirebaseApp.configure()
+        Auth.auth().signInAnonymously(completion: nil)
         
         // stay log in across restarts
         if PFUser.current() != nil {

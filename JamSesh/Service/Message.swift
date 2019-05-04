@@ -6,51 +6,109 @@
 //  Copyright © 2019 Monali Chuatico. All rights reserved.
 //
 
-import Foundation
-import UIKit
+import Firebase
 import MessageKit
+import FirebaseFirestore
+import Parse
 
-struct Message {
-    let member: Member
-    let text: String
-    let messageId: String
-}
-
-extension Message: MessageType {
+struct Message: MessageType {
     
-    var sender: Sender {
-        return Sender(id: member.name, displayName: member.name)
-    }
+    let id: String?
+    let content: String
+    let sentDate: Date
+    let sender: Sender
     
-    var sentDate: Date {
-        return Date()
-    }
+    let currUser = PFUser.current()!
     
     var kind: MessageKind {
-        return .text(text)
-    }
-}
-
-struct Member {
-    let name: String
-}
-
-extension Member {
-    var toJSON: Any {
-        return [
-            "name": name
-        ]
+        if let image = image {
+            return .photo(image as! MediaItem)
+        } else {
+            return .text(content)
+        }
     }
     
-    init?(fromJSON json: Any) {
-        guard
-            let data = json as? [String: Any],
-            let name = data["name"] as? String
-            else {
-                print("Couldn't parse Member")
-                return nil
+    var messageId: String {
+        return id ?? UUID().uuidString
+    }
+    
+    var image: UIImage? = nil
+    var downloadURL: URL? = nil
+    
+    init(user: PFUser, content: String) {
+        sender = Sender(id: currUser.objectId!, displayName: currUser.username!)
+        self.content = content
+        sentDate = Date()
+        id = nil
+    }
+    
+    init(user: PFUser, image: UIImage) {
+        sender = Sender(id: currUser.objectId!, displayName: currUser.username!)
+        self.image = image
+        content = ""
+        sentDate = Date()
+        id = nil
+    }
+    
+    init?(document: QueryDocumentSnapshot) {
+        let data = document.data()
+        
+        guard let sentDate = data["created"] as? Date else {
+            return nil
+        }
+        guard let senderID = data["senderID"] as? String else {
+            return nil
+        }
+        guard let senderName = data["senderName"] as? String else {
+            return nil
         }
         
-        self.name = name
+        id = document.documentID
+        
+        self.sentDate = sentDate
+        sender = Sender(id: senderID, displayName: senderName)
+        
+        if let content = data["content"] as? String {
+            self.content = content
+            downloadURL = nil
+        } else if let urlString = data["url"] as? String, let url = URL(string: urlString) {
+            downloadURL = url
+            content = ""
+        } else {
+            return nil
+        }
     }
+    
+}
+
+extension Message: DatabaseRepresentation {
+    
+    var representation: [String : Any] {
+        var rep: [String : Any] = [
+            "created": sentDate,
+            "senderID": sender.id,
+            "senderName": sender.displayName
+        ]
+        
+        if let url = downloadURL {
+            rep["url"] = url.absoluteString
+        } else {
+            rep["content"] = content
+        }
+        
+        return rep
+    }
+    
+}
+
+extension Message: Comparable {
+    
+    static func == (lhs: Message, rhs: Message) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    static func < (lhs: Message, rhs: Message) -> Bool {
+        return lhs.sentDate < rhs.sentDate
+    }
+    
 }

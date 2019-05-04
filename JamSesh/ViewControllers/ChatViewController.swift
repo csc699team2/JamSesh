@@ -7,198 +7,218 @@
 //
 
 import UIKit
+import Firebase
 import MessageKit
+import FirebaseFirestore
+import Parse
 import MessageInputBar
 
-class ChatViewController: MessagesViewController, MessagesLayoutDelegate {
+final class ChatViewController: MessagesViewController {
     
-    var chatService: ChatService!
-    var messages: [Message] = []
-    var member: Member!
-    var members: [Member] = []
+    private let db = Firestore.firestore()
+    private var reference: CollectionReference?
     
-    @IBOutlet weak var onlineMembersButton: UIBarButtonItem!
+    private var messages: [Message] = []
+    private var messageListener: ListenerRegistration?
     
-    var typingMembers: [Member] = [] {
-        didSet {
-            let otherMembers = typingMembers.filter { $0.name != member.name }
-            switch otherMembers.count {
-            case 0:
-                hideTypingLabel()
-            case 1:
-                typingLabel.text = "\(otherMembers[0].name) is typing"
-                showTypingLabel()
-            default:
-                let names = otherMembers.map { $0.name }.joined(separator: ", ")
-                typingLabel.text = "\(names) are typing"
-                showTypingLabel()
-            }
-        }
+    let currUser = PFUser.current()!
+    var session: PFObject?
+    
+    deinit {
+        messageListener?.remove()
     }
-    
-    lazy var typingLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.textAlignment = .center
-        label.backgroundColor = messageInputBar.backgroundView.backgroundColor!
-        return label
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messageInputBar.topStackView.addArrangedSubview(typingLabel)
+        print(session)
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(membersChanged),
-            name: .MembersChanged,
-            object: nil)
+        title = session!["sessionName"] as? String
         
-        member = Member(name: "kurtis")
+        let id = session!.objectId!
+        
+        reference = db.collection(["sessions", id, "thread"].joined(separator: "/"))
+        
+        messageListener = reference?.addSnapshotListener { querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("Error listening for session updates: \(error?.localizedDescription ?? "No error")")
+                return
+            }
+            
+            snapshot.documentChanges.forEach { change in
+                self.handleDocumentChange(change)
+            }
+        }
+        
+        maintainPositionOnKeyboardFrameChanged = true
+        messageInputBar.inputTextView.tintColor = .primary
+        messageInputBar.sendButton.setTitleColor(.primary, for: .normal)
+        
+        messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
-        messageInputBar.delegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
-        
-        chatService = ChatService(
-            member: member,
-            onRecievedMessage: {
-                [weak self] message in
-                self?.messages.append(message)
-                self?.messagesCollectionView.reloadData()
-                self?.messagesCollectionView.scrollToBottom(animated: true)
-            },
-            onMemberTypingStatusChanged: { [weak self] (member, isTyping) in
-                guard let `self` = self else { return }
-                if isTyping {
-                    if !self.typingMembers.contains { $0.name == member.name } {
-                        self.typingMembers.append(member)
-                    }
-                } else {
-                    if let index = self.typingMembers
-                        .firstIndex(where: { $0.name == member.name }) {
-                        self.typingMembers.remove(at: index)
-                    }
-                }
-        })
-        chatService.setRoomId(id: "123456")
-        chatService.connect()
     }
     
-    func showTypingLabel() {
-        UIView.animate(withDuration: 0.3) {
-            self.typingLabel.isHidden = false
+    // MARK: - Helpers
+    
+    private func save(_ message: Message) {
+        reference?.addDocument(data: message.representation) { error in
+            if let e = error {
+                print("Error sending message: \(e.localizedDescription)")
+                return
+            }
+            
+            self.messagesCollectionView.scrollToBottom()
         }
     }
     
-    func hideTypingLabel() {
-        UIView.animate(withDuration: 0.3) {
-            self.typingLabel.isHidden = true
-        }
-    }
-    
-    //    @objc func didTapMembersButton() {
-    //        let vc = MembersTableViewController()
-    //        vc.members = self.members
-    //        navigationController?.pushViewController(vc, animated: true)
-    //    }
-    
-    @objc func membersChanged(notification: Notification) {
-        guard let newMembers = notification.object as? [Member] else {
+    private func insertNewMessage(_ message: Message) {
+        guard !messages.contains(message) else {
             return
         }
         
-        self.members = newMembers
-        onlineMembersButton.title = "\(newMembers.count)"
-        //        navigationItem.rightBarButtonItem?.title = "\(newMembers.count)"
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @IBAction func detailButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "chatToDetailSegue", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "chatToMembersSegue"
-        {
-            if let destination = segue.destination as? MembersTableViewController {
-                destination.members = self.members
+        messages.append(message)
+        messages.sort()
+        
+        let isLatestMessage = messages.index(of: message) == (messages.count - 1)
+        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
+        
+        messagesCollectionView.reloadData()
+        
+        if shouldScrollToBottom {
+            DispatchQueue.main.async {
+                self.messagesCollectionView.scrollToBottom(animated: true)
             }
         }
     }
     
+    private func handleDocumentChange(_ change: DocumentChange) {
+        guard let message = Message(document: change.document) else {
+            return
+        }
+        
+        switch change.type {
+        case .added:
+            insertNewMessage(message)
+            
+        default:
+            break
+        }
+    }
 }
 
+// MARK: - MessagesDisplayDelegate
+
+extension ChatViewController: MessagesDisplayDelegate {
+    
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath,
+                         in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        
+        // 1
+        return isFromCurrentSender(message: message) ? .primary : .incomingMessage
+    }
+    
+    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,
+                             in messagesCollectionView: MessagesCollectionView) -> Bool {
+        
+        // 2
+        return false
+    }
+    
+    func messageStyle(for message: MessageType, at indexPath: IndexPath,
+                      in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        
+        let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
+        
+        // 3
+        return .bubbleTail(corner, .curved)
+    }
+}
+
+
+// MARK: - MessagesLayoutDelegate
+
+extension ChatViewController: MessagesLayoutDelegate {
+    
+    func avatarSize(for message: MessageType, at indexPath: IndexPath,
+                    in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        
+        // 1
+        return .zero
+    }
+    
+    func footerViewSize(for message: MessageType, at indexPath: IndexPath,
+                        in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        
+        // 2
+        return CGSize(width: 0, height: 8)
+    }
+    
+    func heightForLocation(message: MessageType, at indexPath: IndexPath,
+                           with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        
+        // 3
+        return 0
+    }
+}
+
+
+// MARK: - MessagesDataSource
+
 extension ChatViewController: MessagesDataSource {
+    
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
     
+    // 1
     func currentSender() -> Sender {
-        return Sender(id: member.name, displayName: member.name)
-        
+        return Sender(id: currUser.objectId!, displayName: currUser.username!)
     }
     
+    // 2
+    func numberOfItems(inSection section: Int, in messagesCollectionView: MessagesCollectionView) -> Int {
+        return 1
+    }
+    
+    // 3
     func messageForItem(at indexPath: IndexPath,
                         in messagesCollectionView: MessagesCollectionView) -> MessageType {
         
         return messages[indexPath.section]
     }
     
-    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 12
-    }
-    
-    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        return NSAttributedString(
-            string: message.sender.displayName,
-            attributes: [.font: UIFont.systemFont(ofSize: 12)])
-    }
-}
-
-extension ViewController: MessagesLayoutDelegate {
-    func heightForLocation(message: MessageType,
-                           at indexPath: IndexPath,
-                           with maxWidth: CGFloat,
-                           in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 0
-    }
-}
-
-extension ChatViewController: MessagesDisplayDelegate {
-    func configureAvatarView(
-        _ avatarView: AvatarView,
-        for message: MessageType,
-        at indexPath: IndexPath,
-        in messagesCollectionView: MessagesCollectionView) {
+    // 4
+    func cellTopLabelAttributedText(for message: MessageType,
+                                    at indexPath: IndexPath) -> NSAttributedString? {
         
-        let message = messages[indexPath.section]
+        let name = message.sender.displayName
+        return NSAttributedString(
+            string: name,
+            attributes: [
+                .font: UIFont.preferredFont(forTextStyle: .caption1),
+                .foregroundColor: UIColor(white: 0.3, alpha: 1)
+            ]
+        )
     }
 }
+
+
+// MARK: - MessageInputBarDelegate
 
 extension ChatViewController: MessageInputBarDelegate {
-    func messageInputBar(
-        _ inputBar: MessageInputBar,
-        didPressSendButtonWith text: String) {
+    func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
         
-        chatService.sendMessage(text)
+        // 1
+        let message = Message(user: currUser, content: text)
+        
+        // 2
+        save(message)
+        
+        // 3
         inputBar.inputTextView.text = ""
-        chatService.stopTyping()
     }
     
-    func messageInputBar(_ inputBar: MessageInputBar, textViewTextDidChangeTo text: String) {
-        if text.isEmpty {
-            chatService.stopTyping()
-        } else {
-            chatService.startTyping()
-        }
-    }
 }
-
