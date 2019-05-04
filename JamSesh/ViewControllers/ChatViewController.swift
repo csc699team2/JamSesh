@@ -21,8 +21,8 @@ final class ChatViewController: MessagesViewController {
     private var messages: [Message] = []
     private var messageListener: ListenerRegistration?
     
-    let currUser = PFUser.current()!
     var session: PFObject?
+    var currUser = PFUser.current()!
     
     deinit {
         messageListener?.remove()
@@ -30,10 +30,6 @@ final class ChatViewController: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(session)
-        
-        title = session!["sessionName"] as? String
         
         let id = session!.objectId!
         
@@ -45,10 +41,14 @@ final class ChatViewController: MessagesViewController {
                 return
             }
             
+            print(snapshot)
+            
             snapshot.documentChanges.forEach { change in
                 self.handleDocumentChange(change)
             }
         }
+        
+        title = session!["sessionName"] as! String
         
         maintainPositionOnKeyboardFrameChanged = true
         messageInputBar.inputTextView.tintColor = .primary
@@ -58,7 +58,6 @@ final class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
-        
     }
     
     // MARK: - Helpers
@@ -107,6 +106,8 @@ final class ChatViewController: MessagesViewController {
             break
         }
     }
+
+    
 }
 
 // MARK: - MessagesDisplayDelegate
@@ -136,7 +137,6 @@ extension ChatViewController: MessagesDisplayDelegate {
         return .bubbleTail(corner, .curved)
     }
 }
-
 
 // MARK: - MessagesLayoutDelegate
 
@@ -169,18 +169,13 @@ extension ChatViewController: MessagesLayoutDelegate {
 
 extension ChatViewController: MessagesDataSource {
     
-    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        return messages.count
-    }
-    
     // 1
     func currentSender() -> Sender {
         return Sender(id: currUser.objectId!, displayName: currUser.username!)
     }
     
-    // 2
-    func numberOfItems(inSection section: Int, in messagesCollectionView: MessagesCollectionView) -> Int {
-        return 1
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messages.count
     }
     
     // 3
@@ -205,20 +200,21 @@ extension ChatViewController: MessagesDataSource {
     }
 }
 
-
 // MARK: - MessageInputBarDelegate
 
 extension ChatViewController: MessageInputBarDelegate {
+    
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
-        
-        // 1
         let message = Message(user: currUser, content: text)
         
-        // 2
         save(message)
-        
-        // 3
         inputBar.inputTextView.text = ""
     }
     
 }
+
+// MARK: - UIImagePickerControllerDelegate
+
+//extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//
+//}
