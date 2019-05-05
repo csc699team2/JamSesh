@@ -26,6 +26,8 @@ class AddSongsViewController: UIViewController, UISearchBarDelegate, UITableView
         tableView.dataSource = self
         searchBar.delegate = self
         
+        tableView.keyboardDismissMode = .onDrag
+        
         loadSongs()
         filteredSongs = songs
         

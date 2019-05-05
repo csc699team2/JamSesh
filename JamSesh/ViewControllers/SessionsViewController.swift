@@ -13,6 +13,8 @@ class SessionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     @IBOutlet weak var sessionCollectionView: UICollectionView!
     
+    let currUser = PFUser.current()
+    var following = [PFUser]()
     var musicSessions = [PFObject]()
     
     var selectedSession: PFObject?
@@ -37,7 +39,25 @@ class SessionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        getFollowing()
         loadSessions()
+    }
+    
+    func getFollowing() {
+        let query = PFQuery(className: "UserInfo")
+        query.includeKey("user")
+        following.removeAll()
+        query.findObjectsInBackground { (usersInfo, error) in
+            if usersInfo != nil {
+                for userInfo in usersInfo! {
+                    let user = userInfo["user"] as! PFUser
+                    if user.objectId == self.currUser!.objectId {
+                        self.following = userInfo["following"] as? [PFUser] ?? []
+                        break
+                    }
+                }
+            }
+        }
     }
     
     func loadSessions() {
@@ -48,7 +68,17 @@ class SessionsViewController: UIViewController, UICollectionViewDelegate, UIColl
         query.findObjectsInBackground { (sessions, error) in
             if sessions != nil {
                 for session in sessions! {
-                    self.musicSessions.append(session)
+                    let admin = session["admin"] as! PFUser
+                    if admin.objectId == self.currUser?.objectId {
+                        self.musicSessions.append(session)
+                    }
+                    else if(!self.following.isEmpty) {
+                        for user in self.following {
+                            if user.objectId == admin.objectId {
+                                self.musicSessions.append(session)
+                            }
+                        }
+                    }
                 }
                 print("Retrieved Music Sessions")
                 self.sessionCollectionView.reloadData()

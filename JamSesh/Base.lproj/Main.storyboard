@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appName" translatesAutoresizingMaskIntoConstraints="NO" id="5wp-PR-GOX">
-                                <rect key="frame" x="0.0" y="90" width="414" height="354"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="16"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYi-Ls-xQQ">
-                                <rect key="frame" x="85" y="452" width="244" height="54"/>
+                                <rect key="frame" x="85" y="114" width="244" height="54"/>
                                 <color key="backgroundColor" red="0.5286188342" green="0.68658299389999999" blue="0.68958418109999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="pVB-LB-QNV"/>
@@ -191,7 +191,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="59" id="kmm-Y6-UvZ"/>
                                         </constraints>
-                                        <string key="text">Search for songs, music sessions,
+                                        <string key="text">Search for music sessions,
 and other music lovers.</string>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -248,7 +248,6 @@ and other music lovers.</string>
                                         <connections>
                                             <outlet property="resultImage" destination="icz-Wg-OyV" id="hde-dV-QEa"/>
                                             <outlet property="resultLabel" destination="1PR-Ie-3BA" id="F26-N6-WXS"/>
-                                            <segue destination="2VI-zi-e2D" kind="show" id="RGj-Bd-GJq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -290,6 +289,8 @@ and other music lovers.</string>
                         <outlet property="searchBar" destination="HGV-7P-aRM" id="BK7-Co-gHL"/>
                         <outlet property="searchControl" destination="Ye3-0W-ypN" id="1Rq-dp-4nA"/>
                         <outlet property="tableView" destination="s7k-JA-Jm0" id="78r-rn-pdd"/>
+                        <segue destination="2VI-zi-e2D" kind="show" identifier="searchToProfileSegue" id="JjG-a9-mxg"/>
+                        <segue destination="iwC-DT-jnZ" kind="presentation" identifier="searchToSessionSegue" id="1rJ-T3-4CA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBx-bT-S5S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,11 +302,11 @@ and other music lovers.</string>
             <objects>
                 <viewController id="2VI-zi-e2D" customClass="OtherProfileViewController" customModule="JamSesh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3yR-eL-4jd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaP-MK-1A6">
-                                <rect key="frame" x="0.0" y="64" width="414" height="288"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="288"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mcn-PH-UBq">
                                         <rect key="frame" x="132" y="24" width="150" height="150"/>
@@ -361,7 +362,7 @@ and other music lovers.</string>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1cd-lw-l1b">
-                                <rect key="frame" x="0.0" y="352" width="414" height="335"/>
+                                <rect key="frame" x="0.0" y="308" width="414" height="428"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kUp-Rc-zJt">
                                     <size key="itemSize" width="147" height="144"/>
@@ -528,15 +529,15 @@ and other music lovers.</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uA2-6z-yXL">
-                                                    <rect key="frame" x="27" y="15" width="72.666666666666671" height="21"/>
+                                                    <rect key="frame" x="27" y="15" width="342" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWv-bb-P5r">
-                                                    <rect key="frame" x="106.66666666666663" y="26" width="294.33333333333337" height="25"/>
+                                                    <rect key="frame" x="376" y="26" width="25" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="GD7-z7-Xb8"/>
+                                                        <constraint firstAttribute="width" constant="25" id="GD7-z7-Xb8"/>
                                                         <constraint firstAttribute="height" constant="25" id="kwv-CH-hhe"/>
                                                     </constraints>
                                                     <state key="normal" title="Play" image="play"/>
@@ -545,7 +546,7 @@ and other music lovers.</string>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOI-Zi-v1J">
-                                                    <rect key="frame" x="27" y="38" width="72.666666666666671" height="24"/>
+                                                    <rect key="frame" x="27" y="38" width="342" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -608,6 +609,32 @@ and other music lovers.</string>
                                 <rect key="frame" x="0.0" y="64" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVe-Vs-ihH">
+                                <rect key="frame" x="0.0" y="120" width="414" height="567"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Search for songs" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OA6-81-GlP">
+                                        <rect key="frame" x="0.0" y="254" width="414" height="59"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="59" id="nKy-wk-8HD"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_24px_outlined-1" translatesAutoresizingMaskIntoConstraints="NO" id="hjF-n2-yAK">
+                                        <rect key="frame" x="154.66666666666666" y="147" width="104.99999999999997" height="99"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="OA6-81-GlP" firstAttribute="leading" secondItem="GVe-Vs-ihH" secondAttribute="leading" id="FqG-Ol-nqd"/>
+                                    <constraint firstItem="OA6-81-GlP" firstAttribute="top" secondItem="hjF-n2-yAK" secondAttribute="bottom" constant="8" id="Ted-Vy-ru8"/>
+                                    <constraint firstItem="OA6-81-GlP" firstAttribute="centerX" secondItem="GVe-Vs-ihH" secondAttribute="centerX" id="Tnd-TI-mDP"/>
+                                    <constraint firstItem="OA6-81-GlP" firstAttribute="centerY" secondItem="GVe-Vs-ihH" secondAttribute="centerY" id="igV-2i-8HZ"/>
+                                    <constraint firstItem="hjF-n2-yAK" firstAttribute="centerX" secondItem="GVe-Vs-ihH" secondAttribute="centerX" id="oPL-Mr-2HJ"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ENQ-ox-kc5">
                                 <rect key="frame" x="0.0" y="120" width="414" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -672,7 +699,11 @@ and other music lovers.</string>
                             <constraint firstItem="3OY-Xi-GRg" firstAttribute="trailing" secondItem="nW0-LL-RPE" secondAttribute="trailing" id="7dO-8C-5uZ"/>
                             <constraint firstItem="3OY-Xi-GRg" firstAttribute="top" secondItem="nW0-LL-RPE" secondAttribute="top" id="IGp-ar-TzX"/>
                             <constraint firstItem="ENQ-ox-kc5" firstAttribute="leading" secondItem="nW0-LL-RPE" secondAttribute="leading" id="JVv-ia-obm"/>
+                            <constraint firstItem="GVe-Vs-ihH" firstAttribute="leading" secondItem="nW0-LL-RPE" secondAttribute="leading" id="Jo5-5e-t38"/>
+                            <constraint firstItem="GVe-Vs-ihH" firstAttribute="top" secondItem="3OY-Xi-GRg" secondAttribute="bottom" id="Kc8-jl-upc"/>
+                            <constraint firstItem="GVe-Vs-ihH" firstAttribute="trailing" secondItem="nW0-LL-RPE" secondAttribute="trailing" id="Nzv-ce-UoG"/>
                             <constraint firstItem="ENQ-ox-kc5" firstAttribute="top" secondItem="3OY-Xi-GRg" secondAttribute="bottom" id="WHb-Iy-zV1"/>
+                            <constraint firstItem="nW0-LL-RPE" firstAttribute="bottom" secondItem="GVe-Vs-ihH" secondAttribute="bottom" id="YxQ-R4-IPG"/>
                             <constraint firstItem="3OY-Xi-GRg" firstAttribute="leading" secondItem="nW0-LL-RPE" secondAttribute="leading" id="cST-w5-JbC"/>
                             <constraint firstItem="ENQ-ox-kc5" firstAttribute="trailing" secondItem="nW0-LL-RPE" secondAttribute="trailing" id="d6c-GI-13b"/>
                             <constraint firstItem="ENQ-ox-kc5" firstAttribute="bottom" secondItem="nW0-LL-RPE" secondAttribute="bottom" id="kGI-K3-RhE"/>
@@ -687,7 +718,7 @@ and other music lovers.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WdU-8C-iKq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1293" y="3994"/>
+            <point key="canvasLocation" x="1292.753623188406" y="3993.7500000000005"/>
         </scene>
         <!--Music Sessions-->
         <scene sceneID="HQT-29-a8D">
@@ -1741,7 +1772,7 @@ and other music lovers.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hF2-n1-OEu"/>
-        <segue reference="rcY-4H-uIa"/>
+        <segue reference="1rJ-T3-4CA"/>
         <segue reference="yZq-xg-IA1"/>
     </inferredMetricsTieBreakers>
 </document>

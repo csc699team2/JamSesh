@@ -29,6 +29,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         playlistNameLabel.text = playlist!["playlistName"] as? String
         songs = playlist!["songs"] as? [PFObject] ?? []
         self.filenames = self.getFilenames()
+        SoundPlayer.sharedInstance.clearPlayer()
         addSongs()
     }
     
@@ -120,7 +121,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
             playlist?.saveInBackground(block: { (success, error) in
                 if success {
                     //remove song from queueplayer and filename
-                    let filename = self.filenames[indexPath.row] as! String
+                    let filename = self.filenames[indexPath.row]
                     SoundPlayer.sharedInstance.removeSong(filename: filename, index: indexPath.row)
                     self.filenames.remove(at: indexPath.row)
                     

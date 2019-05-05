@@ -9,29 +9,34 @@
 import UIKit
 import Parse
 
-class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource {
+class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchControl: UISegmentedControl!
     
-    
+    var currUser = PFUser.current()
     var users = [PFObject]()
     var filteredUsers = [PFObject]()
     var sessions = [PFObject]()
     var filteredSessions = [PFObject]()
+    var following = [PFUser]()
     var searchBarBeginEditing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        searchBar.delegate = self
         tableView.isHidden = true
         tableView.dataSource = self
-        searchBar.delegate = self
+        tableView.delegate = self
+        tableView.keyboardDismissMode = .onDrag
         
         loadUsers()
         filteredUsers = users
+        
+        getFollowing()
         
         loadSessions()
         filteredSessions = sessions
@@ -53,10 +58,46 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     func loadSessions() {
         let query = PFQuery(className: "MusicSession")
+        query.includeKeys(["admin", "playlist", "playlist.songs"])
+        sessions.removeAll()
+        filteredSessions.removeAll()
         query.findObjectsInBackground { (sessions, error) in
             if sessions != nil {
-                self.sessions = sessions!
+                for session in sessions! {
+                    let admin = session["admin"] as! PFUser
+                    let isPrivate = session["private"] as! Bool
+                    if admin.objectId == self.currUser!.objectId {
+                        self.sessions.append(session)
+                    }
+                    else if(!self.following.isEmpty) {
+                        for user in self.following {
+                            if user.objectId == admin.objectId {
+                                self.sessions.append(session)
+                            }
+                        }
+                    }
+                    else if(!isPrivate) {
+                        self.sessions.append(session)
+                    }
+                }
                 self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func getFollowing() {
+        let query = PFQuery(className: "UserInfo")
+        query.includeKey("user")
+        following.removeAll()
+        query.findObjectsInBackground { (usersInfo, error) in
+            if usersInfo != nil {
+                for userInfo in usersInfo! {
+                    let user = userInfo["user"] as! PFUser
+                    if user.objectId == self.currUser!.objectId {
+                        self.following = userInfo["following"] as? [PFUser] ?? []
+                        break
+                    }
+                }
             }
         }
     }
@@ -146,22 +187,40 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if searchControl.selectedSegmentIndex == 0 {
+            performSegue(withIdentifier: "searchToProfileSegue", sender: indexPath)
+            
+        }
+        else {
+            performSegue(withIdentifier: "searchToSessionSegue", sender: indexPath)
+        }
+    }
+    
     // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //Find the user
-        let cell = sender as! UITableViewCell
-        let indexPath = tableView.indexPath(for: cell)!
-        let user = filteredUsers[indexPath.row] as! PFUser
-        
-        // Get the new view controller using segue.destination.
-        let profileViewController = segue.destination as! OtherProfileViewController
-        
-        // Pass the selected object to the new view controller.
-        profileViewController.user = user
-        
-        tableView.deselectRow(at: indexPath, animated: true)
+        let indexPath = sender as? IndexPath
+        if segue.identifier == "searchToProfileSegue" {
+            // Get the new view controller using segue.destination.
+            if let profileVC = segue.destination as? OtherProfileViewController {
+                // Pass the selected user to the new view controller.
+                let user = filteredUsers[indexPath!.row] as! PFUser
+                profileVC.user = user
+            }
+        }
+        else {
+            // Get the new view controller using segue.destination.
+            if let navVC = segue.destination as? UINavigationController {
+                if let detailVC = navVC.viewControllers.first as? DetailsViewController {
+                    // Pass the selected session to the new view controller.
+                    let session = filteredSessions[indexPath!.row]
+                    detailVC.session = session
+                }
+            }
+        }
+        tableView.deselectRow(at: indexPath!, animated: true)
      }
     
 }

@@ -120,9 +120,6 @@ PODS:
   - Parse/Core (1.17.2):
     - Bolts/Tasks (~> 1.9)
   - Protobuf (3.7.0)
-  - Scaledrone (0.3.0):
-    - Starscream (~> 2.1.0)
-  - Starscream (2.1.1)
 
 DEPENDENCIES:
   - AlamofireImage
@@ -133,7 +130,6 @@ DEPENDENCIES:
   - MessageInputBar
   - MessageKit
   - Parse
-  - Scaledrone (= 0.3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -160,8 +156,6 @@ SPEC REPOS:
     - nanopb
     - Parse
     - Protobuf
-    - Scaledrone
-    - Starscream
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -187,9 +181,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
-  Scaledrone: 25e5e70107222ed50046fc0ed9569915bdb85262
-  Starscream: 142bd8ef24592d985daee9fa48c936070b85b15f
 
-PODFILE CHECKSUM: 1158bd0da9721ddee3536a5b2e2bb204a9146023
+PODFILE CHECKSUM: 222d98d56d6b734066827e16118a772d8c3441ac
 
 COCOAPODS: 1.6.1

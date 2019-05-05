@@ -10,7 +10,6 @@ target 'JamSesh' do
   pod 'AlamofireImage'
   pod 'MessageInputBar'
   pod 'MessageKit'
-  pod 'Scaledrone', '0.3.0'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
