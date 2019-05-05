@@ -208,6 +208,19 @@ extension ChatViewController: MessagesLayoutDelegate {
         // 3
         return 0
     }
+    
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 7
+    }
+    
+    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 0
+    }
+    
+    
+    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 10
+    }
 }
 
 // MARK: - MessagesDataSource
@@ -233,16 +246,32 @@ extension ChatViewController: MessagesDataSource {
     // 4
     func cellTopLabelAttributedText(for message: MessageType,
                                     at indexPath: IndexPath) -> NSAttributedString? {
-        
         let name = message.sender.displayName
-        print(name)
-        return NSAttributedString(
-            string: name,
-            attributes: [
-                .font: UIFont.preferredFont(forTextStyle: .caption1),
-                .foregroundColor: UIColor(white: 0.3, alpha: 1)
-            ]
-        )
+        if(name != currUser.username) {
+            let paragraph = NSMutableParagraphStyle()
+            paragraph.alignment = NSTextAlignment.left
+            return NSAttributedString(
+                string: name,
+                attributes: [
+                    .font: UIFont.preferredFont(forTextStyle: .caption1),
+                    .foregroundColor: UIColor(white: 0.3, alpha: 1),
+                    .paragraphStyle: paragraph
+                ]
+            )
+        }
+        else
+        {
+            let paragraph = NSMutableParagraphStyle()
+            paragraph.alignment = NSTextAlignment.right
+            return NSAttributedString(
+                string: name,
+                attributes: [
+                    .font: UIFont.preferredFont(forTextStyle: .caption1),
+                    .foregroundColor: UIColor(white: 0.3, alpha: 1),
+                    .paragraphStyle: paragraph
+                ]
+            )
+        }
     }
 }
 

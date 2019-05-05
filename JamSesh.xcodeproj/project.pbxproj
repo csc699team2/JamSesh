@@ -36,7 +36,6 @@
 		245E55972278C8CF00DD16D8 /* Imagine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E558E2278C8CF00DD16D8 /* Imagine.mp3 */; };
 		245E55982278C8CF00DD16D8 /* you-are-the-reason.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 245E558F2278C8CF00DD16D8 /* you-are-the-reason.mp3 */; };
 		2475EF190F3D0215BC78D71C /* Pods_JamSeshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F605E4943A1B39AE4435484 /* Pods_JamSeshUITests.framework */; };
-		24FD1E37227E82080078729B /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD1E36227E82080078729B /* ForgotPasswordViewController.swift */; };
 		24FD4931226AD69100E042AB /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4930226AD69100E042AB /* SearchCell.swift */; };
 		24FD4933226B03B800E042AB /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4932226B03B800E042AB /* OtherProfileViewController.swift */; };
 		24FD4935226B047F00E042AB /* OtherPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD4934226B047F00E042AB /* OtherPlaylistCell.swift */; };
@@ -114,7 +113,6 @@
 		245E558D2278C8CF00DD16D8 /* why.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = why.mp3; sourceTree = "<group>"; };
 		245E558E2278C8CF00DD16D8 /* Imagine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Imagine.mp3; sourceTree = "<group>"; };
 		245E558F2278C8CF00DD16D8 /* you-are-the-reason.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "you-are-the-reason.mp3"; sourceTree = "<group>"; };
-		24FD1E36227E82080078729B /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		24FD4930226AD69100E042AB /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		24FD4932226B03B800E042AB /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
 		24FD4934226B047F00E042AB /* OtherPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPlaylistCell.swift; sourceTree = "<group>"; };
@@ -228,7 +226,6 @@
 				E90C65A722791CD70085225D /* ChatViewController.swift */,
 				13774216227A5E08006F9305 /* ChangePasswordViewController.swift */,
 				13774218227A5E2B006F9305 /* ChangeUsernameViewController.swift */,
-				24FD1E36227E82080078729B /* ForgotPasswordViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -636,7 +633,6 @@
 				24FD4933226B03B800E042AB /* OtherProfileViewController.swift in Sources */,
 				242CFAA822742C310076AA74 /* AddSongsViewController.swift in Sources */,
 				E93C733E227E6CB400371EA2 /* Message.swift in Sources */,
-				24FD1E37227E82080078729B /* ForgotPasswordViewController.swift in Sources */,
 				E93C7340227E6CBC00371EA2 /* UICollectionView+Additions.swift in Sources */,
 				81D79FF6225ECBAE00CD9DFA /* SearchViewController.swift in Sources */,
 				81D79FF4225ECBA300CD9DFA /* SessionsViewController.swift in Sources */,
