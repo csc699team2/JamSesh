@@ -103,7 +103,7 @@ class CreateViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func loadPlaylists() {
         let query = PFQuery(className:"Playlists")
-        query.includeKey("author")
+        query.includeKey("songs")
         query.addDescendingOrder("createdAt")
         playlists.removeAll()
         query.findObjectsInBackground { (playlists, error) in

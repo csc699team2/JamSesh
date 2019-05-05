@@ -41,7 +41,6 @@ class DetailsViewController: UIViewController {
     func addSongs(){
         SoundPlayer.sharedInstance.clearPlayer()
         for song in songs {
-            //let filename = song["fileName"] as! String
             SoundPlayer.sharedInstance.addSong(song: song)
         }
         SoundPlayer.sharedInstance.playAllSongs()
@@ -102,6 +101,7 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func detailToSessionSegue(_ sender: Any) {
+        SoundPlayer.sharedInstance.clearPlayer()
         performSegue(withIdentifier: "detailToSessionSegue", sender: nil)
     }
     

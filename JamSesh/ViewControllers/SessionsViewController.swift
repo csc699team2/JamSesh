@@ -19,11 +19,19 @@ class SessionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+        // Do any additional setup after loading the view.
         sessionCollectionView.delegate = self
         sessionCollectionView.dataSource = self
         
-        // Do any additional setup after loading the view.
+        //sets the layout of the collection view
+        let layout = sessionCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 15
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        let width = (view.frame.size.width - layout.minimumInteritemSpacing*3) / 2
+        layout.itemSize = CGSize(width: width, height: width)
     }
     
     override func viewDidAppear(_ animated: Bool) {

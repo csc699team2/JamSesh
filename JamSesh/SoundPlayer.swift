@@ -86,9 +86,12 @@ class SoundPlayer {
     }
     
     func clearPlayer(){
+        queuePlayer.pause()
+        songs.removeAll()
         queuePlayer.removeAllItems()
         playerItems.removeAll()
         filenames.removeAll()
+        isQueuePlaying = false
     }
     
     func playSong() {
