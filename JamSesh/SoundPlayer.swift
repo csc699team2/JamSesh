@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import Parse
 
 
 class SoundPlayer {
@@ -26,6 +27,7 @@ class SoundPlayer {
     var isQueuePlaying = false
     var playerItems = [String:AVPlayerItem]()
     var filenames = [String]()
+    var songs = [PFObject]()
     
     func setSong(fileName: String) {
         do {
@@ -42,8 +44,10 @@ class SoundPlayer {
         }
     }
     
-    func addSong(fileName: String) {
+    func addSong(song: PFObject) {
+        let fileName = song["fileName"] as! String
         let playerItem = AVPlayerItem(url: URL.init(fileURLWithPath: Bundle.main.path(forResource: fileName, ofType: "mp3")!))
+        songs.append(song)
         queuePlayer.insert(playerItem, after:nil)
         playerItems[fileName] = playerItem
         filenames.append(fileName)
@@ -54,8 +58,28 @@ class SoundPlayer {
         return playerItem
     }
     
+    func getSong(next: Bool) -> PFObject {
+        let currPlayerItem = queuePlayer.currentItem
+        
+        //gets the index of the previous player item
+        var index = 0
+        for playerItem in playerItems {
+            if playerItem.value == currPlayerItem {
+                index = filenames.firstIndex(of: playerItem.key)!
+                if (next && (index != songs.count-1)) {
+                    index += 1
+                }
+                break
+            }
+        }
+        
+        let song = songs[index]
+        return song
+    }
+    
     func removeSong(filename: String, index: Int) {
         let playerItem = playerItems[filename] as! AVPlayerItem
+        songs.remove(at: index)
         queuePlayer.remove(playerItem)
         playerItems.removeValue(forKey: filename)
         filenames.remove(at: index)

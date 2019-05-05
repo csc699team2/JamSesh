@@ -60,8 +60,8 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     
     func addSongs() {
         if songs != nil {
-            for filename in filenames {
-                SoundPlayer.sharedInstance.addSong(fileName: filename)
+            for song in songs! {
+                SoundPlayer.sharedInstance.addSong(song: song)
             }
         }
     }
@@ -80,6 +80,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func onForwardButton(_ sender: UIButton) {
         SoundPlayer.sharedInstance.nextSong()
+        
     }
     
     @IBAction func onPreviousButton(_ sender: Any) {

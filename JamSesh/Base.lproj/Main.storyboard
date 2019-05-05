@@ -186,7 +186,7 @@ and other music lovers.</string>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_24px_outlined-1" translatesAutoresizingMaskIntoConstraints="NO" id="fl8-cW-vuX">
-                                        <rect key="frame" x="154.66666666666666" y="108.66666666666666" width="104.99999999999997" height="99"/>
+                                        <rect key="frame" x="199" y="191.66666666666669" width="16" height="16"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -805,9 +805,9 @@ and other music lovers.</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fet-hV-VQ8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fet-hV-VQ8">
                                         <rect key="frame" x="0.0" y="41" width="354" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1736,7 +1736,6 @@ and other music lovers.</string>
         <image name="settings_24px_outlined-1" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4tk-YZ-Ean"/>
         <segue reference="Vje-Qo-qVc"/>
         <segue reference="yZq-xg-IA1"/>
     </inferredMetricsTieBreakers>
