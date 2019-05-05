@@ -186,7 +186,7 @@ and other music lovers.</string>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_24px_outlined-1" translatesAutoresizingMaskIntoConstraints="NO" id="fl8-cW-vuX">
-                                        <rect key="frame" x="199" y="191.66666666666669" width="16" height="16"/>
+                                        <rect key="frame" x="154.66666666666666" y="108.66666666666666" width="104.99999999999997" height="99"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -847,12 +847,13 @@ and other music lovers.</string>
                         <barButtonItem key="leftBarButtonItem" title="Session List" id="hFx-A6-SfP">
                             <connections>
                                 <action selector="detailToSessionSegue:" destination="hg4-ae-BGh" id="Z8R-Lr-XlM"/>
+                                <segue destination="g0n-hn-EqT" kind="presentation" identifier="detailToSessionSegue" id="pHg-tB-7gb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Chat" id="AON-Em-r7g">
                             <connections>
                                 <action selector="detailToChatSegue:" destination="hg4-ae-BGh" id="J1I-cd-TOb"/>
-                                <segue destination="ieE-8F-BDf" kind="presentation" identifier="detailToChatSegue" id="4tk-YZ-Ean"/>
+                                <segue destination="FxF-le-g3x" kind="show" identifier="detailToChatSegue" id="KwC-1C-2yJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -876,54 +877,11 @@ and other music lovers.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="M2T-sY-FhC"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jmV-JI-zOo">
-                        <barButtonItem key="leftBarButtonItem" title="Music Session" id="EOC-J0-vzZ">
-                            <connections>
-                                <action selector="detailButtonPressed:" destination="FxF-le-g3x" id="bYd-7h-5F4"/>
-                                <segue destination="iwC-DT-jnZ" kind="presentation" identifier="chatToDetailSegue" id="Vje-Qo-qVc"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="0" id="Au6-XG-tAJ">
-                            <connections>
-                                <segue destination="HfO-aw-gHJ" kind="show" identifier="chatToMembersSegue" id="hhF-38-Eox"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="onlineMembersButton" destination="Au6-XG-tAJ" id="5aK-LE-JRL"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="jmV-JI-zOo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="id6-d5-uPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2199" y="4800"/>
-        </scene>
-        <!--Members Table View Controller-->
-        <scene sceneID="cAa-tb-n8F">
-            <objects>
-                <tableViewController id="HfO-aw-gHJ" customClass="MembersTableViewController" customModule="JamSesh" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AtE-u0-zlQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="omc-yj-Ok8">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="omc-yj-Ok8" id="33v-q2-j6y">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="HfO-aw-gHJ" id="8nk-U6-PdV"/>
-                            <outlet property="delegate" destination="HfO-aw-gHJ" id="Zm5-dT-Wde"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Db6-c0-FvU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2200" y="5616"/>
+            <point key="canvasLocation" x="-1304" y="4842"/>
         </scene>
         <!--Create-->
         <scene sceneID="1eP-lY-cZ0">
@@ -1699,26 +1657,6 @@ and other music lovers.</string>
             </objects>
             <point key="canvasLocation" x="-378.26086956521743" y="1656.521739130435"/>
         </scene>
-        <!--Chat-->
-        <scene sceneID="h4E-Dd-Ipp">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ieE-8F-BDf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chat" id="0XY-Ti-NfX"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DRI-Ok-7iS">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.55107867720000003" green="0.73398131129999999" blue="0.73500567670000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="FxF-le-g3x" kind="relationship" relationship="rootViewController" id="CM9-VP-uld"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iWr-8R-HRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2200" y="3994"/>
-        </scene>
     </scenes>
     <resources>
         <image name="add" width="512" height="512"/>
@@ -1736,7 +1674,9 @@ and other music lovers.</string>
         <image name="settings_24px_outlined-1" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vje-Qo-qVc"/>
+        <segue reference="W8C-GR-AGH"/>
+        <segue reference="pHg-tB-7gb"/>
+        <segue reference="rcY-4H-uIa"/>
         <segue reference="yZq-xg-IA1"/>
     </inferredMetricsTieBreakers>
 </document>

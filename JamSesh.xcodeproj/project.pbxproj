@@ -56,11 +56,13 @@
 		81ED05E3225C3D3C00A106A6 /* JamSeshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ED05E2225C3D3C00A106A6 /* JamSeshTests.swift */; };
 		81ED05EE225C3D3C00A106A6 /* JamSeshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ED05ED225C3D3C00A106A6 /* JamSeshUITests.swift */; };
 		AD57B5A4056F4BEBAD517FB2 /* Pods_JamSeshTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B297739D69E04DE0533C3549 /* Pods_JamSeshTests.framework */; };
-		E90C65A422791C7E0085225D /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C65A322791C7E0085225D /* ChatService.swift */; };
-		E90C65A622791CB10085225D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C65A522791CB10085225D /* Message.swift */; };
 		E90C65A822791CD70085225D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C65A722791CD70085225D /* ChatViewController.swift */; };
-		E90C65AA22791CEE0085225D /* MembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C65A922791CEE0085225D /* MembersTableViewController.swift */; };
 		E921607F227593A3004A8ACD /* MusicSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921607E227593A3004A8ACD /* MusicSessionCell.swift */; };
+		E93C733C227E6CAF00371EA2 /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C733B227E6CAE00371EA2 /* DatabaseRepresentation.swift */; };
+		E93C733E227E6CB400371EA2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C733D227E6CB400371EA2 /* Message.swift */; };
+		E93C7340227E6CBC00371EA2 /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C733F227E6CBC00371EA2 /* UICollectionView+Additions.swift */; };
+		E93C7342227E6CC100371EA2 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C7341227E6CC100371EA2 /* UIColor+Additions.swift */; };
+		E93C7344227E700C00371EA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E93C7343227E700C00371EA2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,11 +144,13 @@
 		B297739D69E04DE0533C3549 /* Pods_JamSeshTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JamSeshTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D099649D168C551CBDC9707B /* Pods-JamSesh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSesh.debug.xcconfig"; path = "Target Support Files/Pods-JamSesh/Pods-JamSesh.debug.xcconfig"; sourceTree = "<group>"; };
 		E2853060594ACF1FBA72AC8C /* Pods-JamSeshTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JamSeshTests.debug.xcconfig"; path = "Target Support Files/Pods-JamSeshTests/Pods-JamSeshTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E90C65A322791C7E0085225D /* ChatService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
-		E90C65A522791CB10085225D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E90C65A722791CD70085225D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		E90C65A922791CEE0085225D /* MembersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersTableViewController.swift; sourceTree = "<group>"; };
 		E921607E227593A3004A8ACD /* MusicSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSessionCell.swift; sourceTree = "<group>"; };
+		E93C733B227E6CAE00371EA2 /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
+		E93C733D227E6CB400371EA2 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		E93C733F227E6CBC00371EA2 /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
+		E93C7341227E6CC100371EA2 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		E93C7343227E700C00371EA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +224,6 @@
 				245882E522729C90007BEADE /* PlaylistViewController.swift */,
 				242CFAA722742C310076AA74 /* AddSongsViewController.swift */,
 				E90C65A722791CD70085225D /* ChatViewController.swift */,
-				E90C65A922791CEE0085225D /* MembersTableViewController.swift */,
 				13774216227A5E08006F9305 /* ChangePasswordViewController.swift */,
 				13774218227A5E2B006F9305 /* ChangeUsernameViewController.swift */,
 			);
@@ -265,6 +268,7 @@
 		81ED05CC225C3D3A00A106A6 /* JamSesh */ = {
 			isa = PBXGroup;
 			children = (
+				E93C733A227E6C5000371EA2 /* Extensions */,
 				E90C65A222791C5B0085225D /* Service */,
 				242CFAAB227457F10076AA74 /* songs */,
 				24FD492D226AD51700E042AB /* Views */,
@@ -274,6 +278,7 @@
 				81ED05D4225C3D3C00A106A6 /* Assets.xcassets */,
 				81ED05D6225C3D3C00A106A6 /* LaunchScreen.storyboard */,
 				81ED05D9225C3D3C00A106A6 /* Info.plist */,
+				E93C7343227E700C00371EA2 /* GoogleService-Info.plist */,
 				242CFAB22277DD8F0076AA74 /* SoundPlayer.swift */,
 			);
 			path = JamSesh;
@@ -300,10 +305,19 @@
 		E90C65A222791C5B0085225D /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				E90C65A322791C7E0085225D /* ChatService.swift */,
-				E90C65A522791CB10085225D /* Message.swift */,
+				E93C733D227E6CB400371EA2 /* Message.swift */,
+				E93C733B227E6CAE00371EA2 /* DatabaseRepresentation.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		E93C733A227E6C5000371EA2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E93C7341227E6CC100371EA2 /* UIColor+Additions.swift */,
+				E93C733F227E6CBC00371EA2 /* UICollectionView+Additions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FB66FF19E25AC4BA5B6C0246 /* Frameworks */ = {
@@ -459,6 +473,7 @@
 				242CFAB122745EB60076AA74 /* 7Rings.mp3 in Resources */,
 				242CFAAD2274581D0076AA74 /* sucker.mp3 in Resources */,
 				245E55942278C8CF00DD16D8 /* Fallin-All-In-You.mp3 in Resources */,
+				E93C7344227E700C00371EA2 /* GoogleService-Info.plist in Resources */,
 				245E55982278C8CF00DD16D8 /* you-are-the-reason.mp3 in Resources */,
 				81ED05D5225C3D3C00A106A6 /* Assets.xcassets in Resources */,
 				245E55972278C8CF00DD16D8 /* Imagine.mp3 in Resources */,
@@ -612,26 +627,27 @@
 			files = (
 				242CFAA62274287D0076AA74 /* SongCell.swift in Sources */,
 				81D79FFE225ECBF100CD9DFA /* CreateViewController.swift in Sources */,
-				E90C65A422791C7E0085225D /* ChatService.swift in Sources */,
 				24FD4931226AD69100E042AB /* SearchCell.swift in Sources */,
 				24FD4935226B047F00E042AB /* OtherPlaylistCell.swift in Sources */,
 				242CFAAA22742E930076AA74 /* SongSearchCell.swift in Sources */,
 				24FD4933226B03B800E042AB /* OtherProfileViewController.swift in Sources */,
 				242CFAA822742C310076AA74 /* AddSongsViewController.swift in Sources */,
+				E93C733E227E6CB400371EA2 /* Message.swift in Sources */,
+				E93C7340227E6CBC00371EA2 /* UICollectionView+Additions.swift in Sources */,
 				81D79FF6225ECBAE00CD9DFA /* SearchViewController.swift in Sources */,
 				81D79FF4225ECBA300CD9DFA /* SessionsViewController.swift in Sources */,
-				E90C65AA22791CEE0085225D /* MembersTableViewController.swift in Sources */,
 				81D79FFC225ECBE200CD9DFA /* DetailsViewController.swift in Sources */,
 				242CFAB32277DD8F0076AA74 /* SoundPlayer.swift in Sources */,
 				81ED05D0225C3D3A00A106A6 /* ViewController.swift in Sources */,
 				13774219227A5E2B006F9305 /* ChangeUsernameViewController.swift in Sources */,
 				2436DDED225FF86A000C56DF /* PlaylistCell.swift in Sources */,
 				81ED05CE225C3D3A00A106A6 /* AppDelegate.swift in Sources */,
+				E93C7342227E6CC100371EA2 /* UIColor+Additions.swift in Sources */,
+				E93C733C227E6CAF00371EA2 /* DatabaseRepresentation.swift in Sources */,
 				81D79FF8225ECBBC00CD9DFA /* ProfileViewController.swift in Sources */,
 				E90C65A822791CD70085225D /* ChatViewController.swift in Sources */,
 				13774217227A5E08006F9305 /* ChangePasswordViewController.swift in Sources */,
 				245882E622729C90007BEADE /* PlaylistViewController.swift in Sources */,
-				E90C65A622791CB10085225D /* Message.swift in Sources */,
 				81D79FF2225ECB8200CD9DFA /* SignUpViewController.swift in Sources */,
 				81D79FF0225ECB7400CD9DFA /* LogInViewController.swift in Sources */,
 				81D79FFA225ECBC800CD9DFA /* SettingsViewController.swift in Sources */,
