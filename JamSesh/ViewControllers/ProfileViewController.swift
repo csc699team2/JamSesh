@@ -91,18 +91,28 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     @IBAction func changeProfileImage(_ sender: Any) {
+        let actionSheet = UIAlertController(title: "Change Profile Photo", message: nil, preferredStyle: .actionSheet)
+        
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            picker.sourceType = .camera
-        }
-        else {
+        actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { action in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                picker.sourceType = .camera
+            }
+            else {
+                picker.sourceType = .photoLibrary
+            }
+            self.present(picker, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Choose from Library", style: .default, handler: { action in
             picker.sourceType = .photoLibrary
-        }
+            self.present(picker, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        present(picker, animated: true, completion: nil)
+        self.present(actionSheet, animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
