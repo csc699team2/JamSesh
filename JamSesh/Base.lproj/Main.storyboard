@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appName" translatesAutoresizingMaskIntoConstraints="NO" id="5wp-PR-GOX">
-                                <rect key="frame" x="0.0" y="90" width="414" height="16"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="354"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYi-Ls-xQQ">
-                                <rect key="frame" x="85" y="114" width="244" height="54"/>
+                                <rect key="frame" x="85" y="452" width="244" height="54"/>
                                 <color key="backgroundColor" red="0.5286188342" green="0.68658299389999999" blue="0.68958418109999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="pVB-LB-QNV"/>
@@ -101,20 +101,9 @@
                                     <action selector="onLogin:" destination="WDv-Ru-zcg" eventType="touchUpInside" id="6Cp-6E-mBt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW USER?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3E-2p-YsJ">
-                                <rect key="frame" x="130" y="409.66666666666669" width="84" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="adh-jf-CAT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beM-vr-1KI">
-                                <rect key="frame" x="226" y="409.66666666666669" width="60" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="p2P-CB-JpD"/>
-                                </constraints>
+                                <rect key="frame" x="177" y="449.66666666666669" width="60" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="SIGN UP">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -122,11 +111,17 @@
                                     <segue destination="Xys-T6-5y2" kind="presentation" identifier="signUpSegue" id="4J4-Ox-NSg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW USER?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3E-2p-YsJ">
+                                <rect key="frame" x="165" y="423.66666666666669" width="84" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="B3E-2p-YsJ" firstAttribute="leading" secondItem="skS-7H-jMN" secondAttribute="leading" constant="130" id="4me-R3-EHO"/>
+                            <constraint firstItem="B3E-2p-YsJ" firstAttribute="top" secondItem="RMT-dG-OMS" secondAttribute="bottom" constant="29" id="4XR-Uq-fQi"/>
                             <constraint firstItem="7r2-Qg-F1K" firstAttribute="top" secondItem="qgp-XN-Y9o" secondAttribute="bottom" constant="8" id="50I-qq-yIM"/>
                             <constraint firstItem="qgp-XN-Y9o" firstAttribute="leading" secondItem="skS-7H-jMN" secondAttribute="leading" constant="66" id="8fS-Lr-qGZ"/>
                             <constraint firstItem="cBX-Vp-3Kl" firstAttribute="leading" secondItem="skS-7H-jMN" secondAttribute="leading" constant="66" id="BPS-Lx-qQ1"/>
@@ -135,16 +130,15 @@
                             <constraint firstItem="0vf-q8-ZjF" firstAttribute="leading" secondItem="skS-7H-jMN" secondAttribute="leading" constant="66" id="Eyc-XQ-qbO"/>
                             <constraint firstItem="RMT-dG-OMS" firstAttribute="centerY" secondItem="Yrb-9f-YWy" secondAttribute="centerY" id="GmZ-Cw-MKU"/>
                             <constraint firstItem="skS-7H-jMN" firstAttribute="trailing" secondItem="0vf-q8-ZjF" secondAttribute="trailing" constant="66" id="Gpt-Dw-4yh"/>
-                            <constraint firstItem="skS-7H-jMN" firstAttribute="trailing" secondItem="beM-vr-1KI" secondAttribute="trailing" constant="128" id="H9i-Tr-0A4"/>
                             <constraint firstItem="skS-7H-jMN" firstAttribute="trailing" secondItem="cBX-Vp-3Kl" secondAttribute="trailing" constant="66" id="HBe-DG-DdJ"/>
+                            <constraint firstItem="B3E-2p-YsJ" firstAttribute="centerX" secondItem="Yrb-9f-YWy" secondAttribute="centerX" id="Hjw-jT-a7Y"/>
                             <constraint firstItem="cBX-Vp-3Kl" firstAttribute="top" secondItem="0vf-q8-ZjF" secondAttribute="bottom" constant="8" id="HuG-Xx-x1L"/>
-                            <constraint firstItem="B3E-2p-YsJ" firstAttribute="top" secondItem="RMT-dG-OMS" secondAttribute="bottom" constant="15" id="KWi-yD-ngO"/>
                             <constraint firstItem="RMT-dG-OMS" firstAttribute="centerX" secondItem="Yrb-9f-YWy" secondAttribute="centerX" id="LhA-kT-GM5"/>
+                            <constraint firstItem="beM-vr-1KI" firstAttribute="top" secondItem="B3E-2p-YsJ" secondAttribute="bottom" constant="8" id="SNA-We-5Tm"/>
                             <constraint firstItem="RMT-dG-OMS" firstAttribute="top" secondItem="7r2-Qg-F1K" secondAttribute="bottom" constant="60" id="Ven-6H-SXZ"/>
                             <constraint firstItem="skS-7H-jMN" firstAttribute="trailing" secondItem="qgp-XN-Y9o" secondAttribute="trailing" constant="66" id="VoW-Hv-Yzy"/>
-                            <constraint firstItem="beM-vr-1KI" firstAttribute="leading" secondItem="B3E-2p-YsJ" secondAttribute="trailing" constant="12" id="cea-eq-wmP"/>
-                            <constraint firstItem="beM-vr-1KI" firstAttribute="top" secondItem="RMT-dG-OMS" secondAttribute="bottom" constant="15" id="hWH-Wf-ip6"/>
                             <constraint firstItem="qgp-XN-Y9o" firstAttribute="top" secondItem="cBX-Vp-3Kl" secondAttribute="bottom" constant="20" id="q2G-Fx-1Pe"/>
+                            <constraint firstItem="beM-vr-1KI" firstAttribute="centerX" secondItem="Yrb-9f-YWy" secondAttribute="centerX" id="uMK-8A-Bha"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="skS-7H-jMN"/>
                         <connections>
@@ -198,7 +192,7 @@ and other music lovers.</string>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_24px_outlined-1" translatesAutoresizingMaskIntoConstraints="NO" id="fl8-cW-vuX">
-                                        <rect key="frame" x="199" y="191.66666666666669" width="16" height="16"/>
+                                        <rect key="frame" x="154.66666666666666" y="108.66666666666666" width="104.99999999999997" height="99"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -623,7 +617,7 @@ and other music lovers.</string>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_24px_outlined-1" translatesAutoresizingMaskIntoConstraints="NO" id="hjF-n2-yAK">
-                                        <rect key="frame" x="199" y="230" width="16" height="16"/>
+                                        <rect key="frame" x="154.66666666666666" y="147" width="104.99999999999997" height="99"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1772,7 +1766,7 @@ and other music lovers.</string>
         <image name="settings_24px_outlined-1" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hF2-n1-OEu"/>
+        <segue reference="UBS-wF-Zre"/>
         <segue reference="rcY-4H-uIa"/>
         <segue reference="yZq-xg-IA1"/>
     </inferredMetricsTieBreakers>
