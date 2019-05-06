@@ -31,6 +31,17 @@ class SoundPlayer {
     var filenames = [String]()
     var playerItems = [String:AVPlayerItem]()
     
+    init() {
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            do {
+                try audioSession.setCategory(AVAudioSession.Category.playback)
+            }
+        }
+        catch {
+            print(error)
+        }
+    }
     
     func addSong(song: PFObject) {
         let fileName = song["fileName"] as! String
