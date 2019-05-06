@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class CreateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class CreateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
     
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var privateBool: UISwitch!
@@ -29,6 +29,9 @@ class CreateViewController: UIViewController, UITableViewDelegate, UITableViewDa
         playlistTableView.delegate = self
         playlistTableView.dataSource = self
         playlistTableView.isHidden = true
+        
+        //set up textfield
+        titleField.delegate = self
         
         //get playlist
         loadPlaylists();
@@ -121,6 +124,13 @@ class CreateViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print("Error: \(String(describing: error))")
             }
         }
+    }
+    
+    //Hide keyboard when user hit return
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleField.resignFirstResponder()
+        
+        return true
     }
     
     // MARK: - Navigation

@@ -824,13 +824,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PP55FS799T;
+				DEVELOPMENT_TEAM = 66KWL72M4W;
 				INFOPLIST_FILE = JamSesh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.moralesmicaella.JamSesh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kurtishoang.JamSesh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -843,13 +843,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PP55FS799T;
+				DEVELOPMENT_TEAM = 66KWL72M4W;
 				INFOPLIST_FILE = JamSesh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.moralesmicaella.JamSesh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kurtishoang.JamSesh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
