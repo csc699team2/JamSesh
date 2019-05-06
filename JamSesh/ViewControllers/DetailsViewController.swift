@@ -17,6 +17,7 @@ class DetailsViewController: UIViewController {
     
     var session: PFObject?
     var songs = [PFObject]()
+    var firstSongFilename: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +28,18 @@ class DetailsViewController: UIViewController {
         
         addSongs()
         getFirstSong()
-        addSongObserver()
     }
     
     func getFirstSong(){
         let songTitle = songs[0]["songTitle"] as! String
         let artist = songs[0]["Artist"] as! String
+        let filename = songs[0]["fileName"] as! String
         
         songTitleLabel.text = songTitle
         artistLabel.text = artist
+        
+        SoundPlayer.sharedInstance.setSongItem(filename: filename)
+        SoundPlayer.sharedInstance.playAllSongs()
     }
     
     func addSongs(){
@@ -43,7 +47,7 @@ class DetailsViewController: UIViewController {
         for song in songs {
             SoundPlayer.sharedInstance.addSong(song: song)
         }
-        SoundPlayer.sharedInstance.playAllSongs()
+        addSongObserver()
     }
     
     func addSongObserver(){
@@ -55,7 +59,7 @@ class DetailsViewController: UIViewController {
     }
     
     @objc func playerDidFinishPlaying(note: NSNotification) {
-        let song = SoundPlayer.sharedInstance.getSong(next: true)
+        let song = SoundPlayer.sharedInstance.nextSong()
         
         let songTitle = song["songTitle"] as! String
         let artist = song["Artist"] as! String
@@ -67,19 +71,18 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func pauseButton(_ sender: Any) {
-        SoundPlayer.sharedInstance.playAllSongs()
-        if SoundPlayer.sharedInstance.isQueuePlaying {
-            playButton.setImage(UIImage(named: "pause-1"), for: UIControl.State.normal)
+        if SoundPlayer.sharedInstance.isPlaying {
+            playButton.setImage(UIImage(named: "play-1"), for: UIControl.State.normal)
+            SoundPlayer.sharedInstance.pauseSong()
         }
         else {
-            playButton.setImage(UIImage(named: "play-1"), for: UIControl.State.normal)
+            playButton.setImage(UIImage(named: "pause-1"), for: UIControl.State.normal)
+            SoundPlayer.sharedInstance.playAllSongs()
         }
     }
     
     @IBAction func onForwardButton(_ sender: Any) {
-        SoundPlayer.sharedInstance.nextSong()
-        
-        let song = SoundPlayer.sharedInstance.getSong(next: false)
+        let song = SoundPlayer.sharedInstance.nextSong()
         
         let songTitle = song["songTitle"] as! String
         let artist = song["Artist"] as! String
@@ -89,9 +92,7 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func onPreviousButton(_ sender: Any) {
-        SoundPlayer.sharedInstance.prevSong()
-        
-        let song = SoundPlayer.sharedInstance.getSong(next: false)
+        let song = SoundPlayer.sharedInstance.prevSong()
         
         let songTitle = song["songTitle"] as! String
         let artist = song["Artist"] as! String

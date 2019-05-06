@@ -10,6 +10,10 @@ import UIKit
 import Parse
 import AVFoundation
 
+protocol SongCellUpdater: class {
+    func updateTableView()
+}
+
 class SongCell: UITableViewCell {
     
     @IBOutlet weak var songTitleLabel: UILabel!
@@ -17,20 +21,26 @@ class SongCell: UITableViewCell {
     @IBOutlet weak var playButton: UIButton!
     
     var song: PFObject?
+    weak var delegate: SongCellUpdater?
+    
+    func callUpdate() {
+        delegate?.updateTableView()
+    }
     
     @IBAction func play(_ sender: Any) {
         let songFilename = song?["fileName"] as? String
         
-        SoundPlayer.sharedInstance.setSong(fileName: songFilename!)
-        SoundPlayer.sharedInstance.playSong()
+        SoundPlayer.sharedInstance.setSongItem(filename: songFilename!)
         
-
-        if SoundPlayer.sharedInstance.isAudioPlaying {
-            playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
+        if SoundPlayer.sharedInstance.isPlaying {
+            playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
+            SoundPlayer.sharedInstance.pauseSong()
         }
         else {
-            playButton.setImage(UIImage(named: "play"), for: UIControl.State.normal)
+            playButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
+            SoundPlayer.sharedInstance.playSong()
         }
+        callUpdate()
     }
     
     override func awakeFromNib() {
