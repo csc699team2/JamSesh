@@ -1,7 +1,10 @@
-Unit 8: Group Milestone - README Example
-===
-
 # JamSesh
+
+**Video Walkthrough**
+
+![](JamSeshUnit13.gif)
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -52,14 +55,6 @@ JamSesh is a music app where you can create music sessions from your playlists. 
 - [ ] User can use automated voice controls (Houndify)
 - [ ] User can be notified when the people they follow creates a music session
 - [ ] User can be notified if they have been invited to another user’s music session
-
-**Build Progress**
-
-Unit 13 build progress gif
-
-![](JamSeshUnit13.gif)
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ### 2. Screen Archetypes
 
