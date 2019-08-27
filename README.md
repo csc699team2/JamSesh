@@ -1,11 +1,5 @@
 # JamSesh
 
-**Video Walkthrough**
-
-![](JamSeshUnit13.gif)
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
 ## Table of Contents
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
@@ -14,6 +8,12 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 1. [Schema](#Schema)
 
 ## Overview
+### Walkthrough
+
+![](JamSeshUnit13.gif)
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
 ### Description
 JamSesh is a music app where you can create music sessions from your playlists. These music sessions can be a a space for you to listen music with friends or meet new people with similar music interests. 
 
